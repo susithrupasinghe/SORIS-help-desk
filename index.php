@@ -14,6 +14,9 @@
 <body>
     <?php include("res/templates/header.php");  ?>
 
+    <div style="min-height:100vh;"></div>
+
+
 
     <?php include("res/templates/footer.php");  ?>
 

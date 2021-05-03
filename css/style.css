@@ -7,7 +7,9 @@ Dark Blue - #1D4354
 
 */
 
-
+html{
+    position: relative;
+}
 
 /* Buttons */
 
@@ -58,6 +60,7 @@ Dark Blue - #1D4354
 
 .txt-green {
     color: #08A73A;
+    
 }
 
 .txt-white {
@@ -68,6 +71,15 @@ Dark Blue - #1D4354
     color: #E8FBE2;
 }
 
+
+/* Font size */
+
+.small {
+    font-size: small;
+}
+.large {
+    font-size: large;
+}
 /* Background */
 
 .bg-1 {
@@ -88,9 +100,9 @@ Dark Blue - #1D4354
 
 .footer {
 
-    position: fixed;
+    position: absolute;
     bottom: 0;
-    height: 20vh;
+    margin-bottom: 0;
     width: 100%;
     background-color: #1D4354;
 
@@ -107,6 +119,7 @@ Dark Blue - #1D4354
 body{
 
     margin: 0;
+    margin-bottom: 0;
 }
 
 
@@ -116,3 +129,25 @@ body{
 .grid-container {
     display: grid;
   }
+
+
+  /* Footer List */ 
+
+  .footer-list {
+    list-style-type: none; 
+    font-size:small; 
+    color:antiquewhite;
+
+  }
+
+  .footer-list li {
+      margin-top: 1em;
+
+  }
+
+  .footer-list a {
+    
+    text-decoration: none;
+    color:antiquewhite;
+
+}
