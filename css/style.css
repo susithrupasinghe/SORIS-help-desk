@@ -1,0 +1,118 @@
+/* SORIS Color Schema 
+
+Green - #08A73A
+Cream White - #FCFCFC
+Pure white - #FFFFFF
+Dark Blue - #1D4354
+
+*/
+
+
+
+/* Buttons */
+
+.btt{
+   
+
+    border-radius: 30px;
+    font-family: 'Sitara', sans-serif;
+    padding: 5px 24px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: small;
+    cursor: pointer;
+    margin-right: 15px;;
+  
+}
+
+.btt:hover {opacity: 0.6}
+
+.type1 {
+    border: none;
+    background-color: #08A73A; /* Green */
+    color: #FCFCFC;
+
+}
+
+
+.type2 {
+    border: none;
+    background-color: #F8F9F8; /* Green */
+    color: #08A73A;
+
+}
+
+.type3 {
+    border: solid;
+    border-color: #08A73A;
+    background-color: #F8F9F8; /* Green */
+    color: #08A73A;
+
+}
+
+
+
+/* Text color */
+
+.txt-green {
+    color: #08A73A;
+}
+
+.txt-white {
+    color: #FFFFFF;
+}
+
+.txt-greenlight {
+    color: #E8FBE2;
+}
+
+/* Background */
+
+.bg-1 {
+    background-color: #1D4354;
+}
+
+
+
+/* Header */
+
+.header {
+    height: 14vh;
+    background-color: #1D4354;
+    
+}
+
+/* Footer */
+
+.footer {
+
+    position: fixed;
+    bottom: 0;
+    height: 20vh;
+    width: 100%;
+    background-color: #1D4354;
+
+}
+
+/* Logo */
+
+.logo {
+    margin-top: 0;
+}
+
+/* Body */
+
+body{
+
+    margin: 0;
+}
+
+
+
+/* Coloumns */
+
+.grid-container {
+    display: grid;
+  }
