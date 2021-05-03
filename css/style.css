@@ -8,7 +8,9 @@ Dark Blue - #1D4354
 */
 
 html{
-    position: relative;
+
+ 
+  
 }
 
 /* Buttons */
@@ -100,11 +102,12 @@ html{
 
 .footer {
 
-    position: absolute;
+
     bottom: 0;
     margin-bottom: 0;
     width: 100%;
     background-color: #1D4354;
+    overflow: hidden;
 
 }
 
@@ -151,3 +154,19 @@ body{
     color:antiquewhite;
 
 }
+
+
+
+/* Card view */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+  }
+
+.body-container {
+    min-height: 60vh;
+}
+  
