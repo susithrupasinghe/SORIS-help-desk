@@ -16,7 +16,6 @@
 
     <div class="body-container">
 
-
     </div>
 
     <?php include("../templates/footer.php");  ?>

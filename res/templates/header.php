@@ -12,6 +12,7 @@
             session_start();
 
             if (isset($_SESSION["userid"])) {
+                
             } else {
                 echo <<<HTML
 

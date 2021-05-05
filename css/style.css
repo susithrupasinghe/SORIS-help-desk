@@ -43,7 +43,7 @@ html{
 
 .type2 {
     border: none;
-    background-color: #F8F9F8; /* Green */
+    background-color: #F8F9F8; /* white */
     color: #08A73A;
 
 }
@@ -51,7 +51,7 @@ html{
 .type3 {
     border: solid;
     border-color: #08A73A;
-    background-color: #F8F9F8; /* Green */
+    background-color: #F8F9F8; /* white */
     color: #08A73A;
 
 }
