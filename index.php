@@ -16,9 +16,18 @@
 
     <div class="body-container">
 
+        <?php
+
+            require 'res/mail/mailer.php';
+
+
+            //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
+            //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+        ?>
+
 
     </div>
-    
+
     <?php include("res/templates/footer.php");  ?>
 </body>
 

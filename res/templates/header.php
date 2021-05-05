@@ -1,3 +1,9 @@
+
+
+<?php 
+     session_start();
+?>
+
 <div>
     <div class="header">
 
@@ -9,11 +15,20 @@
 
             <?php
 
-            session_start();
 
             if (isset($_SESSION["userid"])) {
-                
+
+                //$username = $_SESSION["userid"];
+
+
+
+
+
+
+
             } else {
+
+              
                 echo <<<HTML
 
                 <div style="float:right; margin-top:-8vh; margin-right:5vw;">
