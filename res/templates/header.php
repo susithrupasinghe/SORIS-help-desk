@@ -25,22 +25,23 @@ if (isset($_GET['logout'])) {
             if (isset($_SESSION["userid"]) && $_SESSION["role"]) {
 
                 echo <<<HTML
-                <div style="float:right; margin-top:-8vh; margin-right:5vw;"> 
+                <div style="margin-top:-8vh; margin-right:5vw;"> 
                 HTML;
 
 
-                echo "<ul style='float:left;list-style-type: None;margin-top:-40px;text-align: right;'>";
-                echo "<li><h4 style='margin-right:30px;color:#f8f9f8;'>";
+                echo "<ul style='list-style-type: None;margin-top:-40px;text-align: right;'>";
+                echo "<li><h4 style='margin-right:30px;color:#f8f9f8;display: block;'>";
                 echo  $_SESSION["userid"] . " : " . $_SESSION["role"];
-                echo "</h4></li>";
-                echo "<li><a style='text-decoration: none;' id='logout' href='?logout'><h4 style='color:#f8f9f8;margin-right:30px;'>Sign Out</h4></a><li>";
+                echo "</h4><img src='/SORIS-help-desk/images/avatar.png' alt='NO image' style='display: block;max-width:55px;margin-top:-4%;margin-left:90vw;'></li>";
+                echo "<h4></h4>";
+                echo "<li><a style='display: block;text-decoration: none;' id='logout' href='?logout'><h4 style='color:#f8f9f8;margin-right:30px;'>Sign Out</h4></a><li>";
                 echo "</ul>";
 
 
-                echo <<<HTML
-                <img src="/SORIS-help-desk/images/avatar.png" alt="NO image" style="max-width:55px;margin-top:-25px;">
-                </div>
-                HTML;
+                // echo <<<HTML
+                // <img src="/SORIS-help-desk/images/avatar.png" alt="NO image" style="max-width:55px;margin-top:-50%;margin-left:90vw;">
+                // </div>
+                // HTML;
             } else {
 
                 $_SESSION["userid"] = "susith16@gmail.com";
