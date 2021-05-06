@@ -7,166 +7,197 @@ Dark Blue - #1D4354
 
 */
 
-html{
-
- 
-  
+html {
 }
 
 /* Buttons */
 
-.btt{
-   
-
-    border-radius: 30px;
-    font-family: 'Sitara', sans-serif;
-    padding: 5px 24px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    font-size: small;
-    cursor: pointer;
-    margin-right: 15px;;
-  
+.btt {
+  border-radius: 30px;
+  font-family: "Sitara", sans-serif;
+  padding: 5px 24px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: small;
+  cursor: pointer;
+  margin-right: 15px;
 }
 
-.btt:hover {opacity: 0.6}
+.btt:hover {
+  opacity: 0.6;
+}
 
 .type1 {
-    border: none;
-    background-color: #08A73A; /* Green */
-    color: #FCFCFC;
-
+  border: none;
+  background-color: #08a73a; /* Green */
+  color: #fcfcfc;
 }
 
-
 .type2 {
-    border: none;
-    background-color: #F8F9F8; /* white */
-    color: #08A73A;
-
+  border: none;
+  background-color: #f8f9f8; /* white */
+  color: #08a73a;
 }
 
 .type3 {
-    border: solid;
-    border-color: #08A73A;
-    background-color: #F8F9F8; /* white */
-    color: #08A73A;
-
+  border: solid;
+  border-color: #08a73a;
+  background-color: #f8f9f8; /* white */
+  color: #08a73a;
 }
-
-
 
 /* Text color */
 
 .txt-green {
-    color: #08A73A;
-    
+  color: #08a73a;
 }
 
 .txt-white {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .txt-greenlight {
-    color: #E8FBE2;
+  color: #e8fbe2;
 }
-
 
 /* Font size */
 
 .small {
-    font-size: small;
+  font-size: small;
 }
 .large {
-    font-size: large;
+  font-size: large;
 }
 /* Background */
 
 .bg-1 {
-    background-color: #1D4354;
+  background-color: #1d4354;
 }
-
-
 
 /* Header */
 
 .header {
-    height: 14vh;
-    background-color: #1D4354;
-    
+  height: 12vh;
+  background-color: #1d4354;
 }
 
 /* Footer */
 
 .footer {
-
-
-    bottom: 0;
-    margin-bottom: 0;
-    width: 100%;
-    background-color: #1D4354;
-    overflow: hidden;
-
+  bottom: 0;
+  margin-bottom: 0;
+  width: 100%;
+  background-color: #1d4354;
+  overflow: hidden;
 }
 
 /* Logo */
 
 .logo {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 /* Body */
 
-body{
-
-    margin: 0;
-    margin-bottom: 0;
+body {
+  margin: 0;
+  margin-bottom: 0;
 }
-
-
 
 /* Coloumns */
 
 .grid-container {
-    display: grid;
-  }
-
-
-  /* Footer List */ 
-
-  .footer-list {
-    list-style-type: none; 
-    font-size:small; 
-    color:antiquewhite;
-
-  }
-
-  .footer-list li {
-      margin-top: 1em;
-
-  }
-
-  .footer-list a {
-    
-    text-decoration: none;
-    color:antiquewhite;
-
+  display: grid;
 }
 
+/* Footer List */
 
+.footer-list {
+  list-style-type: none;
+  font-size: small;
+  color: antiquewhite;
+}
+
+.footer-list li {
+  margin-top: 1em;
+}
+
+.footer-list a {
+  text-decoration: none;
+  color: antiquewhite;
+}
 
 /* Card view */
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 40%;
-    border-radius: 5px;
-  }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 50px;
+  margin: 50px;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Body container */
 
 .body-container {
-    min-height: 60vh;
+  min-height: 60vh;
+  background-color: #ecf3ee;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 50px;
+  padding-bottom: 75px;
 }
+
+/* Input text */
+
+.txt-input {
+  margin-top: 20px;
+  border-radius: 8px;
+  background-color: #f8f9f8;
+  border-width: 3px;
+  font-size: medium;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-width: 320px;
+  border: 3px solid #1d4354;
+  outline: none;
+}
+
+.txt-input:focus {
+  border: 3px solid;
+  border-color: #08a73a;
+}
+
+.txt-input option {
+  font-size: larger;
+}
+
+/* Navigation */
+
+.navigation {
   
+  list-style-type: none;
+  padding: 0;
+  padding-top: -150px;
+  margin: 0;
+  overflow: hidden;
+  background-color: #333;
+  min-width: 100vw;
+}
+.navigation li {
+  float: left;
+}
+
+.navigation li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}

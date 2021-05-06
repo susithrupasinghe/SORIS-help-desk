@@ -1,45 +1,68 @@
+<?php
+session_start();
 
-
-<?php 
-     session_start();
+?>
+<?php
+if (isset($_GET['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: /SORIS-help-desk/index.php");
+}
 ?>
 
 <div>
     <div class="header">
 
-        <div>
-            <h1 class="logo txt-green" style="padding-left:17vw; padding-top:15px; text-align:left;float:left;">SO</h1>
-            <h1 class="logo txt-white" style="padding-top:15px; text-align:right; float:left;">RIS</h1>
+        <div >
+            <h1 class="logo txt-green" style="padding-left:17%; padding-top:8px; text-align:left;float:left;">SO</h1>
+            <h1 class="logo txt-white" style="padding-top:8px; text-align:right; float:left;">RIS</h1>
             <div style="clear: both;"></div>
-            <h1 class="logo txt-greenlight" style="padding-left:21vw; margin-top:-4vh;">Help Desk</h1>
+            <h1 class="logo txt-greenlight" style="padding-left:21%; margin-top:-2%;">Help Desk</h1>
 
             <?php
 
 
-            if (isset($_SESSION["userid"])) {
+            if (isset($_SESSION["userid"]) && $_SESSION["role"]) {
 
-                //$username = $_SESSION["userid"];
-
-
-
-
+                echo <<<HTML
+                <div style="float:right; margin-top:-8vh; margin-right:5vw;"> 
+                HTML;
 
 
+                echo "<ul style='float:left;list-style-type: None;margin-top:-40px;text-align: right;'>";
+                echo "<li><h4 style='margin-right:30px;color:#f8f9f8;'>";
+                echo  $_SESSION["userid"] . " : " . $_SESSION["role"];
+                echo "</h4></li>";
+                echo "<li><a style='text-decoration: none;' id='logout' href='?logout'><h4 style='color:#f8f9f8;margin-right:30px;'>Sign Out</h4></a><li>";
+                echo "</ul>";
 
+
+                echo <<<HTML
+                <img src="/SORIS-help-desk/images/avatar.png" alt="NO image" style="max-width:55px;margin-top:-25px;">
+                </div>
+                HTML;
             } else {
 
-              
+                $_SESSION["userid"] = "susith16@gmail.com";
+                $_SESSION["role"] = "Student";
+
+
                 echo <<<HTML
 
-                <div style="float:right; margin-top:-8vh; margin-right:5vw;">
+    
+                <div style="margin-top:-8vh; ; padding-left:65%; ">
                 <button class="btt type2" style="margin-right: 25px;" >Student SignUp</button>
                 <button class="btt type1" style="margin-right: 10px;">Student Login</button>
                 <button class="btt type1">Staff Login</button>
-                
                 </div>
+
                 HTML;
             }
+
+
+
             ?>
+
 
 
 
@@ -47,7 +70,6 @@
 
 
     </div>
-
 
 
 
