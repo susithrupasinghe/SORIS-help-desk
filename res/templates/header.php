@@ -46,8 +46,8 @@ if (isset($_GET['logout'])) {
                 // HTML;
             } else {
 
-               $_SESSION["userid"] = "susith16@gmail.com";
-               $_SESSION["role"] = "Student";
+            //    $_SESSION["userid"] = "susith16@gmail.com";
+            //    $_SESSION["role"] = "Student";
 
 
                 echo <<<HTML
