@@ -7,60 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SORIS Help Desk</title>
     <link rel="stylesheet" href="css/style.css">
-    
+
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
 </head>
 
 <body>
-    <?php $page="dashboard"; ?>
-    <?php include("res/templates/header.php");  ?>
-    <?php include("res/templates/navigation.php");  ?>
+    <?php
+
+    $page = "dashboard";
+    require 'config/config.php';
+    include("res/templates/header.php");
+    include("res/templates/navigation.php");
+
+    ?>
 
     <div class="body-container">
 
-    <div class="card">
+        <div class="card">
 
-    Email : <input type="text" class="txt-input focus"><br>
-    Password : <input type="text" class="txt-input focus"><br>
+            Email : <input type="text" class="txt-input focus"><br>
+            Password : <input type="text" class="txt-input focus"><br>
 
-    Select Here : <select name="" id="" class="txt-input focus">
-        <option value="">FOC</option>
-        <option value="">FOE</option>
-    </select> <br>
+            Select Here : <select name="" id="" class="txt-input focus">
+                <option value="">FOC</option>
+                <option value="">FOE</option>
+            </select> <br>
 
-    Remember me <input type="checkbox" class="checkbox-input" name="" id="">
+            Remember me <input type="checkbox" class="checkbox-input" name="" id="">
 
-    <button class="btt type1">Login</button>
-    <button class="btt type3">Reset</button>
-    </div>
+            <button class="btt type1">Login</button>
+            <button class="btt type3">Reset</button>
+        </div>
 
- 
+
 
         <?php
 
-            require 'res/mail/mailer.php';
-            require 'config/config.php';
-
-            $con = openCon();
-            $sql = "SELECT * FROM users";
-
-            $result = $con->query($sql);
-
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                  echo $row['id'] . " ----- ". $row['email'];
-                }
-              } else {
-                echo "0 results";
-              }
-
-            closeCon($con);
+        require 'res/mail/mailer.php';
 
 
-            //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
-            //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+
+
+
+        //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
+        //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
         ?>
 
 
