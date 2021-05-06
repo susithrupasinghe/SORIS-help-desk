@@ -25,7 +25,7 @@ if (isset($_GET['logout'])) {
             if (isset($_SESSION["userid"]) && $_SESSION["role"]) {
 
                 echo <<<HTML
-                <div style="margin-top:-70px; margin-right:5vw;"> 
+                <div style="margin-top:-80px; margin-right:5vw;"> 
                 HTML;
 
 
@@ -34,7 +34,7 @@ if (isset($_GET['logout'])) {
                 echo  $_SESSION["userid"] . " : " . $_SESSION["role"];
                 echo "</h4><img src='/SORIS-help-desk/images/avatar.png' alt='NO image' style='display: block;max-width:55px;margin-top:-4%;margin-left:90vw;'></li>";
                 echo "<h4></h4>";
-                echo "<li><a style='display: block;text-decoration: none;' id='logout' href='?logout'><h4 style='color:#f8f9f8;margin-right:30px;'>Sign Out</h4></a><li>";
+                echo "<li><a style='display: block;text-decoration: none;' id='logout' href='?logout'><h4 style='color:#f8f9f8;margin-right:30px;margin-top:-30px;'>Sign Out</h4></a><li>";
                 echo "</ul>";
 
 
