@@ -17,7 +17,7 @@ if (isset($_GET['logout'])) {
             <h1 class="logo txt-green" style="padding-left:17%; padding-top:8px; text-align:left;float:left;">SO</h1>
             <h1 class="logo txt-white" style="padding-top:8px; text-align:right; float:left;">RIS</h1>
             <div style="clear: both;"></div>
-            <h1 class="logo txt-greenlight" style="padding-left:21%; margin-top:-2%;">Help Desk</h1>
+            <h1 class="logo txt-greenlight" style="padding-left:21%; margin-top:-25px;">Help Desk</h1>
 
             <?php
 
@@ -25,7 +25,7 @@ if (isset($_GET['logout'])) {
             if (isset($_SESSION["userid"]) && $_SESSION["role"]) {
 
                 echo <<<HTML
-                <div style="margin-top:-60px; margin-right:5vw;"> 
+                <div style="margin-top:-50px; margin-right:5vw;"> 
                 HTML;
 
 
