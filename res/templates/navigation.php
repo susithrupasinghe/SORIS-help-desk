@@ -6,10 +6,6 @@
        
        if (isset($_SESSION["userid"]) && isset($_SESSION["role"])){
 
-        echo $_SESSION["userid"];
-        echo $_SESSION["role"];
-
-
         if($page=="dashboard"){
 
             echo <<<HTML
@@ -26,7 +22,7 @@
     }
 
     ///////////////////////////////////////////////////
-             ?>
+        ?>
 
 
         <li <?php echo ($page=="home") ? "style='background-color:#ECF3EE;'" : ''; ?> ><a href="#news">Home</a></li>
