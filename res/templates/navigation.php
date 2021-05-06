@@ -1,9 +1,21 @@
 
     <ul class="navigation">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
+       <?php 
+       
+       if ($page=="dashboard"){
+
+        echo <<<HTML
+        <li><a href="#home">Dashboard</a></li>
+        HTML; 
+
+       }
+      
+         ?>
+        <li><a href="#news">Home</a></li>
+        <li><a href="#contact">Information</a></li>
+        <li><a href="#about">NEWS</a></li>
+        <li><a href="#about">FAQ</a></li>
+        <li><a href="#about">Contact Us</a></li>
     </ul>
 
 

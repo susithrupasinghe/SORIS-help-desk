@@ -12,14 +12,17 @@
 </head>
 
 <body>
+    <?php $page = "login"; ?>
     <?php include("../templates/header.php");  ?>
-    
+    <?php include("../templates/navigation.php");  ?>
+
 
     <div class="body-container">
 
     </div>
 
     <?php include("../templates/footer.php");  ?>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

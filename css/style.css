@@ -79,7 +79,7 @@ html {
 /* Header */
 
 .header {
-  height: 12vh;
+  height: 13vh;
   background-color: #1d4354;
 }
 
@@ -181,23 +181,36 @@ body {
 /* Navigation */
 
 .navigation {
+
+  
   
   list-style-type: none;
   padding: 0;
   padding-top: -150px;
   margin: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #C8DACC;
   min-width: 100vw;
+  padding-left: 20vw;
+ 
 }
 .navigation li {
+  padding-left: 20px;
   float: left;
 }
 
 .navigation li a {
   display: block;
-  color: white;
+  color: #1D4354;
+  font-family: "Sitara", sans-serif;
+  font-weight:600;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.navigation li a :hover{
+
+
+
 }

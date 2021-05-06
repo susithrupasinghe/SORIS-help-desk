@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <?php $page="dashboard"; ?>
     <?php include("res/templates/header.php");  ?>
     <?php include("res/templates/navigation.php");  ?>
 
