@@ -29,7 +29,7 @@ if (isset($_GET['logout'])) {
                 HTML;
 
 
-                echo "<ul style='list-style-type: None;margin-top:-40px;text-align: right;'>";
+                echo "<ul style='list-style-type: None;margin-top:-4%;text-align: right;'>";
                 echo "<li><h4 style='margin-right:30px;color:#f8f9f8;display: block;'>";
                 echo  $_SESSION["userid"] . " : " . $_SESSION["role"];
                 echo "</h4><img src='/SORIS-help-desk/images/avatar.png' alt='NO image' style='display: block;max-width:55px;margin-top:-4%;margin-left:90vw;'></li>";
