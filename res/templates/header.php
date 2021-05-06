@@ -1,14 +1,16 @@
 <?php
+
 session_start();
 
-?>
-<?php
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
     header("Location: /SORIS-help-desk/index.php");
 }
+
+
 ?>
+
 
 <div>
     <div class="header">
@@ -22,7 +24,7 @@ if (isset($_GET['logout'])) {
             <?php
 
 
-            if (isset($_SESSION["userid"]) && $_SESSION["role"]) {
+            if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                 echo <<<HTML
                 <div style="margin-top:-80px; margin-right:5vw;"> 
@@ -44,14 +46,14 @@ if (isset($_GET['logout'])) {
                 // HTML;
             } else {
 
-                $_SESSION["userid"] = "susith16@gmail.com";
-                $_SESSION["role"] = "Student";
+               #$_SESSION["userid"] = "susith16@gmail.com";
+               #$_SESSION["role"] = "Student";
 
 
                 echo <<<HTML
 
     
-                <div style="margin-top:-80px; ; padding-left:65%; ">
+                <div style="margin-top:-70px; ; padding-left:65%; ">
                 <button class="btt type2" style="margin-right: 25px;" >Student SignUp</button>
                 <button class="btt type1" style="margin-right: 10px;">Student Login</button>
                 <button class="btt type1">Staff Login</button>

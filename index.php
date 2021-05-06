@@ -40,6 +40,23 @@
         <?php
 
             require 'res/mail/mailer.php';
+            require 'config/config.php';
+
+            $con = openCon();
+            $sql = "SELECT * FROM users";
+
+            $result = $con->query($sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                  echo $row['id'] . " ----- ". $row['email'];
+                }
+              } else {
+                echo "0 results";
+              }
+
+            closeCon($con);
 
 
             //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
