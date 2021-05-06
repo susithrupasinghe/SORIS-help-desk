@@ -51,7 +51,7 @@ if (isset($_GET['logout'])) {
                 echo <<<HTML
 
     
-                <div style="margin-top:-60px; ; padding-left:65%; ">
+                <div style="margin-top:-70px; ; padding-left:65%; ">
                 <button class="btt type2" style="margin-right: 25px;" >Student SignUp</button>
                 <button class="btt type1" style="margin-right: 10px;">Student Login</button>
                 <button class="btt type1">Staff Login</button>
