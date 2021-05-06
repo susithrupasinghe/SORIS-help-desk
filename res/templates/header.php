@@ -25,7 +25,7 @@ if (isset($_GET['logout'])) {
             if (isset($_SESSION["userid"]) && $_SESSION["role"]) {
 
                 echo <<<HTML
-                <div style="margin-top:-10vh; margin-right:5vw;"> 
+                <div style="margin-top:-60px; margin-right:5vw;"> 
                 HTML;
 
 
