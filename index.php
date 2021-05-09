@@ -29,32 +29,13 @@
 
     <div class="body-container">
 
-        <div class="card">
 
-            Email : <input type="text" class="txt-input focus"><br>
-            Password : <input type="text" class="txt-input focus"><br>
-
-            Select Here : <select name="" id="" class="txt-input focus">
-                <option value="">FOC</option>
-                <option value="">FOE</option>
-            </select> <br>
-
-            Remember me <input type="checkbox" class="checkbox-input" name="" id="">
-
-            <button class="btt type1">Login</button>
-            <button class="btt type3">Reset</button>
-        </div>
 
 
 
         <?php
 
         require 'res/mail/mailer.php';
-
-
-
-
-
         //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
         //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
         ?>

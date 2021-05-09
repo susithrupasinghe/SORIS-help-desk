@@ -8,6 +8,7 @@ Dark Blue - #1D4354
 */
 
 html {
+  
 }
 
 /* Buttons */
@@ -182,8 +183,6 @@ body {
 
 .navigation {
 
-  
-  
   list-style-type: none;
   padding: 0;
   padding-top: -150px;
