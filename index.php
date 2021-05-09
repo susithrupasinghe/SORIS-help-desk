@@ -30,8 +30,8 @@
     <div class="body-container">
 
     <div class="card" style="margin-left:25vw;margin-right:25vw;">
-      Email :  <input style="margin-right: -400px;" class='txt-input' type="text"><br>
-      Password : <input style="margin-right: -400px;" class='txt-input' type="text">
+      Email :  <input style="margin-right: -400px;" class="txt-input" type="text"><br>
+      Password :<textarea class="txt-input" name="content" rows="4" cols="50"></textarea>
 
     </div>
 
