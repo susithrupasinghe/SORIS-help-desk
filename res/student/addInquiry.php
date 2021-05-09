@@ -21,49 +21,62 @@
     include("../../res/templates/header.php");
     include("../../res/templates/navigation.php");
 
+
     ?>
 
     <div class="body-container">
 
-    <form  method="POST">
+        <form method="POST">
 
-        <div class="card" style="margin-left:25vw;margin-right:25vw;">
-            <h2 style="font-family:Sitara;margin-left:170px;">Add Inquiry</h2>
-            <b>Title </b><input style="margin-left:40px;" class="txt-input" type="text"></br>
-            </br>
-            <b>Content </b><textarea class="txt-input" name="content" rows="10" cols="40" style="margin-left:75px;"></textarea>
-            </br>
-            <b>Section </b><select class="txt-input" name="section"></select>
-            </br></br></br>
-            </br></br>
+            <div class="card" style="margin-left:25vw;margin-right:25vw;font-family:Sitara, sans-serif;">
+                <h2 style="font-family:Sitara;margin-left:170px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
+                <b>Title </b><input style="margin-left:40px;" class="txt-input" type="text"></br>
+                </br>
+                <b>Content </b><textarea class="txt-input" name="content" rows="10" cols="40" style="margin-left:75px;"></textarea>
+                </br>
+                <b>Section </b><select class="txt-input" name="section" style="margin-left:40px width=40px">
+                    <?php
+                    {
+                        $con = openCon();
 
-            <input type="button" name="attachment" class="btt type2" value="Attachment" style="margin-left:110px;">
-            <input type="button" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:10px;">
+                        $sqlQuery="";
+                        $result=$con->query($sqlQuery);
 
-        </div>
+                        if($result->num_row >0)
+                        {
+                            
+                        }
+                    }
+                    ?>
+                </select>
+                </br></br></br>
+                </br></br>
 
-       <?php
-       $target_dir="uploats/";
-       $target_file=$target_dir.basename($_FILES["fileFieldName"]["name"]);
+                <input type="file" name="attachment" class="btt type2" value="Attachment" style="margin-left:110px;">
+                <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:10px;">
 
-       if(isset($_FILES[""]))
-       {
-           if(move_uploaded_file($_FILES[""]["tmp_name"],$target_file))
-           {
-               echo"";
-           }
-       }
-       ?>
+            </div>
 
+            <?php
+            if (isset($_POST["btnsubmit"])) {
+                echo "";
+            }
+            ?>
 
-        <!--   <?php
-                // if (isset($_POST["btnsubmit"])) {
-                // echo "";
-                // }
-                ?>-->
+            <?php
 
-    </form>
-                </div>
+            $target_dir = "../uploads/";
+            $target_file = $target_dir . basename($_FILES["attachment"]["name"]);
+
+            if (isset($_FILES["attachment"])) {
+                if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
+                    echo "";
+                }
+            }
+            ?>
+
+        </form>
+    </div>
 
     <?php include("../../res/templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
