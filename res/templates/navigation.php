@@ -78,6 +78,6 @@
     <li <?php echo ($page == "home") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#news">Home</a></li>
     <li <?php echo ($page == "information") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#contact">Information</a></li>
     <li <?php echo ($page == "news") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#about">NEWS</a></li>
-    <li <?php echo ($page == "about") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#about">FAQ</a></li>
+    <li <?php echo ($page == "faq") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#about">FAQ</a></li>
     <li <?php echo ($page == "contactus") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#about">Contact Us</a></li>
 </ul>
