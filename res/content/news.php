@@ -60,12 +60,7 @@
 
         echo "</table>";
 
-
         ?>
-
-
-
-
 
     </div>
     <?php
