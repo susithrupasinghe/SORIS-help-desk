@@ -23,6 +23,7 @@ include("../templates/navigation.php");
 
 ?>
     <div class="body-container">
+        <h1></h1>
         <div class="card"></div>
     </div>
     <?php include("../templates/footer.php");  ?>
