@@ -68,11 +68,11 @@
         {
             while($row=$result->fetch_assoc())
             {
-                require '../../res/mail/mailer.php';
+                echo "Invalid";
+            }
+        require '../../res/mail/mailer.php';
                 send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
                 send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
-            }
-        echo "Invalid";
         }
     }
 

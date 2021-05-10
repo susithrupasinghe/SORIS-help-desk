@@ -28,7 +28,7 @@
 
         <form method="POST">
 
-            <div class="card" style="margin-left:25vw;margin-right:25vw;font-family:Sitara, sans-serif;">
+            <div class="card" style="margin-left:25vw;margin-right:25vw;width:40%;">
                 <h2 style="font-family:Sitara;margin-left:170px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
 
                 <label for="title" style="font-family:Sitara, sans-serif;font-weight:bold;">Title </label>
@@ -40,27 +40,31 @@
                 </br>
 
                 <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;">Section</Section> </label>
-                
+                <select class="txt-input" name="section" style="margin-left:80px width=40px">
+                    <option value="none"></option>
+
                     <?php {
-                       echo <<< HTML
-                       <select class="txt-input" name="section" style="margin-left:80px width=40px">
-                            $con = openCon();
 
-                            $sqlQuery = "SELECT firstName FROM user WHERE role=staff";
-                            $result = $con->query($sqlQuery);
+                        $conn = openCon();
+                        $result = $conn->query("SELECT firstName from users WHERE role='staff'");
 
-                            if ($result->num_row > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    <option value ="1">$result</option>
-                                    <
-                                }
-                            
+                        $color1="#ffffff";
+                        $color2="#EFEEEC";
+                        $color=$color1;
+
+                        while ($rows = $result->fetch_assoc()) {
+
+                            $color == $color1 ? $color1 = $color2 : $color=$color1;
+
+                            $section = $rows['firstName'];
+                            echo "<option value='$section' style='background:$color;'>$section</option>";
+
                         }
                     }
                     ?>
                 </select>
                 </br></br></br>
-                
+
 
                 <input type="file" name="addAttach" id="fileselect" value="Attachment" style="margin-left:50px;">
                 <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:5px;margin-bottom:20px"></br>
@@ -70,29 +74,29 @@
             <?php
             if (isset($_POST["btnsubmit"])) {
 
-               $title=$_POST["TitleName"];
-               $content=$_POST["addContent"];
-               $section=$_POST["section"];
-               $atachment=$_POST["addAttach"];
+                $conn = openCon();
 
-               $sql="INSERT INTO inquiry(title)values('$title')";
-               $sql="INSERT INTO conversation(attachment)value('$atachment')";
+                $title = $_POST["TitleName"];
+                $content = $_POST["addContent"];
+                $section = $_POST["section"];
+                $atachment = $_POST["addAttach"];
 
-               if(mysqli_query($con,$sql))
-               {
+                $sql = "INSERT INTO inquiry(title)values('$title')";
+                $sql = "INSERT INTO conversation(attachment)value('$atachment')";
+
+                if (mysqli_query($conn, $sql)) {
                     echo "<script>alert('Your inquiry was added');widow.location='addInquiry.php'</script>";
-               }
-               
+                }
             }
             ?>
 
             <?php
 
             $target_dir = "../uploads/";
-            $target_file = $target_dir . basename($_FILES["attachment"]["name"]);
+            $target_file = $target_dir . basename($_FILES["addAttach"]["name"]);
 
-            if (isset($_FILES["attachment"])) {
-                if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
+            if (isset($_FILES["addAttach"])) {
+                if (move_uploaded_file($_FILES["addAttach"]["tmp_name"], $target_file)) {
                     echo "";
                 }
             }
