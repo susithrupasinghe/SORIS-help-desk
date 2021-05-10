@@ -65,19 +65,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="body-container">
   <form  method="POST">
 
-<div class="card" style ="margin-left:25vw; margin-right:25vw; padding-left:30px" >
+<div class="card"style="margin-left:25vw; margin-right:25vw; padding-left:30px" >
 
-<h1 style = "text-align:center;"> Student signIn </h1>
+<h1 style ="text-align:center;"> Student signIn </h1>
 <br>
 
-Email <input class="txt-input" type ="text"  name="email" oninput="validateEmail(this)" style="margin-left:40px;">
+Email <input class="txt-input"type="text"name="email"oninput="validateEmail(this)"style="margin-left:40px;">
 <br>
-Password <input   class="txt-input" type="password" name="password" style="margin-left: 18px;">
+Password <input class="txt-input"type="password"name="password"style="margin-left: 18px;">
 <br><br><br>
 
 
-<button style="margin-right: 50px; margin-left: 100px;"  class="btt type3" >Forget password</button>
-<input  type="submit" value="Login" class ="btt type1" name="Login">
+<button style="margin-right: 50px;margin-left: 100px;"class="btt type3">Forget password</button>
+<input  type="submit"value="Login"class="btt type1"name="Login">
 
 <br><br><br>
 
