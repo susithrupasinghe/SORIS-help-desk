@@ -40,9 +40,11 @@
         }
 
         $i = 1;
+        $c=7;
         while ($row = $result->fetch_assoc()) {
-            if ($i % 7 == 0) {
+            if ($i-$c==0) {
                 echo "</tr><tr>";
+                $c=$c+6;
             }
             echo "<td>";
             echo <<< HTML
