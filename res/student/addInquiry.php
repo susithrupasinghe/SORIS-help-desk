@@ -32,24 +32,27 @@
                 <h2 style="font-family:Sitara;margin-left:170px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
 
                 <label for="title" style="font-family:Sitara, sans-serif;font-weight:bold;">Title </label>
-                <input style="margin-left:40px;" class="txt-input" type="text"></br>
+                <input style="margin-left:40px;" class="txt-input" type="text" name="TitleName"></br>
                 </br>
 
                 <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;">Content</label>
-                <textarea class="txt-input" name="content" rows="10" cols="40" style="margin-left:75px;"></textarea>
+                <textarea class="txt-input" name="addContent" rows="10" cols="40" style="margin-left:75px;"></textarea>
                 </br>
 
                 <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;">Section</Section> </label>
-                <select class="txt-input" name="section" style="margin-left:40px width=40px">
+                
                     <?php {
-                      
+                       echo <<< HTML
+                       <select class="txt-input" name="section" style="margin-left:80px width=40px">
                             $con = openCon();
 
-                            $sqlQuery = "SELECT role FROM user WHERE role=staff";
+                            $sqlQuery = "SELECT firstName FROM user WHERE role=staff";
                             $result = $con->query($sqlQuery);
 
                             if ($result->num_row > 0) {
                                 while ($row = $result->fetch_assoc()) {
+                                    <option value ="1">$result</option>
+                                    <
                                 }
                             
                         }
@@ -57,18 +60,19 @@
                     ?>
                 </select>
                 </br></br></br>
-                </br></br>
+                
 
-                <input type="file" name="attachment" class="btt type2" value="Attachment" style="margin-left:110px;">
-                <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:10px;">
+                <input type="file" name="addAttach" id="fileselect" value="Attachment" style="margin-left:50px;">
+                <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:5px;margin-bottom:20px"></br>
 
             </div>
 
             <?php
             if (isset($_POST["btnsubmit"])) {
+
                $title=$_POST["TitleName"];
                $content=$_POST["addContent"];
-               $section=$_POST["selSection"];
+               $section=$_POST["section"];
                $atachment=$_POST["addAttach"];
 
                $sql="INSERT INTO inquiry(title)values('$title')";
