@@ -4,10 +4,30 @@ require '../../config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+
+    if(isset($_POST["closeinq"])){
+        $con = openCon();
+        $inquiryId = $_GET["id"];
+        $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
+
+        $result = $con->query($sql);
+
+        if($result===TRUE){
+            header("Location: dashboard.php");
+        }
+        else{
+            header("Refresh:0");
+        }
+
+
+
+
+    }
+
     if (isset($_POST['newmsg'])) {
 
         $text = $_POST['text'];
-        // $attachment = $_POST['attachment'];
+        $attachment = "";
         $inquiryId = $_GET["id"];
         $uid = "";
 
@@ -24,8 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $datetime = date("Y-m-d h:i:s");
 
             $filename = $_FILES['attachment']['name'];
-
-            print_r($_FILES['attachment']);
 
             if($filename != ""){
 
@@ -50,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if($result === TRUE){
 
-                // header("Refresh:0");
+                header("Refresh:0");
             }
             else{
 
@@ -93,7 +111,6 @@ function message($name, $date, $text, $attachment, $role)
 
         HTML;
 
-        echo $attachment;
 
         if ($attachment != "") {
 
@@ -134,6 +151,22 @@ function message($name, $date, $text, $attachment, $role)
         </table>
         <div id="text" style="padding-left:100px;">
         <p style="font-weight:900;color:#1D4354;"> $text</p>
+
+        HTML;
+
+        if ($attachment != "") {
+
+            $attachment = "../uploads/".$attachment;
+
+            echo <<< HTML
+
+            <a href="$attachment" target="_blank" style="text-decoration: none"> 
+            <img width=25 src="/SORIS-help-desk/images/attachment.svg"> <h5 style="display:inline;">Download attachment</h5>
+            </a>
+            HTML;
+        }
+
+        echo <<< HTML
 
         <hr style="border-top: 3px solid #1D4354; color:#1D4354" >
 
@@ -248,19 +281,23 @@ function message($name, $date, $text, $attachment, $role)
 
                             while ($row = $result->fetch_assoc()) {
 
-                                message($row["firstName"] . " " . $row["lastName"], $row["createdDate"], $row["text"], '../uploads/' .$row["attachment"], $row["role"]);
+                                message($row["firstName"] . " " . $row["lastName"], $row["createdDate"], $row["text"], $row["attachment"], $row["role"]);
                             }
                         }
 
 
                         echo <<<HTML
                     <form style="margin-left:120px;margin-top:100px;" method="post" enctype="multipart/form-data">
-                    <textarea name="text" id="" cols="100" rows="10"></textarea><br><br><br>
+                    <textarea name="text" placeholder="Type here your message" id="" cols="100" rows="10"></textarea><br><br><br>
          
                     
                     <input type="file" id="fileselect" name="attachment"/>
 
                     <input class="btt type1" type="submit" name="newmsg"style="margin-left:100px;font-size:17px;"> 
+                    </form>
+
+                    <form method="POST">
+                        <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;background-color: #1D4354;color: #FCFCFC;padding:15px;" type="submit" >
                     </form>
                   HTML;
                     } else {
@@ -270,6 +307,10 @@ function message($name, $date, $text, $attachment, $role)
                 }
 
                 closeCon($con);
+                echo <<<HTML
+                <img style="display: block;margin-left: auto;margin-right: auto;width: 40%;" src="../../images/inquiry_not_found.svg">
+                HTML;
+                header("Refresh:5; url=dashboard.php");
             }
         }
 
