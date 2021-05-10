@@ -10,22 +10,22 @@
             if ($page == "dashboard") {
 
                 echo <<<HTML
-                <li style="background-color:#ECF3EE;"><a href="#admin_dahsboard" >Dashboard</a></li>
+                <li style="background-color:#ECF3EE;"><a href="/SORIS-help-desk/res/admin/dashboard.php" >Dashboard</a></li>
                 HTML;
             } else {
                 echo <<<HTML
-                <li><a href="#home" >Dashboard</a></li>
+                <li><a href="/SORIS-help-desk/res/admin/dashboard.php" >Dashboard</a></li>
                 HTML;
             }
 
             if ($page == "contentmanagement") {
 
                 echo <<<HTML
-                <li style="background-color:#ECF3EE;"><a href="#admin_contentManagement" >Content Management</a></li>
+                <li style="background-color:#ECF3EE;"><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>
                 HTML;
             } else {
                 echo <<<HTML
-                <li><a href="#admin_contentManagement" >Content Management</a></li>
+                <li><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>
                 HTML;
             }
         }
@@ -34,22 +34,22 @@
             if ($page == "dashboard") {
 
                 echo <<<HTML
-                <li style="background-color:#ECF3EE;"><a href="#home" >Dashboard</a></li>
+                <li style="background-color:#ECF3EE;"><a href="/SORIS-help-desk/res/staff/dashboard.php" >Dashboard</a></li>
                 HTML;
             } else {
                 echo <<<HTML
-                <li><a href="#home" >Dashboard</a></li>
+                <li><a href="/SORIS-help-desk/res/staff/dashboard.php" >Dashboard</a></li>
                 HTML;
             }
 
             if ($page == "contentmanagement") {
 
                 echo <<<HTML
-                <li style="background-color:#ECF3EE;"><a href="#home" >Content Management</a></li>
+                <li style="background-color:#ECF3EE;"><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>
                 HTML;
             } else {
                 echo <<<HTML
-                <li><a href="#home" >Content Management</a></li>
+                <li><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>
                 HTML;
             }
 
@@ -60,11 +60,11 @@
             if ($page == "dashboard") {
 
                 echo <<<HTML
-                <li style="background-color:#ECF3EE;"><a href="#home" >Dashboard</a></li>
+                <li style="background-color:#ECF3EE;"><a href="/SORIS-help-desk/res/student/dashboard.php" >Dashboard</a></li>
                 HTML;
             } else {
                 echo <<<HTML
-                <li><a href="#home" >Dashboard</a></li>
+                <li><a href="/SORIS-help-desk/res/student/dashboard.php" >Dashboard</a></li>
                 HTML;
             }
 
@@ -75,9 +75,9 @@
     ?>
 
 
-    <li <?php echo ($page == "home") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#news">Home</a></li>
-    <li <?php echo ($page == "information") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#contact">Information</a></li>
-    <li <?php echo ($page == "news") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#about">NEWS</a></li>
-    <li <?php echo ($page == "faq") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#about">FAQ</a></li>
-    <li <?php echo ($page == "contactus") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="#about">Contact Us</a></li>
+    <li <?php echo ($page == "home") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="/SORIS-help-desk/index.php">Home</a></li>
+    <li <?php echo ($page == "information") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="/SORIS-help-desk/res/content/information.php">Information</a></li>
+    <li <?php echo ($page == "news") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="/SORIS-help-desk/res/content/news.php">NEWS</a></li>
+    <li <?php echo ($page == "faq") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="/SORIS-help-desk/res/content/faq.php">FAQ</a></li>
+    <li <?php echo ($page == "contactus") ? "style='background-color:#ECF3EE;'" : ''; ?>><a href="/SORIS-help-desk/res/content/contactUs.php">Contact Us</a></li>
 </ul>
