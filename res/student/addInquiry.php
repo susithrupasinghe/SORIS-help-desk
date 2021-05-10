@@ -30,20 +30,27 @@
 
             <div class="card" style="margin-left:25vw;margin-right:25vw;font-family:Sitara, sans-serif;">
                 <h2 style="font-family:Sitara;margin-left:170px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
-                <b>Title </b><input style="margin-left:40px;" class="txt-input" type="text"></br>
-                </br>
-                <b>Content </b><textarea class="txt-input" name="content" rows="10" cols="40" style="margin-left:75px;"></textarea>
-                </br>
-                <b>Section </b><select class="txt-input" name="section" style="margin-left:40px width=40px">
-                    <?php
-                    {
-                        $con = openCon();
 
-                        $sqlQuery="";
-                        $result=$con->query($sqlQuery);
+                <label for="title" style="font-family:Sitara, sans-serif;font-weight:bold;">Title </label>
+                <input style="margin-left:40px;" class="txt-input" type="text"></br>
+                </br>
 
-                        if($result->num_row >0)
-                        {
+                <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;">Content</label>
+                <textarea class="txt-input" name="content" rows="10" cols="40" style="margin-left:75px;"></textarea>
+                </br>
+
+                <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;">Section</Section> </label>
+                <select class="txt-input" name="section" style="margin-left:40px width=40px">
+                    <?php {
+                      
+                            $con = openCon();
+
+                            $sqlQuery = "SELECT role FROM user WHERE role=staff";
+                            $result = $con->query($sqlQuery);
+
+                            if ($result->num_row > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                }
                             
                         }
                     }
@@ -59,7 +66,19 @@
 
             <?php
             if (isset($_POST["btnsubmit"])) {
-                echo "";
+               $title=$_POST["TitleName"];
+               $content=$_POST["addContent"];
+               $section=$_POST["selSection"];
+               $atachment=$_POST["addAttach"];
+
+               $sql="INSERT INTO inquiry(title)values('$title')";
+               $sql="INSERT INTO conversation(attachment)value('$atachment')";
+
+               if(mysqli_query($con,$sql))
+               {
+                    echo "<script>alert('Your inquiry was added');widow.location='addInquiry.php'</script>";
+               }
+               
             }
             ?>
 
