@@ -15,22 +15,7 @@
 <body>
 
     <?php
-        if($_SERVER["REQUEST_METHOD"]=="POST")
-        {
-            $con = openCon();
-
-                        $sqlQuery="";
-                        $result=$con->query($sqlQuery);
-
-                        if($result->num_row >0)
-                        {
-                            
-                        }
-        }
-    ?>
-
-    <?php
-    $page = "news";
+    $page = "";
     require '../../config/config.php';
     include("../../res/templates/header.php");
     include("../../res/templates/navigation.php");
@@ -43,7 +28,7 @@
                 <h2 style="font-family:Sitara;margin-left:140px;font-family:Sitara, sans-serif;">Forgot Password</h2>
 
                 <label for="email " style="font-family:Sitara, sans-serif;font-weight:bold;">Email </label>
-                <input style="margin-left:35px;" class="txt-input" type="text" id="email" oninput="validemail(this)" required></br>
+                <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
                 </br> </br>
 
                 <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" style="margin-left:145px;">
@@ -51,13 +36,6 @@
         </form>
 
     </div>
-
-    <?php
-
-        require '../../res/mail/mailer.php';
-        send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
-        send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
-        ?>
 
     <script>
         function validemail(mail) {
@@ -73,6 +51,36 @@
             }
         }
     </script>
+
+
+<?php
+    if(isset($_POST['btnsubmit']))
+    {
+        $inputMail=$_POST['email'];
+
+        $conn=openCon();
+
+        $query="SELECT email FROM users WHERE email='$inputMail'";
+        $result=$conn->query($query);
+       // $row=mysqli_fetch_assoc($result);
+
+        if($result->num_rows>0)
+        {
+            while($row=$result->fetch_assoc())
+            {
+                require '../../res/mail/mailer.php';
+                send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
+                send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+            }
+        echo "Invalid";
+        }
+    }
+
+       
+    ?>
+
+
+  
 
     <?php include("../../res/templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
