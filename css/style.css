@@ -215,3 +215,55 @@ body {
  color: #1D4354;
 
 }
+
+.test {
+
+  color: transparent;
+  direction: rtl;
+  
+}
+
+/* File input ovveride */
+
+#fileselect::file-selector-button {
+  border-radius: 30px;
+  font-family: "Sitara", sans-serif;
+  padding: 5px 24px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: small;
+  cursor: pointer;
+  margin-right: 15px;
+  border: solid;
+  border-color: #08a73a;
+  background-color: #f8f9f8; /* white */
+  color: #08a73a;
+
+}
+
+#fileselect::file-selector-button:hover {
+	background-color: #e9e9e9;
+}
+
+#fileselecte::-webkit-file-upload-button {
+  border-radius: 30px;
+  font-family: "Sitara", sans-serif;
+  padding: 5px 24px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: small;
+  cursor: pointer;
+  margin-right: 15px;
+  border: solid;
+  border-color: #08a73a;
+  background-color: #f8f9f8; /* white */
+  color: #08a73a;
+}
+
+#fileselect::-webkit-file-upload-button:hover {
+	background-color: #e9e9e9;
+}

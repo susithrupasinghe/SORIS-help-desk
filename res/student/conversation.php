@@ -1,9 +1,80 @@
-<?php 
+<?php
 
-function message($name,$date,$text,$attachment,$role){
+require '../../config/config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (isset($_POST['newmsg'])) {
+
+        $text = $_POST['text'];
+        // $attachment = $_POST['attachment'];
+        $inquiryId = $_GET["id"];
+        $uid = "";
+
+        $con = openCon();
+        $sql = "SELECT U.id from users U, inquiry I WHERE I.id = '$inquiryId' AND I.conversationStarter = U.id";
+
+        $result = $con->query($sql);
+
+
+        if ($result->num_rows > 0) {
+
+            $row = mysqli_fetch_row($result);
+            $uid = $row[0];
+            $datetime = date("Y-m-d h:i:s");
+
+            $filename = $_FILES['attachment']['name'];
+
+            print_r($_FILES['attachment']);
+
+            if($filename != ""){
+
+                
+                $destination = '../uploads/' . $filename;
+
+                $file = $_FILES['attachment']['tmp_name'];
+
+
+
+                if (move_uploaded_file($file, $destination)) {
+
+                    $attachment = $filename;
+                   
+                } else {
+                    echo "Failed to upload file.";
+                }
+            }
+
+            $sql = "INSERT INTO conversations (inquiryId,userId,createdDate,attachment,text) VALUES('$inquiryId','$uid','$datetime','$attachment','$text')";
+            $result = $con->query($sql);
+
+            if($result === TRUE){
+
+                // header("Refresh:0");
+            }
+            else{
+
+                echo "Error .";
+
+            }
+
+        }
+
+
+        
+
+    }
+
+
+}
+
+
+
+function message($name, $date, $text, $attachment, $role)
+{
     //$name,$date,$text,$attachment,$role
 
-    if($role == "student"){
+    if ($role == "student") {
 
         echo <<< HTML
         <div style="margin-left:100px;margin-right:100px;">
@@ -14,23 +85,26 @@ function message($name,$date,$text,$attachment,$role){
         <td> <h3 class ="txt-green" style="display:inline;margin-top:-40px;padding-left:15px;">$name</h3></td>
         </tr>
         <tr>
-        <td><h5 style="display:inline;margin-top:-40px;padding-left:15px;">$date</h5></td>
+        <td><h5 style="display:inline;margin-top:-40px;padding-left:15px;color:#1D4354;">$date</h5></td>
         </tr>
         </table>
         <div id="text" style="padding-left:100px;">
-        <p> $text</p>
+        <p style="font-weight:900;color:#1D4354;"> $text</p>
 
         HTML;
 
-        if($attachment != ""){
+        echo $attachment;
+
+        if ($attachment != "") {
+
+            $attachment = "../uploads/".$attachment;
 
             echo <<< HTML
 
-            <a href="../uploads/" target="_blank" style="text-decoration: none"> 
+            <a href="$attachment" target="_blank" style="text-decoration: none"> 
             <img width=25 src="/SORIS-help-desk/images/attachment.svg"> <h5 style="display:inline;">Download attachment</h5>
             </a>
             HTML;
-
         }
 
         echo <<<HTML
@@ -45,10 +119,7 @@ function message($name,$date,$text,$attachment,$role){
         </div>
 
     HTML;
-
-
-    }
-    else{
+    } else {
         echo <<< HTML
         <div style="margin-left:100px;margin-right:100px;">
         <!-- <div class="card" style="min-width:80%;"> -->
@@ -58,29 +129,20 @@ function message($name,$date,$text,$attachment,$role){
         <td> <h3  class ="txt-green" style="display:inline;margin-top:-40px;padding-left:15px;">$name</h3></td>
         </tr>
         <tr>
-        <td><h5 style="display:inline;margin-top:-40px;padding-left:15px;">$date</h5></td>
+        <td><h5 style="display:inline;margin-top:-40px;padding-left:15px;color:#1D4354;">$date</h5></td>
         </tr>
         </table>
         <div id="text" style="padding-left:100px;">
-        <p> $text</p>
+        <p style="font-weight:900;color:#1D4354;"> $text</p>
 
         <hr style="border-top: 3px solid #1D4354; color:#1D4354" >
 
         </div>
         
-
-
-        <!-- </div> -->
         </div>
 
     HTML;
-
-
     }
-
-
-        
-
 }
 
 ?>
@@ -108,6 +170,7 @@ function message($name,$date,$text,$attachment,$role){
             padding-bottom: 16px;
             padding-top: 10px;
         }
+
         #text::first-letter {
             padding-left: 100px;
         }
@@ -121,7 +184,7 @@ function message($name,$date,$text,$attachment,$role){
 
 
     $page = "conversation";
-    require '../../config/config.php';
+   // require '../../config/config.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
 
@@ -150,7 +213,7 @@ function message($name,$date,$text,$attachment,$role){
 
                     if ($row[0] == $_SESSION["userid"]) {
 
-                echo <<<HTML
+                        echo <<<HTML
 
                 <h2 class="txt-green" style="margin-left:20vw;">Inquiry Details</h2>
                 <div class="card" style="margin-left:20vw;">
@@ -177,23 +240,36 @@ function message($name,$date,$text,$attachment,$role){
 
                 HTML;
 
-                $sql = "SELECT U.firstName ,U.lastName, C.createdDate, C.text, U.role, C.attachment FROM conversations C, users U WHERE C.inquiryId='$inquiryId' AND C.userId = U.id";
+                        $sql = "SELECT U.firstName ,U.lastName, C.createdDate, C.text, U.role, C.attachment FROM conversations C, users U WHERE C.inquiryId='$inquiryId' AND C.userId = U.id";
 
-                $result = $con->query($sql);
+                        $result = $con->query($sql);
 
-                if ($result->num_rows > 0) {
-                   
-                    while($row = $result->fetch_assoc()) {
+                        if ($result->num_rows > 0) {
 
-                        message($row["firstName"]." ". $row["lastName"],$row["createdDate"],$row["text"],"f",$row["role"]);
-                    }
-                  }
-                                   
+                            while ($row = $result->fetch_assoc()) {
+
+                                message($row["firstName"] . " " . $row["lastName"], $row["createdDate"], $row["text"], '../uploads/' .$row["attachment"], $row["role"]);
+                            }
+                        }
+
+
+                        echo <<<HTML
+                    <form style="margin-left:120px;margin-top:100px;" method="post" enctype="multipart/form-data">
+                    <textarea name="text" id="" cols="100" rows="10"></textarea><br><br><br>
+         
+                    
+                    <input type="file" id="fileselect" name="attachment"/>
+
+                    <input class="btt type1" type="submit" name="newmsg"style="margin-left:100px;font-size:17px;"> 
+                    </form>
+                  HTML;
                     } else {
 
                         echo "You dont have permisssion to View this converstation";
                     }
                 }
+
+                closeCon($con);
             }
         }
 
@@ -204,6 +280,7 @@ function message($name,$date,$text,$attachment,$role){
 
     <?php include("../templates/footer.php");  ?>
     <script src="js/script.js"></script>
+
 </body>
 
 </html>
