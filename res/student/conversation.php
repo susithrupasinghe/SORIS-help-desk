@@ -202,6 +202,7 @@ function message($name, $date, $text, $attachment, $role)
             padding-right: 40px;
             padding-bottom: 16px;
             padding-top: 10px;
+            width: auto;
         }
 
         #text::first-letter {
@@ -236,7 +237,7 @@ function message($name, $date, $text, $attachment, $role)
                 $inquiryId = $_GET["id"];
 
                 $con = openCon();
-                $sql = "SELECT U.email from users U, inquiry I WHERE I.id = '$inquiryId' AND I.conversationStarter = U.id";
+                $sql = "SELECT U.email, I.createdDate, I.lastModifiedDate, I.isActive from users U, inquiry I WHERE I.id = '$inquiryId' AND I.conversationStarter = U.id";
 
                 $result = $con->query($sql);
 
@@ -246,26 +247,37 @@ function message($name, $date, $text, $attachment, $role)
 
                     if ($row[0] == $_SESSION["userid"]) {
 
+                        $lastmodifiedDate = $row[2];
+                        $createdDate = $row[1];
+                        $status = "";
+
+                        if($row[3] == "1"){
+                            $status = "Active";
+                        }
+                        else{
+                            $status = "Closed";
+                        }
+
                         echo <<<HTML
 
                 <h2 class="txt-green" style="margin-left:20vw;">Inquiry Details</h2>
-                <div class="card" style="margin-left:20vw;">
+                <div class="card" style="margin-left:20vw;width:auto;margin-right:20vw;">
 
-                <table id="details">
+                <table id="details" style="margin:auto;">
                 <tr>
-                <td width=150><h4 style="display:inline;"> Inquiry ID : 	&nbsp;	&nbsp;	&nbsp;  $inquiryId</h4></td>
-                <td><h4 style="display:inline;"> Last Modified Date : &nbsp;	&nbsp; $inquiryId</h4></td>
+                <td ><h4 style="display:inline;"> Inquiry ID : 	&nbsp;	&nbsp;	&nbsp;  $inquiryId</h4></td>
+                <td><h4 style="display:inline;"> Last Modified Date : &nbsp;	&nbsp; $lastmodifiedDate</h4></td>
                 </tr>
                 <tr>
                 <td></td>
                 <td>
-                <h4 style="display:inline;"> Opened Date :  &nbsp;	&nbsp; $inquiryId</h4>
+                <h4 style="display:inline;"> Opened Date :  &nbsp;	&nbsp; $createdDate</h4>
                 </td>
                 </tr>
                 <tr>
                 <td></td>
                 <td>
-                <h4 style="display:inline;"> Status :  &nbsp;	&nbsp; $inquiryId</h4>
+                <h4 style="display:inline;"> Status :  &nbsp;	&nbsp; $status</h4>
                 </td></tr>
                 </table>
                 </div>
@@ -297,7 +309,7 @@ function message($name, $date, $text, $attachment, $role)
                     </form>
 
                     <form method="POST">
-                        <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;background-color: #1D4354;color: #FCFCFC;padding:15px;" type="submit" >
+                        <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;background-color: #1D4354;color: #FCFCFC;padding:15px;" type="submit" value="Close Inquiry">
                     </form>
                   HTML;
                     } else {
@@ -305,12 +317,17 @@ function message($name, $date, $text, $attachment, $role)
                         echo "You dont have permisssion to View this converstation";
                     }
                 }
+                else{
+
+                    echo <<<HTML
+                    <img style="display: block;margin-left: auto;margin-right: auto;width: 40%;" src="../../images/inquiry_not_found.svg">
+                    HTML;
+                    header("Refresh:5; url=dashboard.php");
+
+                }
 
                 closeCon($con);
-                echo <<<HTML
-                <img style="display: block;margin-left: auto;margin-right: auto;width: 40%;" src="../../images/inquiry_not_found.svg">
-                HTML;
-                header("Refresh:5; url=dashboard.php");
+              
             }
         }
 
@@ -320,7 +337,7 @@ function message($name, $date, $text, $attachment, $role)
     </div>
 
     <?php include("../templates/footer.php");  ?>
-    <script src="js/script.js"></script>
+    <script src="../../js/script.js"></script>
 
 </body>
 
