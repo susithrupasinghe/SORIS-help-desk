@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     else if(isset($_POST["forward"])){
 
         $inquiryId = $_GET["id"];
-        $forwardedUser = $_POST["forward"];
+        $forwardedUser = $_POST["section"];
         $datetime = date("Y-m-d h:i:s");
 
         $sql = "UPDATE inquiry SET currentStaffId='$forwardedUser', lastModifiedDate='$datetime' WHERE id='$inquiryId'";
@@ -260,7 +260,7 @@ function message($name, $date, $text, $attachment, $role)
                 $inquiryId = $_GET["id"];
 
                 $con = openCon();
-                $sql = "SELECT U.email from users U, inquiry I WHERE I.id = '$inquiryId' AND I.currentStaffId = U.id";
+                $sql = "SELECT U.email, I.createdDate, I.lastModifiedDate, I.isActive from users U, inquiry I WHERE I.id = '$inquiryId' AND I.currentStaffId = U.id";
 
                 $result = $con->query($sql);
 
@@ -270,6 +270,18 @@ function message($name, $date, $text, $attachment, $role)
 
                     if ($row[0] == $_SESSION["userid"]) {
 
+                        $lastmodifiedDate = $row[2];
+                        $createdDate = $row[1];
+                        $status = "";
+
+                        if($row[3] == "1"){
+                            $status = "Active";
+                        }
+                        else{
+                            $status = "Closed";
+                        }
+
+
                         echo <<<HTML
 
                 <h2 class="txt-green" style="margin-left:20vw;">Inquiry Details</h2>
@@ -277,23 +289,22 @@ function message($name, $date, $text, $attachment, $role)
 
                 <table id="details" style="margin:auto;">
                 <tr>
-                <td><h4 style="display:inline;"> Inquiry ID : 	&nbsp;	&nbsp;	&nbsp;  $inquiryId</h4></td>
-                <td><h4 style="display:inline;"> Last Modified Date : &nbsp;	&nbsp; $inquiryId</h4></td>
+                <td ><h4 style="display:inline;"> Inquiry ID : 	&nbsp;	&nbsp;	&nbsp;  $inquiryId</h4></td>
+                <td><h4 style="display:inline;"> Last Modified Date : &nbsp;	&nbsp; $lastmodifiedDate</h4></td>
                 </tr>
                 <tr>
                 <td></td>
                 <td>
-                <h4 style="display:inline;"> Opened Date :  &nbsp;	&nbsp; $inquiryId</h4>
+                <h4 style="display:inline;"> Opened Date :  &nbsp;	&nbsp; $createdDate</h4>
                 </td>
                 </tr>
                 <tr>
                 <td></td>
                 <td>
-                <h4 style="display:inline;"> Status :  &nbsp;	&nbsp; $inquiryId</h4>
+                <h4 style="display:inline;"> Status :  &nbsp;	&nbsp; $status</h4>
                 </td></tr>
                 </table>
                 </div>
-                
 
                 HTML;
 
@@ -338,8 +349,8 @@ function message($name, $date, $text, $attachment, $role)
 
                         while ($row = $result->fetch_assoc()) {
 
-                            $id = $row['íd'];
-                            $name = $row['firstName'];
+                            $id = $row["id"];
+                            $name = $row["firstName"];
 
                             echo "<option value='$id'> $name </option>";
                         }
