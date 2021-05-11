@@ -55,7 +55,7 @@
                     <option value="FOE"> Faculty Of Engineering </option>
                     <option value="FOC"> Faculty Of Computing </option>
                     <option value="FOM"> Faculty Of Management </option>
-                    <option value="FOEn"> Faculty Of English </option>
+                    <option value="FOl"> Faculty Of Language </option>
                     <option value="FOA"> Faculty Of Art </option>
                 </select>
                 <br> <br>
