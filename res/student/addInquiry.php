@@ -1,28 +1,27 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
             if (isset($_POST['btnsubmit'])) {
 
-                echo  $_FILES["addAttach"]["name"];
 
-                
                     $target_dir = "../uploads/";
-                    $target_file = $target_dir .$_FILES["addAttach"]["name"];
+                    $target_file = $target_dir .$_FILES["attachment"]["name"];
                     $upload = 1;
 
                     
 
                     //Check file size
-                    if ($_FILES["addAttach"]["size"] > 500000) {
+                    if ($_FILES["attachment"]["size"] > 500000) {
                         echo "<script>alert('Sorry,your file is too large.');widow.location='addInquiry.php'</script>";
                         $upload = 0;
                     }
 
                     if ($upload == 0) {
                     } else {
-                        if (move_uploaded_file($_FILES["addAttach"]["tmp_name"], $target_file)) {
-                            echo "<script>alert('Ok.');widow.location='addInquiry.php'</script>";
+                        if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
+                            echo "<script>alert('Ok.');'</script>";
                         } else {
-                            echo "<script>alert('Sorry, there was an error uploading your file.');widow.location='addInquiry.php'</script>";
+                            echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
                         }
                     }
                 
@@ -36,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $Mdatetime = date("Y-m-d h:i:s");
 
 
-                $sql = "INSERT INTO users(id,title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId) VALUES ('$TitleName',$Iid,$Cdatetime,)";
-                $result = mysqli_query($conn, $sql);
+                // $sql = "INSERT INTO users(id,title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId) VALUES ('$TitleName',$Iid,$Cdatetime,)";
+                // $result = mysqli_query($conn, $sql);
 
-                header("Location:addInquiry.php");
+                // header("Location:addInquiry.php");
             }
         }
             ?>
@@ -74,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="body-container">
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
 
             <div class="card" style="margin-left:25vw;margin-right:25vw;width:40%;">
                 <h2 style="font-family:Sitara;margin-left:170px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
@@ -113,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </br></br></br>
 
 
-                <input type="file" name="addAttach" id="fileselect" style="margin-left:50px;">
+                <input type="file" name="attachment" id="fileselect" style="margin-left:50px;">
                 <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:5px;margin-bottom:20px"></br>
 
             </div>
