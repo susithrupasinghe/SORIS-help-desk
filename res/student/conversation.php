@@ -68,6 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if($result === TRUE){
 
+                $sql = "UPDATE inquiry SET lastModifiedDate='$datetime' WHERE id='$inquiryId'";
+                $result = $con->query($sql);
+
                 header("Refresh:0");
             }
             else{

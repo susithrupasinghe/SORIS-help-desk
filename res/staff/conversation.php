@@ -4,9 +4,11 @@ require '../../config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $con = openCon();
+
 
     if(isset($_POST["closeinq"])){
-        $con = openCon();
+       
         $inquiryId = $_GET["id"];
         $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
 
@@ -20,18 +22,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
 
+    }
+    else if(isset($_POST["forward"])){
 
+        $inquiryId = $_GET["id"];
+        $forwardedUser = $_POST["forward"];
+        $datetime = date("Y-m-d h:i:s");
+
+        $sql = "UPDATE inquiry SET currentStaffId='$forwardedUser', lastModifiedDate='$datetime' WHERE id='$inquiryId'";
+
+        $result = $con->query($sql);
+
+        if($result===TRUE){
+            header("Location: dashboard.php");
+        }
+        else{
+            header("Refresh:0");
+        }
 
     }
 
-    if (isset($_POST['newmsg'])) {
+    else if (isset($_POST['newmsg'])) {
 
         $text = $_POST['text'];
         $attachment = "";
         $inquiryId = $_GET["id"];
         $uid = "";
 
-        $con = openCon();
+       
         $sql = "SELECT U.id from users U, inquiry I WHERE I.id = '$inquiryId' AND I.currentStaffId = U.id";
 
         $result = $con->query($sql);
@@ -68,6 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if($result === TRUE){
 
+                $sql = "UPDATE inquiry SET lastModifiedDate='$datetime' WHERE id='$inquiryId'";
+                $result = $con->query($sql);
+
                 header("Refresh:0");
             }
             else{
@@ -82,6 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
 
     }
+
+    closeCon($con);
 
 
 }
@@ -295,6 +318,36 @@ function message($name, $date, $text, $attachment, $role)
                     <input type="file" id="fileselect" name="attachment"/>
 
                     <input class="btt type1" type="submit" name="newmsg"style="margin-left:100px;font-size:17px;"> 
+                    </form>
+
+                    <hr style="border-top: 3px solid #1D4354; color:#1D4354;margin-top:50px;">
+
+                    
+                    <form method="POST">
+
+                    <label for="section" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Forward to inquiry : </label>
+                    <select class="txt-input" size="1" style="width:auto;" name="section">
+
+                    HTML;
+
+                    
+                    $sql = "SELECT id, firstName from users WHERE role='staff'";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+
+                        while ($row = $result->fetch_assoc()) {
+
+                            $id = $row['íd'];
+                            $name = $row['firstName'];
+
+                            echo "<option value='$id'> $name </option>";
+                        }
+                    }
+
+                    echo <<< HTML
+                    </select>
+                        <input  class="btt type3" name="forward" style="margin-left:15px;" type="submit" value="Forward Now">
                     </form>
 
                     <form method="POST">
