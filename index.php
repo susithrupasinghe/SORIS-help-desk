@@ -22,7 +22,7 @@
     include("res/templates/navigation.php");
 
     $_SESSION["role"] = "administrator";
-    $_SESSION["userid"] = "admin@gmail.com";
+    $_SESSION["userid"] = "IT20633790@gmail.com";
 
     ?>
 
