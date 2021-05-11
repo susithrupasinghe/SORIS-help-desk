@@ -18,13 +18,30 @@ require '../../config/config.php';
 include("../../res/templates/header.php");
 include("../../res/templates/navigation.php");
 
-$_SESSION["role"] = "administrator";
-$_SESSION["userid"] = "IT20633790@gmail.com";
-
 
 ?>
 
  <div class="body-container">
+    <?php
+        $conn = openCon();
+
+        $sql="SELECT id FROM inquiry WHERE isActive='1'";
+        $result = $conn->query($sql);
+        $i=0;
+
+        if($result->num_rows > 0)
+        {
+            while()
+            {
+                $i=$i+1;
+            }
+            
+           
+        }
+        echo "Active inquiry count :$i";
+
+    ?>
+
  </div>
 
 <?php include("../../res/templates/footer.php");  ?>
