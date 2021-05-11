@@ -1,3 +1,49 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['btnsubmit'])) {
+
+                echo  $_FILES["addAttach"]["name"];
+
+                
+                    $target_dir = "../uploads/";
+                    $target_file = $target_dir .$_FILES["addAttach"]["name"];
+                    $upload = 1;
+
+                    
+
+                    //Check file size
+                    if ($_FILES["addAttach"]["size"] > 500000) {
+                        echo "<script>alert('Sorry,your file is too large.');widow.location='addInquiry.php'</script>";
+                        $upload = 0;
+                    }
+
+                    if ($upload == 0) {
+                    } else {
+                        if (move_uploaded_file($_FILES["addAttach"]["tmp_name"], $target_file)) {
+                            echo "<script>alert('Ok.');widow.location='addInquiry.php'</script>";
+                        } else {
+                            echo "<script>alert('Sorry, there was an error uploading your file.');widow.location='addInquiry.php'</script>";
+                        }
+                    }
+                
+
+                $conn = openCon();
+                include_once  '../../config/config.php';
+
+                $TitleName = $_POST['TitleName'];
+                $Iid = $row[0];
+                $Cdatetime = date("Y-m-d h:i:s");
+                $Mdatetime = date("Y-m-d h:i:s");
+
+
+                $sql = "INSERT INTO users(id,title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId) VALUES ('$TitleName',$Iid,$Cdatetime,)";
+                $result = mysqli_query($conn, $sql);
+
+                header("Location:addInquiry.php");
+            }
+        }
+            ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +57,8 @@
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
 </head>
+
+
 
 <body>
 
@@ -40,7 +88,7 @@
                 </br>
 
                 <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;">Section</Section> </label>
-                <select class="txt-input" name="section" style="margin-left:80px width=40px">
+                <select class="txt-input" name="section" style="margin-left:5% ;width:75%">
                     <option value="none"></option>
 
                     <?php {
@@ -48,17 +96,16 @@
                         $conn = openCon();
                         $result = $conn->query("SELECT firstName from users WHERE role='staff'");
 
-                        $color1="#ffffff";
-                        $color2="#EFEEEC";
-                        $color=$color1;
+                        $color1 = "#ffffff";
+                        $color2 = "#EFEEEC";
+                        $color = $color1;
 
                         while ($rows = $result->fetch_assoc()) {
 
-                            $color == $color1 ? $color1 = $color2 : $color=$color1;
+                            $color == $color1 ? $color1 = $color2 : $color = $color1;
 
                             $section = $rows['firstName'];
                             echo "<option value='$section' style='background:$color;'>$section</option>";
-
                         }
                     }
                     ?>
@@ -66,41 +113,15 @@
                 </br></br></br>
 
 
-                <input type="file" name="addAttach" id="fileselect" value="Attachment" style="margin-left:50px;">
+                <input type="file" name="addAttach" id="fileselect" style="margin-left:50px;">
                 <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:5px;margin-bottom:20px"></br>
 
             </div>
 
-            <?php
-            if (isset($_POST["btnsubmit"])) {
+            
 
-                $conn = openCon();
 
-                $title = $_POST["TitleName"];
-                $content = $_POST["addContent"];
-                $section = $_POST["section"];
-                $atachment = $_POST["addAttach"];
 
-                $sql = "INSERT INTO inquiry(title)values('$title')";
-                $sql = "INSERT INTO conversation(attachment)value('$atachment')";
-
-                if (mysqli_query($conn, $sql)) {
-                    echo "<script>alert('Your inquiry was added');widow.location='addInquiry.php'</script>";
-                }
-            }
-            ?>
-
-            <?php
-
-            $target_dir = "../uploads/";
-            $target_file = $target_dir . basename($_FILES["addAttach"]["name"]);
-
-            if (isset($_FILES["addAttach"])) {
-                if (move_uploaded_file($_FILES["addAttach"]["tmp_name"], $target_file)) {
-                    echo "";
-                }
-            }
-            ?>
 
         </form>
     </div>
