@@ -2,13 +2,15 @@
 
 require '../../config/config.php';
 
+$con = openCon();
+
 
 if (isset($_GET['verification']) && isset($_GET['email'])) {
 
     $email = $_GET["email"];
     $token = base64_decode($_GET["verification"]);
 
-    $con = openCon();
+   
 
     $sql = "SELECT password FROM users WHERE email='$email'";
 
@@ -27,6 +29,9 @@ if (isset($_GET['verification']) && isset($_GET['email'])) {
 
     }
 }
+
+closeCon($con);
+
 
 ?>
 
@@ -55,6 +60,47 @@ if (isset($_GET['verification']) && isset($_GET['email'])) {
 
     <div class="body-container">
 
+        <?php
+        $con = openCon();
+        if (isset($_POST['btnsubmit'])) {
+
+            $email = $_GET["email"];
+            $new_pass = $_POST['newPass'];
+            $re_pass = $_POST['RePass'];
+        
+            if ($new_pass == $re_pass) {
+        
+                $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
+                $sql = "UPDATE users SET password = '$hashPass' WHERE email='$email'";
+                $result = $con->query($sql);
+        
+                if($result){
+        
+                    header("Location: ../../index.php");
+                }
+                else{
+
+                    echo <<< HTML
+                        <div class="alert">
+                        <span class="closebtn">&times;</span>
+                        <strong>Error!</strong> Password not changed !!!
+                        </div>
+                    HTML;
+                   
+                }
+            } else{
+
+                echo <<< HTML
+                        <div class="alert">
+                        <span class="closebtn">&times;</span>
+                        <strong>Error!</strong> Password must be equal !!!
+                        </div>
+                    HTML;
+            }
+        }
+        closeCon($con);
+         ?>
+
         <form method="POST" name="changPassword">
             <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%">
                 <h2 style="font-family:Sitara;margin-left:160px;font-family:Sitara, sans-serif;">Add New Password</h2>
@@ -67,7 +113,7 @@ if (isset($_GET['verification']) && isset($_GET['email'])) {
                 <input style="margin-left:25px;" class="txt-input" type="text" id="RePass" name="RePass" required></br>
                 </br> </br> </br>
 
-                <input type="submit" value="Cancel" class="btt type2" name="btnsubmit" style="margin-left:150px;">
+                <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-left:150px;">
                 <input type="submit" value="Change password" class="btt type1" name="btnsubmit" style="margin-left:10px;">
             </div>
         </form>
@@ -112,23 +158,8 @@ if (isset($_GET['verification']) && isset($_GET['email'])) {
             }*/
         }
     </script>
-
-    <?php
-    if (isset($_POST['btnsubmit'])) {
-        $new_pass = $_POST['newPass'];
-        $re_pass = $_POST['RePass'];
-
-        if ($new_pass == $re_pass) {
-            $update_pass = mysqli_info("UPDATE user set password='$new_pass' WHERE id='1'");
-            echo "<script>alert('');widow.location='dashboard.php'</script>";
-        } else
-            echo "<script>alert('Password and Password re-type Field do not match');window.location='newPassword.php'</script>";
-    }
-    ?>
-
     <?php include("../../res/templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
 
 </body>
-
 </html>
