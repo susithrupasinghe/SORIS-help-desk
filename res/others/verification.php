@@ -17,8 +17,8 @@
 
 
 
-    $page = "conversation";
-    // require '../../config/config.php';
+    $page = "verification";
+    require '../../config/config.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
 
@@ -26,6 +26,38 @@
 
     ?>
     <div class="body-container">
+
+        <?php
+
+        $con = openCon();
+        if (isset($_GET['verification']) && isset($_GET['email'])) {
+
+            $email = $_GET["email"];
+            $token = base64_decode($_GET["verification"]);
+
+
+
+            $sql = "SELECT password FROM users WHERE email='$email'";
+
+            $result = $con->query($sql);
+
+            if ($result->num_rows > 0) {
+
+                $row = mysqli_fetch_row($result);
+
+                if ($token != $row[0]) {
+
+                    header("Location: ../../index.php");
+                }
+            } else {
+                header("Location: ../../index.php");
+            }
+        }
+
+        closeCon($con);
+
+
+        ?>
         <div class="alert">
             <span class="closebtn">&times;</span>
             <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
