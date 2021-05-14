@@ -62,16 +62,16 @@
 
         $sql="SELECT email FROM users WHERE email='$inputMail'";
         $result=$conn->query($sql);
-       // $row=mysqli_fetch_assoc($result);
+       $row=mysqli_fetch_assoc($result);
 
         if($result->num_rows>0)
         {
-            // $row = mysqli_fetch_row($result);
-            while($row=$result->fetch_assoc())
-            {
-                echo "Invalid";
-            }
-            // $row[0];
+            $row = mysqli_fetch_row($result);
+           // while($row=$result->fetch_assoc())
+           // {
+                //echo "Invalid";
+            //}
+            $row[0];
         require '../../res/mail/mailer.php';
 
 
@@ -87,6 +87,12 @@
         
                 send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
                 send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+        }
+        else{
+            echo "<div class='alert'>
+            <span class='closebtn'>&times; </span>
+            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+        </div>";
         }
     }
 
