@@ -27,26 +27,26 @@
 
     <div class="body-container">
 
-        <form method="post" style="margin-left:25%;">
-            <div class="card" id="card" style="width:63%;">
+        <form method="post" >
+            <div class="card" id="card" style="min-width:50%;margin-left:auto;margin-right:auto;">
                 <h1 style="text-align:center; font-style:bold; font-family:'sitara',sans-serif;"> Student SignUp </h1>
                 <br>
 
                 <label for="SID" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Student ID </label>
                 <input class="txt-input" type="text" style="margin-left:65px;" name="sid" required>
-                <br> <br>
+                <br>
 
                 <label for="fName" style=" font-family:'sitara',sans-serif; font-weight:bold; margin-left:60px;">First Name </label>
                 <input class="txt-input" type="text" style="margin-left:62px;" name="fname" required>
-                <br> <br>
+                <br>
 
                 <label for="lName" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Last Name </label>
                 <input class="txt-input" type="text" style="margin-left:63px;" name="lname" required>
-                <br> <br>
+                <br>
 
                 <label for="mail" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Email </label>
                 <input class="txt-input" type="text" oninput="validateEmail(this)" style="margin-left:103px;" name="email" required>
-                <br> <br>
+                <br>
 
                 <label for="faculty" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Faculty </label>
                 <select class="txt-input" size="1" style="margin-left:90px; width:347px;" name="faculty" required>
@@ -58,20 +58,20 @@
                     <option value="FOl"> Faculty Of Language </option>
                     <option value="FOA"> Faculty Of Art </option>
                 </select>
-                <br> <br>
+                <br>
 
                 <label for="password" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;"> Password </label>
                 <input class="txt-input" type="password" style="margin-left:72px;" id="psw1" oninput="verifyPassword(this)" name="psw" required>
-                <br> <br>
+                <br>
 
                 <label for="reEnterPassword" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Password re-type </label>
                 <input class="txt-input" type="password" style="margin-left:15px;" id="psw2" oninput="verifyPassword(this)" name="rpsw" required>
-                <br> <br>
+                <br>
 
-
+                <br><br>
                 <input type="submit" value="SignUp Now" name="submit" class="btt type1" style="align-items:center; margin-left: 40%;" href="signIn.php">
-                <br> <br>
-
+                <br>
+                <br>
                 <a href="signIn.php" style="text-align:center;  margin-left: 30%;"> Already user? Click here to SignIn </a>
 
                 <?php
