@@ -85,8 +85,9 @@
         // $verification_token = base64_encode($password_hash)
         // Now you can create URL like above i mentioned
         
-                send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
-                send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+        //$verification_token = base64_encode($password_hash)
+                //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
+                //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
         }
     }
 
