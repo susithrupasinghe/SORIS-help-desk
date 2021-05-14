@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student SignIn</title>
     <link rel="stylesheet" href="../../css/style.css">
 
 <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
@@ -48,15 +48,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           
         }
         else{
-            echo "<script>alert('Your email or password is incorrect');</script>";
+            echo '<script type="text/javascript">';
+            echo "alert('Your email or password is incorrect')";
+            echo '</script>';
         }
 
     }
-    else{
+    else{ 
+        echo '<script type="text/javascript">';
+        echo "alert('Your email or password is incorrect')";
+        echo '</script>';
 
     }
 
-
+    closeCon($con);
   }
 
 

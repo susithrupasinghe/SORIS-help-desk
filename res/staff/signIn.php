@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Staff/Admin SignIn</title>
     <link rel="stylesheet" href="../../css/style.css">
 
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
@@ -17,7 +17,7 @@
     <?php
 
 
-    $page = "student login";
+    $page = "staff login";
     require '../../config/config.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
@@ -54,16 +54,21 @@
                     $_SESSION["role"] = "staff";
                     header("Location: /SORIS-help-desk/res/staff/dashboard.php");
                 } else {
-                    echo "<script>alert('Your email or password is incorrect');</script>";
+                    echo '<script type="text/javascript">';
+                    echo "alert('Your email or password is incorrect')";
+                    echo '</script>';
                 }
-            } else {
+            } else { 
+                    echo '<script type="text/javascript">';
+                    echo "alert('Your email or password is incorrect')";
+                    echo '</script>';
             }
         } else if ($user == "administrator") {
 
             $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='admin'";
             $result = $con->query($sqlquery);
 
-            print_r($result);
+          
 
             if ($result->num_rows > 0) {
 
@@ -77,9 +82,13 @@
                     $_SESSION["role"] = "administrator";
                     header("Location: /SORIS-help-desk/res/admin/dashboard.php");
                 } else {
-                    echo "<script>alert('Your email or password is incorrect');</script>";
+                    echo '<script type="text/javascript">';
+                    echo "alert('Your email or password is incorrect')";
+                    echo '</script>';
                 }
-            } else {
+            } else { echo '<script type="text/javascript">';
+                echo "alert('Your email or password is incorrect')";
+                echo '</script>';
             }
         }
 
@@ -96,11 +105,11 @@
 
             <div class="card" style="margin-left:25vw; margin-right:25vw; padding-left:30px">
 
-                <h1 style="text-align:center;"> Staff/Adminstrator signIn </h1>
+                <h1 style="text-align:center;"> Staff/Administrator signIn </h1>
                 <br>
-                Select User<select name="user" class="txt-input" style="margin-left: 18px;">
+                Select User<select name="user"class="txt-input"style="width:75%; margin-left: 12px;">
                     <option value="staff">Staff</option>
-                    <option value="administrator">Adminstrator</option>
+                    <option value="administrator">Administrator</option>
                 </select>
                 <br>
                 Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px;">
