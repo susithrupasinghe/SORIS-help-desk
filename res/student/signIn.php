@@ -35,40 +35,16 @@
 
             $con = openCon();
 
-<<<<<<< HEAD
-            $_SESSION["userid"] = $email;
-            $_SESSION["role"] = "Student";
-            header("Location: /SORIS-help-desk/res/student/dashboard.php");
-          
-        }
-        else{
-            echo '<script type="text/javascript">';
-            echo "alert('Your email or password is incorrect')";
-            echo '</script>';
-        }
-
-    }
-    else{ 
-        echo '<script type="text/javascript">';
-        echo "alert('Your email or password is incorrect')";
-        echo '</script>';
-=======
             $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='student'";
             $result = $con->query($sqlquery);
 
             if ($result->num_rows > 0) {
->>>>>>> 9e0264874a3b59432c87b5dc32346d321fc18ebb
 
                 $row = $result->fetch_assoc();
 
-<<<<<<< HEAD
-    closeCon($con);
-  }
-=======
 
                 //echo $row["password"];
                 if (password_verify($password, $row["password"])) {
->>>>>>> 9e0264874a3b59432c87b5dc32346d321fc18ebb
 
                     $_SESSION["userid"] = $email;
                     $_SESSION["role"] = "Student";
