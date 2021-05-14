@@ -22,6 +22,8 @@ include("../../res/templates/navigation.php");
 ?>
 
  <div class="body-container">
+
+    <h2 style="font-family:Sitara;margin-left:10px;font-family:Sitara, sans-serif;color:#08A73A;">Active Inquery</h2>
     <?php
         $conn = openCon();
 
@@ -31,9 +33,10 @@ include("../../res/templates/navigation.php");
 
         if($result->num_rows > 0)
         {
-            while()
+            while($result!=true)
             {
                 $i=$i+1;
+                break;
             }
             
            
