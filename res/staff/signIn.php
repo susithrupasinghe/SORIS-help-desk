@@ -54,14 +54,20 @@
                     $_SESSION["role"] = "staff";
                     header("Location: /SORIS-help-desk/res/staff/dashboard.php");
                 } else {
-                    echo '<script type="text/javascript">';
-                    echo "alert('Your email or password is incorrect')";
-                    echo '</script>';
+                    echo <<< HTML
+            <div class="alert">
+            <span class="closebtn">&times;</span>
+            <strong>Wrong Email !</strong> Entered password is incorrrect !. Please input correct password.
+            </div>
+            HTML;
                 }
             } else { 
-                    echo '<script type="text/javascript">';
-                    echo "alert('Your email or password is incorrect')";
-                    echo '</script>';
+                echo <<< HTML
+                <div class="alert">
+                <span class="closebtn">&times;</span>
+                <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
+                </div>
+                HTML;
             }
         } else if ($user == "administrator") {
 
@@ -82,13 +88,20 @@
                     $_SESSION["role"] = "administrator";
                     header("Location: /SORIS-help-desk/res/admin/dashboard.php");
                 } else {
-                    echo '<script type="text/javascript">';
-                    echo "alert('Your email or password is incorrect')";
-                    echo '</script>';
+                    echo <<< HTML
+                    <div class="alert">
+                    <span class="closebtn">&times;</span>
+                    <strong>Wrong Email !</strong> Entered password is incorrrect !. Please input correct password.
+                    </div>
+                    HTML;
                 }
-            } else { echo '<script type="text/javascript">';
-                echo "alert('Your email or password is incorrect')";
-                echo '</script>';
+            } else {
+            echo <<< HTML
+            <div class="alert">
+            <span class="closebtn">&times;</span>
+            <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
+            </div>
+            HTML;
             }
         }
 

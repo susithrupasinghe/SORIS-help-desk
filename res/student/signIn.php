@@ -62,7 +62,7 @@
                 echo <<< HTML
             <div class="alert">
             <span class="closebtn">&times;</span>
-            <strong>Wrong Email !</strong> Not registred email !. Please enter correct one.
+            <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
             </div>
             HTML;
             }
