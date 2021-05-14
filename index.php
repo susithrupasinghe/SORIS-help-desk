@@ -21,13 +21,8 @@
     include("res/templates/header.php");
     include("res/templates/navigation.php");
 
-<<<<<<< HEAD
-    $_SESSION["role"] = "student";
-    $_SESSION["userid"] = "IT20633790@gmail.com";
-=======
     $_SESSION["role"] = "staff";
     $_SESSION["userid"] = "IT33333333@gmail.com";
->>>>>>> 9e0264874a3b59432c87b5dc32346d321fc18ebb
 
     ?>
 
