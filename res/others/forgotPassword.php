@@ -73,6 +73,18 @@
             }
             // $row[0];
         require '../../res/mail/mailer.php';
+
+
+        ///  Link format //////////////////
+
+        // http://localhost/SORIS-help-desk/res/others/newPassword.php?verification=< verification token >&&email=< email >
+        
+        // How to Create verification Token
+        // Retive password hash from database according to given email
+        // Then encode it as Base64 string, Like this,
+        // $verification_token = base64_encode($password_hash)
+        // Now you can create URL like above i mentioned
+        
                 send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
                 send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
         }
