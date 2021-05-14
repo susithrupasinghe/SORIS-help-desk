@@ -50,7 +50,7 @@
 
                 <label for="faculty" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Faculty </label>
                 <select class="txt-input" size="1" style="margin-left:90px; width:347px;" name="faculty" required>
-                    <option value="none"> </option>
+                    
                     <option value="FOM"> Faculty Of Medicine </option>
                     <option value="FOE"> Faculty Of Engineering </option>
                     <option value="FOC"> Faculty Of Computing </option>
