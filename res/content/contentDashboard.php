@@ -11,11 +11,15 @@
 
 <body>
     <div class="body-container">
+
+
+
+
         <table class="table-style">
             <tr>
                 <th>ID</th>
-                <th>NAME</th>
-                <th>COntent</th>
+                <th>Name</th>
+                <th>Content</th>
             </tr>
             <tr>
                 <td></td>
@@ -28,6 +32,11 @@
                 <td></td>
             </tr>
         </table>
+
+
+
+
+
     </div>
 
 </body>
