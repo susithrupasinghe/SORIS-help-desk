@@ -43,8 +43,10 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     include("../templates/navigation.php");
     ?>
     <div class="body-container">
-    
-        <a href="composeContent.php" target="_blank"><div class="btt type3" style="float: right;">Post New Content</div></a>
+
+        <a href="composeContent.php" target="_blank">
+            <div class="btt type3" style="float: right;">Post New Content</div>
+        </a>
         <h2 class="txt-green" style="margin-left:20%;margin-right:auto;">Content List</h2>
 
 
