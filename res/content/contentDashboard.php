@@ -76,13 +76,13 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                     $link = "contentDashboard.php?delete=$id";
 
                     echo <<< HTML
-            <tr>
-            <td> $title</td>
-            <td> $subtitle</td>
-            <td>  $tag</td>
-            <td> <a href="$link">Delete</a></td>
-            </tr>
-            HTML;
+                        <tr>
+                        <td> $title</td>
+                        <td> $subtitle</td>
+                        <td>  $tag</td>
+                        <td> <a href="$link">Delete</a></td>
+                        </tr>
+                        HTML;
                 }
             }
 

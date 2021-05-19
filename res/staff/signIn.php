@@ -1,3 +1,17 @@
+<?php 
+
+session_start();
+
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+
+
+        header("Location: ../../index.php");
+    
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
