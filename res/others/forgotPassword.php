@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+    header("Location: ../../index.php");
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,18 +33,18 @@
     ?>
 
     <div class="body-container">
+        
+    <form method="POST">
+        <div class="card" style="margin-left:25vw;margin-right:25vw;">
+            <h2 style="font-family:Sitara;margin-left:140px;font-family:Sitara, sans-serif;">Forgot Password</h2>
 
-        <form method="POST">
-            <div class="card" style="margin-left:25vw;margin-right:25vw;">
-                <h2 style="font-family:Sitara;margin-left:140px;font-family:Sitara, sans-serif;">Forgot Password</h2>
+            <label for="email " style="font-family:Sitara, sans-serif;font-weight:bold;">Email </label>
+            <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
+            </br> </br>
 
-                <label for="email " style="font-family:Sitara, sans-serif;font-weight:bold;">Email </label>
-                <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
-                </br> </br>
-
-                <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" style="margin-left:145px;">
-            </div>
-        </form>
+            <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" style="margin-left:145px;">
+        </div>
+    </form>
 
     </div>
 
@@ -52,56 +63,65 @@
         }
     </script>
 
-
 <?php
-    if(isset($_POST['btnsubmit']))
-    {
-        $inputMail=$_POST['email'];
+        if (isset($_POST['btnsubmit'])) {
+            $inputMail = $_POST['email'];
 
-        $conn=openCon();
+            $conn = openCon();
 
-        $sql="SELECT email FROM users WHERE email='$inputMail'";
-        $result=$conn->query($sql);
-       $row=mysqli_fetch_assoc($result);
+            $sql = "SELECT email FROM users WHERE email='$inputMail'";
+            $result = $conn->query($sql);
+            // $row=mysqli_fetch_assoc($result);
 
-        if($result->num_rows>0)
-        {
-            $row = mysqli_fetch_row($result);
-           // while($row=$result->fetch_assoc())
-           // {
+            if ($result->num_rows > 0) {
+                $verification_token = base64_encode($password_hash);
+                $link = "http://localhost/SORIS-help-desk/res/others/newPassword.php?verification=$verification_token &email=$email &Forgot=1";
+                $verify_mail = send_Verify_Email($inputMail, $link);
+                //$row = mysqli_fetch_row($result);
+                // while($row=$result->fetch_assoc())
+                // {
                 //echo "Invalid";
-            //}
-            $row[0];
-        require '../../res/mail/mailer.php';
+                //}
+                //$row[0];
+                //require '../../res/mail/mailer.php';
 
 
-        ///  Link format //////////////////
+                ///  Link format //////////////////
 
-        // http://localhost/SORIS-help-desk/res/others/newPassword.php?verification=< verification token >&&email=< email >
-        
-        // How to Create verification Token
-        // Retive password hash from database according to given email
-        // Then encode it as Base64 string, Like this,
-        // $verification_token = base64_encode($password_hash)
-        // Now you can create URL like above i mentioned
-        
-        //$verification_token = base64_encode($password_hash)
+                // http://localhost/SORIS-help-desk/res/others/newPassword.php?verification=< verification token >&&email=< email >
+
+                // How to Create verification Token
+                // Retive password hash from database according to given email
+                // Then encode it as Base64 string, Like this,
+                // $verification_token = base64_encode($password_hash)
+                // Now you can create URL like above i mentioned
+
+                //$verification_token = base64_encode($password_hash)
                 //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
                 //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+                echo <<< HTML
+                        <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                        <span class='closebtn'>&times;</span>
+                        <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
+                        </div>
+                        HTML;
+            } else {
+                echo <<< HTML
+                <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                <span class='closebtn'>&times; </span>
+                <strong style= 'text-align:center;font-size: 30x;'>EEEEEEEE</strong>
+                </div>
+                HTML;
+            }
         }
-        else{
-            echo "<div class='alert'>
-            <span class='closebtn'>&times; </span>
-            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-        </div>";
-        }
-    }
-
-       
-    ?>
 
 
-  
+        ?>
+
+
+    </div>
+
+
 
     <?php include("../../res/templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
