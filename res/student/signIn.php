@@ -4,10 +4,9 @@ session_start();
 
 if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
-    if ($_SESSION["role"] != "student") {
 
         header("Location: ../../index.php");
-    }
+
 }
 
 

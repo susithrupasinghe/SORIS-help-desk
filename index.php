@@ -15,7 +15,7 @@
 
 <body>
     <?php
-
+    echo dirname(__FILE__);
     $page = "home";
     require 'config/config.php';
     include("res/templates/header.php");
