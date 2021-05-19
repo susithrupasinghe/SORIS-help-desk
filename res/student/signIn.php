@@ -101,7 +101,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                 <br><br><br>
 
-                <a href="../staff/signUp.php" style="margin-left: 100px;"> New user? Click here to signUp </a>
+                <a href="../student/signUp.php" style="margin-left: 100px;"> New user? Click here to signUp </a>
                 <br>
                 <br>
             </div>
