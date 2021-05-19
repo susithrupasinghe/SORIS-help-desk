@@ -1,3 +1,12 @@
+<?php 
+
+session_start();
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +24,7 @@
 
 <body>
     <?php
-    echo dirname(__FILE__);
+   // echo dirname(__FILE__);
     $page = "home";
     require 'config/config.php';
     include("res/templates/header.php");
