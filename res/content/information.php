@@ -1,3 +1,9 @@
+<?php
+
+    session_start();
+   
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,18 +46,18 @@
         }
 
         $i = 1;
-        $j=7;
+        
        
         while ($row = $result->fetch_assoc()) {
 
             $postLink = "content.php?id=" . $row["id"];
-            if ($i-$j==0) {
+            if ($i%6==0) {
                 echo "</tr><tr>";
-                $j=$j+6;
+                
             }
-            echo "<td>";
+            echo "<td style='width:25%'>";
             echo <<< HTML
-                <div class= "card" style= "width: 150px; margin: 15px;min-height: 250px;padding-right: 20px;">
+                <div class= "card" style= "width: 150px; margin-left: 25px;min-height: 250px;padding-right: 20px;">
                     <h3 class= "txt-green" style= "font-family: 'Sitara', sans-serif;">$row[title] </h3>
                     <h5 style= "font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName] </h5>
                     <p style= "font-family: 'Sitara', sans-serif;">$row[thumbnailText] </p>
