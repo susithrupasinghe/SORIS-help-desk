@@ -84,7 +84,7 @@
     
        
        
-
+     </div>   
 
     <?php include("../templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
