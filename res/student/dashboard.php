@@ -7,9 +7,6 @@ if(isset($_SESSION["role"]) && isset($_SESSION["userid"]) ){
 
         header("Location: ../../index/");
         
-        $_COOKIE["stdid"] = "IT2063379000";
-                        
-        echo $_COOKIE["stdid"];
 
     }
 }
