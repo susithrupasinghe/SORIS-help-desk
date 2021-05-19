@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 if (isset($_GET['logout'])) {
     session_unset();
@@ -46,17 +45,14 @@ if (isset($_GET['logout'])) {
                 // HTML;
             } else {
 
-            //    $_SESSION["userid"] = "susith16@gmail.com";
-            //    $_SESSION["role"] = "Student";
-
-
                 echo <<<HTML
 
     
                 <div style="margin-top:-70px; ; padding-left:65%; ">
-                <button class="btt type2" style="margin-right: 25px;" >Student SignUp</button>
-                <button class="btt type1" style="margin-right: 10px;">Student Login</button>
-                <button class="btt type1">Staff Login</button>
+                <a href="/SORIS-help-desk/res/student/signUp.php"><button class="btt type2" style="margin-right: 25px;" >Student SignUp</button></a>
+                <a href="/SORIS-help-desk/res/student/signIn.php"><button class="btt type1" style="margin-right: 10px;">Student Login</button></a>
+                <a href="/SORIS-help-desk/res/staff/signIn.php"><button class="btt type1">Staff Login</button></a>
+                
                 </div>
 
                 HTML;

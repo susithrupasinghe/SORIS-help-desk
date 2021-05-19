@@ -1,3 +1,17 @@
+<?php 
+
+session_start();
+
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+
+    if ($_SESSION["role"] != "student") {
+
+        header("Location: ../../index.php");
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +61,7 @@
                 if (password_verify($password, $row["password"])) {
 
                     $_SESSION["userid"] = $email;
-                    $_SESSION["role"] = "Student";
+                    $_SESSION["role"] = "student";
                     header("Location: /SORIS-help-desk/res/student/dashboard.php");
                 } else {
                     echo <<< HTML
