@@ -19,6 +19,7 @@
     <?php
     $page = "student signup";
     require '../../config/config.php';
+    require '../mail/mailer.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
     ?>
@@ -120,9 +121,9 @@
 
                         if ($result === TRUE) {
 
-                            //  $verification_token = base64_encode($hashPass);
-                            //  $link = 'http:localhost/SORIS-help-desk/res/others/verification.php? verification=$verification_token &email= $eMail';
-                            //  $verify_mail= send_Verify_Email($eMail,$link);
+                              $verification_token = base64_encode($hashPass);
+                              $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail";
+                              $verify_mail= send_Verify_Email($eMail,$link);
                             ///  Link format //////////////////
 
                             // http://localhost/SORIS-help-desk/res/others/verification.php?verification=< verification token >&email=< email >
