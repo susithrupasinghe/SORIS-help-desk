@@ -1,16 +1,18 @@
+<!--Session Start-->
 <?php
+session_start();
+?>
 
+<!--email-->
+<?php
 require '../../config/config.php';
 
 $con = openCon();
-
 
 if (isset($_GET['verification']) && isset($_GET['email'])) {
 
     $email = $_GET["email"];
     $token = base64_decode($_GET["verification"]);
-
-   
 
     $sql = "SELECT password FROM users WHERE email='$email'";
 
@@ -26,15 +28,12 @@ if (isset($_GET['verification']) && isset($_GET['email'])) {
         }
     } else {
         header("Location: ../../index.php");
-
     }
 }
 
 closeCon($con);
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,50 +59,48 @@ closeCon($con);
 
     <div class="body-container">
 
+        <!--Ckeck change password and update data-->
         <?php
         $con = openCon();
         if (isset($_POST['btnsubmit'])) {
 
-            $email = $_GET["email"];
+            $email = $_GET['email'];
             $new_pass = $_POST['newPass'];
             $re_pass = $_POST['RePass'];
-        
+
             if ($new_pass == $re_pass) {
-        
+
                 $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
                 $sql = "UPDATE users SET password = '$hashPass' WHERE email='$email'";
                 $result = $con->query($sql);
-        
-                if($result){
-        
+
+                if ($result) {
+
                     header("Location: ../../index.php");
-                }
-                else{
-
+                } else {
                     echo <<< HTML
-                        <div class="alert">
-                        <span class="closebtn">&times;</span>
-                        <strong>Error!</strong> Password not changed !!!
-                        </div>
-                    HTML;
-                   
+                            <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                            <span class='closebtn'>&times;</span>
+                            <strong>Error!</strong> Password not changed !!!
+                            </div>
+                            HTML;
                 }
-            } else{
-
+            } else {
                 echo <<< HTML
-                        <div class="alert">
-                        <span class="closebtn">&times;</span>
-                        <strong>Error!</strong> Password must be equal !!!
-                        </div>
+                    <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                    <span class='closebtn'>&times;</span>
+                    <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
+                    </div>
                     HTML;
             }
         }
         closeCon($con);
-         ?>
+        ?>
 
+        <!--Front end-->
         <form method="POST" name="changPassword">
             <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%">
-                <h2 style="font-family:Sitara;margin-left:160px;font-family:Sitara, sans-serif;">Add New Password</h2>
+                <h2 style="font-family:Sitara;margin-left:165px;font-family:Sitara, sans-serif;">Add New Password</h2>
 
                 <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:30px;">Password</label>
                 <input style="margin-left:80px;" class="txt-input" type="text" id="newPass" name="newPass" oninput="validpassword(this)" required></br>
@@ -115,51 +112,36 @@ closeCon($con);
 
                 <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-left:150px;">
                 <input type="submit" value="Change password" class="btt type1" name="btnsubmit" style="margin-left:10px;">
+                </br></br></br>
             </div>
         </form>
 
     </div>
 
+    <!--Ckeck password strong-->
     <script>
         function validpassword(parameter) {
             var newPassword = parameter.value;
             var lowerCase = /[a-z]/;
             var uppercase = /[A-Z]/;
             var number = /[0-9]/;
+            var symbol = /[@#$%^&*]/;
+            var length = newPassword.length;
 
-            if ((newPassword.match(lowerCase)) && (newPassword.match(uppercase)) && (newPassword.match(number))) {
+            if ((newPassword.match(lowerCase)) && (newPassword.match(uppercase)) && (newPassword.match(number)) && (length >= 4) && (length <= 10) && (newPassword.match(symbol))) {
                 parameter.style.border = "3px solid #1d4354";
                 return true;
             } else {
                 parameter.style.border = "3px solid #ff0000";
                 return false;
             }
-
-            /*function validRePassword(param)
-            {
-                if(document.changPassword.newPass.value=="")
-                {
-                    alert("Password Filed is Empty!!");
-                    return false;
-                }
-                else
-                if(document.changPassword.RePass.value=="")
-                {
-                    alert("Password re-type Fieled is Empty!!");
-                }
-                else
-                if(document.changPassword.newPass.value!=document.changPassword.RePass.value)
-                {
-                    alert("Password and Password re-type Field do not match");
-                    return false;
-                }
-                else
-                return true;
-            }*/
         }
     </script>
+
+    <!--Footer-->
     <?php include("../../res/templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
 
 </body>
+
 </html>
