@@ -89,11 +89,14 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                 <h1 style="text-align:center;"> Student signIn </h1>
                 <br>
-                Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px;" required>
-                
+                <div style="margin-left: 5%">Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px; min-width: 60%;" required>
+                </div>
+
                 <br>
-                Password <input class="txt-input" type="password" name="password" style="margin-left: 18px;"required>
-                <br><br><br>
+
+                <div style="margin-left: 5%"> Password <input class="txt-input" type="password" name="password" style="margin-left: 18px; min-width: 60%;"required>
+                </div>
+                <br><br>
 
         	    <a href="../others/forgotPassword.php"> <div  style="margin-right: 50px;margin-left: 100px;" class="btt type3" >Forget password</div></a>
                
@@ -101,7 +104,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                 <br><br><br>
 
-                <a href="../student/signUp.php" style="margin-left: 100px;"> New user? Click here to signUp </a>
+                <a href="../student/signUp.php" style="color: #1D4354;margin-left:100px;"> New user? Click here to signUp </a>
                 <br>
                 <br>
             </div>
