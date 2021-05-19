@@ -74,7 +74,7 @@
     
         <img src="../../images/Verification_success.svg"style="margin-left:200px; " width="750px" alt="Verification image">
        
-
+     </div>   
 
     <?php include("../templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
