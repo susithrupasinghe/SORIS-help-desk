@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+
+    if ($_SESSION["role"] != "staff") {
+
+        header("Location: ../../index.php");
+    }
+}
 
 require '../../config/config.php';
 
