@@ -1,3 +1,11 @@
+<!--Session Start-->
+<?php
+session_start();
+
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+    header("Location: ../../index.php");
+}
+?>
 
 <?php
  include_once  '../../config/config.php';
@@ -15,7 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     //Check file size
                     if ($_FILES["attachment"]["size"] > 500000) {
-                        $error="Sorry,your file is too large.";
+                        echo <<< HTML
+                            <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                            <span class='closebtn'>&times;</span>
+                            <strong style= 'text-align:center;font-size: 30x;'>Sorry,your file is too large.</strong>
+                            </div>
+                            HTML;
                         $upload = 0;
                     }
 
@@ -24,7 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
                             header("Location: dashboard.php");
                         } else {
-                            $error="Sorry, there was an error uploading your file.";
+                            echo <<< HTML
+                                <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                                <span class='closebtn'>&times;</span>
+                                <strong style= 'text-align:center;font-size: 30x;'>Sorry, there was an error uploading your file.</strong>
+                                </div>
+                                HTML;
+                           
                         }
                     }
                 
@@ -130,19 +149,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="POST" enctype="multipart/form-data">
 
-            <div class="card" style="margin-left:25vw;margin-right:25vw;width:40%;">
-                <h2 style="font-family:Sitara;margin-left:170px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
+            <div class="card" style="margin-left:20vw;margin-right:25vw;width:55%;">
+                <h2 style="font-family:Sitara;margin-left:250px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
 
-                <label for="title" style="font-family:Sitara, sans-serif;font-weight:bold;">Title </label>
-                <input style="margin-left:40px;" class="txt-input" type="text" name="TitleName"></br>
-                </br>
+                <label for="title" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:45px;margin-right:30pxs;">Title </label>
+                <input style="margin-left:77px;min-width:375px" class="txt-input" type="text" name="TitleName"></br>
+                </br></br>
 
-                <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;">Content</label>
-                <textarea class="txt-input" name="addContent" rows="10" cols="40" style="margin-left:75px;"></textarea>
-                </br>
+                <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;;margin-left:45px;margin-right:10pxs">Content</label>
+                <textarea class="txt-input" name="addContent" rows="10" cols="51" style="margin-left:50px;"></textarea>
+                </br></br>
 
-                <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;">Section</Section> </label>
-                <select class="txt-input" name="section" style="margin-left:5% ;width:75%">
+                <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:45px;">Section</Section> </label>
+                <select class="txt-input" name="section" style="margin-left:50px ;min-width: 405px;">
                     
                     <?php {
 
@@ -163,11 +182,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                     ?>
                 </select>
-                </br></br></br>
+                </br></br></br></br></br>
 
 
-                <input type="file" name="attachment" id="fileselect" style="margin-left:50px;">
-                <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:5px;margin-bottom:20px"></br>
+                <input type="file" name="attachment" id="fileselect" style="margin-left:150px;">
+                <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:3px;margin-bottom:20px"></br>
 
             </div> 
 
