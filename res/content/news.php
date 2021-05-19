@@ -30,21 +30,26 @@
 
         <?php
 
+       
+
         $conn = opencon();
-        $sql = "SELECT u.firstName,u.lastName,c.id ,c.title,c.thumbnailText,c.authorid,c.tag FROM users u ,content c WHERE c.authorid = u.id AND c.tag = 'NEWS' ";
+        $sql = "SELECT u.firstName,u.lastName,c.id ,c.title,c.thumbnailText,c.authorid,c.tag FROM users u ,content c WHERE  c.tag = 'NEWS' AND c.authorId= u.id;";
 
         $result = $conn->query($sql);
+     
         if ($result->num_rows > 0) {
+            
+            echo "Row count :" . $result->num_rows ;
             echo "<table>";
             echo "<tr>";
         }
-
+       
         $i = 1;
-        $c=7;
+        // $c=7;
         while ($row = $result->fetch_assoc()) {
-            if ($i-$c==0) {
+            if ($i%5==0) {
                 echo "</tr><tr>";
-                $c=$c+6;
+                
             }
             echo "<td>";
             echo <<< HTML
