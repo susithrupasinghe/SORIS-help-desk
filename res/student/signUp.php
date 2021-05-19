@@ -1,3 +1,13 @@
+<?php
+
+    session_start();
+    if(isset($_SESSION['userid']) && isset($_SESSION['role']))
+    {
+       
+            header("Location: ../../index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -111,7 +121,7 @@
                     if ($resultQuery->num_rows != 0) {
                         echo "<div class='alert warning' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                               <span class='closebtn'>&times;</span>
-                              <strong style= 'text-align:center;font-size: 30x;'>'$Error'</strong> 
+                              <strong style= 'text-align:center;font-size: 30x;'>$Error</strong> 
                               </div> ";
                     } else {
                         $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
