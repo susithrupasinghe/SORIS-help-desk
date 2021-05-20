@@ -32,7 +32,7 @@ session_start();
 
     <div class="body-container">
         <!-- adding welcome message-->
-        <div class="card" style="margin:auto;width:60%;margin-top:auto;padding-left:50px;padding-right:50px;border-radius:20px;">
+        <div class="card" style="background-color:#fce384;margin:auto;width:60%;margin-top:auto;padding-left:50px;padding-right:50px;border-radius:20px;">
             <h4 style="text-align:center;font-family:'Sitara',sans-serif;"> Welcome to Soris Help Desk </h4>
             <p style="text-align:center;font-family:'Sitara',sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in tempus urna, eu faucibus risus. Ut pharetra non ex eu fermentum.
                 Vestibulum in luctus leo, eu vestibulum lorem. Quisque rhoncus </p>
@@ -44,9 +44,9 @@ session_start();
                 <td>
                 <!--ADDING INFORMATION LINK BLOCK-->
                 
-                        <div class="card" style="height:100px;width:110px;text-align:center;border-radius:25px;">
+                        <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
                         <a href="res/content/information.php" style="text-decoration: none;color:#000000;">
-                           <img src="images/info.svg" alt="" width="40%">
+                           <img src="images/info.svg" alt="" width="55%">
                            <p style="font-family: 'Sitara', sans-serif;">Information</p> 
 
                            </a>  
@@ -57,9 +57,9 @@ session_start();
                 <td>
                 <!-- ADDING NEWS LINK BLOCK-->
                
-                    <div class="card" style="height:100px;width:110px;text-align:center;border-radius:25px;">
+                    <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
                     <a href="res/content/news.php" style="text-decoration: none;color:#000000;">
-                        <img src="images/news.svg" alt="" width="40%">
+                        <img src="images/news.svg" alt="" width="55%">
                         <p style="font-family: 'Sitara', sans-serif;">NEWS</p>
                     </a>    
                            
@@ -69,9 +69,9 @@ session_start();
                 <td>
                 <!-- ADDING MAKE A INQUIRY LINK BLOCK-->
                
-                <div class="card"style="height:100px;width:110px;text-align:center;border-radius:25px;">
+                <div class="card"style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
                 <a href="res/student/addInquiry.php" target="_blank" style="text-decoration: none;color:#000000;">
-                        <img src="images/send.svg" alt="" width="40%">
+                        <img src="images/send.svg" alt="" width="55%">
                         <p style="font-family:'Sitara',sans-serif;"> Make a Inquiry</p>
                         </a>    
                 </div>
@@ -108,7 +108,7 @@ session_start();
                echo <<< HTML
                    <td>
                    
-                   <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;">
+                   <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
                        <h4 class="txt-green" style="font-family: 'Sitara', sans-serif;text-align:center;">$row[title]"</h4>
                        <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
                        <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>
@@ -157,7 +157,7 @@ session_start();
                echo <<< HTML
                    <td>
                    
-                   <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;">
+                   <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
                        <h4 class="txt-green" style="font-family: 'Sitara', sans-serif;text-align:center;">$row[title]"</h4>
                        <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
                        <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>
