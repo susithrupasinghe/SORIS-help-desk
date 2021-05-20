@@ -61,7 +61,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                     $_SESSION["userid"] = $email;
                     $_SESSION["role"] = "student";
-                    header("Location: /SORIS-help-desk/res/student/dashboard.php");
+                    header("Location: dashboard.php");
                 } else {
                     echo <<< HTML
             <div class="alert">

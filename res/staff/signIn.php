@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $_SESSION["userid"] = $email;
                 $_SESSION["role"] = "staff";
-                header("Location: /SORIS-help-desk/res/staff/dashboard.php");
+                header("Location: dashboard.php");
             } else {
                 echo <<< HTML
         <div class="alert">
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $_SESSION["userid"] = $email;
                 $_SESSION["role"] = "administrator";
-                header("Location: /SORIS-help-desk/res/admin/dashboard.php");
+                header("Location: ../admin/dashboard.php");
             } else {
                 echo <<< HTML
                 <div class="alert">
