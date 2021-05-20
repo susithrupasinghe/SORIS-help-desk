@@ -29,15 +29,15 @@
 
     <div class="body-container">
 
-        <h3 style="margin-left:10vw; font-family:'sitara',sans-serif;">Contact Us </h3><br>
+        <h3 style="margin:0px;margin-left:10vw; font-family:'sitara',sans-serif;">Contact Us </h3><br>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
 
 
-        <table style="border: none; width: 90%;  font-family:'sitara',sans-serif;margin:auto;">
+        <table style="border: none;font-family:'sitara',sans-serif;margin:auto;">
             <tr>
-                <td style="width: 10%;position: relative;">
+                <td style="padding: 15px;">
 
-                    <div class="card" style="width: 70%;">
+                    <div class="card" style="width:max-content;margin:0px;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Medicine </h3>
 
                         <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
@@ -53,9 +53,9 @@
                 </td>
 
 
-                <td style="width: 10%; position: relative;">
+                <td style="padding: 15px;"> 
 
-                    <div class="card" style="width: 70%;">
+                    <div class="card" style="width:max-content;margin:0px;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Engineering </h3>
 
                         <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
@@ -71,9 +71,9 @@
                 </td>
 
 
-                <td style="width: 10%; position: relative;">
+                <td style="padding: 15px;">
 
-                    <div class="card" style="width: 70%;">
+                    <div class="card" style="width:max-content;margin:0px;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Computing </h3>
 
                         <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
@@ -92,9 +92,9 @@
 
             
             <tr>
-                <td style="width: 10%;position: relative;">
+                <td style="padding: 15px;">
 
-                    <div class="card" style="width: 70%;">
+                    <div class="card" style="width:max-content;margin:0px;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Business </h3>
 
                         <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
@@ -110,9 +110,9 @@
                 </td>
 
 
-                <td style="width: 10%;position: relative;">
+                <td style="padding: 15px;">
 
-                    <div class="card" style="width: 70%;">
+                    <div class="card" style="width:max-content;margin:0px;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Art </h3>
 
                         <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
@@ -128,9 +128,9 @@
                 </td>
 
 
-                <td style="width: 10%;position: relative;">
+                <td style="padding: 15px;">
 
-                    <div class="card" style="width: 70%;">
+                    <div class="card" style="width:max-content;margin:0px;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Language </h3>
 
                         <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">

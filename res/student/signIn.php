@@ -92,7 +92,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 <div style="margin-left: 5%">Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px; min-width: 60%;" required>
                 </div>
 
-                <br>
+      
 
                 <div style="margin-left: 5%"> Password <input class="txt-input" type="password" name="password" style="margin-left: 18px; min-width: 60%;"required>
                 </div>
@@ -100,7 +100,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         	    <a href="../others/forgotPassword.php"> <div  style="margin-right: 50px;margin-left: 100px;" class="btt type3" >Forget password</div></a>
                
-                <input type="submit" value="Login" class="btt type1" name="Login">
+                <input type="submit" value="Login" class="btt type1" name="Login" style="padding-left: 35px;padding-right: 35px;padding-top: 8px;padding-bottom: 8px;">
 
                 <br><br><br>
 
