@@ -33,15 +33,18 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     <div class="body-container">
 
         <!--Front end-->
-        <form method="POST">
-            <div class="card" style="margin-left:25vw;margin-right:25vw;">
-                <h2 style="font-family:Sitara;margin-left:140px;font-family:Sitara, sans-serif;">Forgot Password</h2>
-
-                <label for="email " style="font-family:Sitara, sans-serif;font-weight:bold;">Email </label>
+        <form method="POST" >
+            <div class="card" style="margin:auto;text-align:center;">
+                <h2 style="font-family:Sitara, sans-serif;">Forgot Password</h2>
+                
+                <div >
+                <label for="email " style="font-family:Sitara,sans-serif;font-weight:bold;">Email </label>
                 <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
+                </div>
+               
                 </br> </br>
 
-                <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" style="margin-left:145px;">
+                <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" >
             </div>
         </form>
 
@@ -110,6 +113,8 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
             }
         }
         ?>
+
+        </div>
 
         <!--Footer-->
         <?php include("../../res/templates/footer.php");  ?>

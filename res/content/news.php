@@ -24,7 +24,7 @@
     <div class="body-container">
 
 
-        <h3 style="margin-left:10vw;"> NEWS </h3><br>
+        <h3 style="margin:0px;margin-left:10vw;"> NEWS </h3><br>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
 
 
