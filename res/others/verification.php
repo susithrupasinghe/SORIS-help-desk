@@ -30,7 +30,7 @@
 
            ///  Link format //////////////////
 
-        // http://localhost/SORIS-help-desk/res/others/verification.php?verification=< verification token >&&email=< email >
+        // http://localhost/SORIS-help-desk/res/others/verification.php?verification=< verification token >&&email=< email > &forogt=1
         
         // How to Create verification Token
         // Retive password hash from database according to given email
@@ -47,6 +47,7 @@
 
             $email = $_GET["email"];
             $token = base64_decode($_GET["verification"]);
+            $isforgot = $_GET["forgot"];
 
 
 
@@ -62,13 +63,16 @@
 
                     //header("Location: ../../index.php");
                 }
-
                 else{
+
                     echo <<< HTML
                     <img src="../../images/Verification_success.svg"style="margin-left:200px; " width="750px" alt="Verification image">
                     HTML;
+
+                    //header("Location: ../../index.php");
+
                 }
-            }else {
+            } else {
                 //header("Location: ../../index.php");
             }
 

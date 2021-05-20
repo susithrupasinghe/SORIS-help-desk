@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWS</title>
+    <title>SORIS Information</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
@@ -41,7 +41,7 @@
 
         $result = $conn->query($sqlQuery);
         if ($result->num_rows > 0) {
-            echo "<table>";
+            echo "<table style='margin-left: 10%;'>";
             echo "<tr>";
         }
 
@@ -57,11 +57,13 @@
             }
             echo "<td style='width:25%'>";
             echo <<< HTML
-                <div class= "card" style= "width: 150px; margin-left: 25px;min-height: 250px;padding-right: 20px;">
-                    <h3 class= "txt-green" style= "font-family: 'Sitara', sans-serif;">$row[title] </h3>
+                <div class= "card" style= "width: 150px; margin: 15px;height: 300px; position: relative;">
+                    <h3 class= "txt-green" style= "font-family: 'Sitara', sans-serif; text-align:center;">$row[title] </h3>
                     <h5 style= "font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName] </h5>
-                    <p style= "font-family: 'Sitara', sans-serif;">$row[thumbnailText] </p>
-                    <a href= "$postLink" style= "margin-left:80px;"> Read more </a>
+                    <p style= "font-family: 'Sitara', sans-serif; font-size:small;">$row[thumbnailText] </p>
+                    <div style="position: absolute;bottom: 15px;left: 37px;">
+                    <a class="btt type1" href= "$postLink" target="_blank"> Read more </a>
+                    <div>
         
                 </div>
                 HTML;

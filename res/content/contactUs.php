@@ -33,14 +33,14 @@
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
 
 
-        <table style="border: none; width: 100%;  font-family:'sitara',sans-serif;">
+        <table style="border: none; width: 90%;  font-family:'sitara',sans-serif;margin:auto;">
             <tr>
-                <td style="width: 15%;">
+                <td style="width: 10%;position: relative;">
 
-                    <div class="card" style="width: 60%;">
+                    <div class="card" style="width: 70%;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Medicine </h3>
 
-                        <div style="margin-left:10px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
+                        <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
                             <p> Phone <span style="margin-left: 20px;"> : </span><span style="margin-left: 30px;"> +947586226526 </span></p>
                             <p> Fax <span style="margin-left: 36px;"> :</span> <span style="margin-left: 30px;">+947586226526 </span></p>
                             <p> Email <span style="margin-left: 25px;"> : </span><span style="margin-left: 30px;">fomfac@soris.edu.com</span> </p>
@@ -53,12 +53,12 @@
                 </td>
 
 
-                <td style="width: 15%;">
+                <td style="width: 10%; position: relative;">
 
-                    <div class="card" style="width: 60%;">
+                    <div class="card" style="width: 70%;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Engineering </h3>
 
-                        <div style="margin-left:10px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
+                        <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
                             <p> Phone <span style="margin-left: 20px;"> : </span><span style="margin-left: 30px;"> +947586226623 </span></p>
                             <p> Fax <span style="margin-left: 36px;"> :</span> <span style="margin-left: 30px;">+947586226623 </span></p>
                             <p> Email <span style="margin-left: 25px;"> : </span><span style="margin-left: 30px;">foefac@soris.edu.com</span> </p>
@@ -71,12 +71,12 @@
                 </td>
 
 
-                <td style="width: 15%;">
+                <td style="width: 10%; position: relative;">
 
-                    <div class="card" style="width: 60%;">
+                    <div class="card" style="width: 70%;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Computing </h3>
 
-                        <div style="margin-left:10px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
+                        <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
                             <p> Phone <span style="margin-left: 20px;"> : </span><span style="margin-left: 30px;"> +947586226789 </span></p>
                             <p> Fax <span style="margin-left: 36px;"> :</span> <span style="margin-left: 30px;">+947586226789 </span></p>
                             <p> Email <span style="margin-left: 25px;"> : </span><span style="margin-left: 30px;">focfac@soris.edu.com</span> </p>
@@ -92,12 +92,12 @@
 
             
             <tr>
-                <td style="width: 15%;">
+                <td style="width: 10%;position: relative;">
 
-                    <div class="card" style="width: 60%;">
+                    <div class="card" style="width: 70%;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Business </h3>
 
-                        <div style="margin-left:10px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
+                        <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
                             <p> Phone <span style="margin-left: 20px;"> : </span><span style="margin-left: 30px;"> +947586226669 </span></p>
                             <p> Fax <span style="margin-left: 36px;"> :</span> <span style="margin-left: 30px;">+947586226669 </span></p>
                             <p> Email <span style="margin-left: 25px;"> : </span><span style="margin-left: 30px;">fobfac@soris.edu.com</span> </p>
@@ -110,12 +110,12 @@
                 </td>
 
 
-                <td style="width: 15%;">
+                <td style="width: 10%;position: relative;">
 
-                    <div class="card" style="width: 60%;">
+                    <div class="card" style="width: 70%;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Art </h3>
 
-                        <div style="margin-left:10px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
+                        <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
                             <p> Phone <span style="margin-left: 20px;"> : </span><span style="margin-left: 30px;"> +947586226665 </span></p>
                             <p> Fax <span style="margin-left: 36px;"> :</span> <span style="margin-left: 30px;">+947586226665 </span></p>
                             <p> Email <span style="margin-left: 25px;"> : </span><span style="margin-left: 30px;">foafac@soris.edu.com</span> </p>
@@ -128,12 +128,12 @@
                 </td>
 
 
-                <td style="width: 15%;">
+                <td style="width: 10%;position: relative;">
 
-                    <div class="card" style="width: 60%;">
+                    <div class="card" style="width: 70%;">
                         <h3 class="txt-green" style="text-align:center; font-family:'sitara',sans-serif;"> Faculty Of Language </h3>
 
-                        <div style="margin-left:10px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
+                        <div style="margin-left:30px; font-family:'sitara',sans-serif;font-weight:bold; font-size:12px;">
                             <p> Phone <span style="margin-left: 20px;"> : </span><span style="margin-left: 30px;"> +947586226763 </span></p>
                             <p> Fax <span style="margin-left: 36px;"> :</span> <span style="margin-left: 30px;">+947586226763 </span></p>
                             <p> Email <span style="margin-left: 25px;"> : </span><span style="margin-left: 30px;">folfac@soris.edu.com</span> </p>
