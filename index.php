@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -22,7 +22,7 @@ session_start();
 
 <body>
     <?php
-   // echo dirname(__FILE__);
+    // echo dirname(__FILE__);
     $page = "home";
     require 'config/config.php';
     include("res/templates/header.php");
@@ -42,40 +42,40 @@ session_start();
         <table style="margin: auto;">
             <tr>
                 <td>
-                <!--ADDING INFORMATION LINK BLOCK-->
-                
-                        <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
-                        <a href="res/content/information.php" style="text-decoration: none;color:#000000;">
-                           <img src="images/info.svg" alt="" width="55%">
-                           <p style="font-family: 'Sitara', sans-serif;">Information</p> 
+                    <!--ADDING INFORMATION LINK BLOCK-->
 
-                           </a>  
-                        
-                        </div>
-                      
-                </td>
-                <td>
-                <!-- ADDING NEWS LINK BLOCK-->
-               
                     <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
-                    <a href="res/content/news.php" style="text-decoration: none;color:#000000;">
-                        <img src="images/news.svg" alt="" width="55%">
-                        <p style="font-family: 'Sitara', sans-serif;">NEWS</p>
-                    </a>    
-                           
+                        <a href="res/content/information.php" style="text-decoration: none;color:#000000;">
+                            <img src="images/info.svg" alt="" width="55%">
+                            <p style="font-family: 'Sitara', sans-serif;">Information</p>
+
+                        </a>
+
                     </div>
-                
+
                 </td>
                 <td>
-                <!-- ADDING MAKE A INQUIRY LINK BLOCK-->
-               
-                <div class="card"style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
-                <a href="res/student/addInquiry.php" target="_blank" style="text-decoration: none;color:#000000;">
-                        <img src="images/send.svg" alt="" width="55%">
-                        <p style="font-family:'Sitara',sans-serif;"> Make a Inquiry</p>
-                        </a>    
-                </div>
-                
+                    <!-- ADDING NEWS LINK BLOCK-->
+
+                    <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
+                        <a href="res/content/news.php" style="text-decoration: none;color:#000000;">
+                            <img src="images/news.svg" alt="" width="55%">
+                            <p style="font-family: 'Sitara', sans-serif;">NEWS</p>
+                        </a>
+
+                    </div>
+
+                </td>
+                <td>
+                    <!-- ADDING MAKE A INQUIRY LINK BLOCK-->
+
+                    <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
+                        <a href="res/student/addInquiry.php" target="_blank" style="text-decoration: none;color:#000000;">
+                            <img src="images/send.svg" alt="" width="55%">
+                            <p style="font-family:'Sitara',sans-serif;"> Make a Inquiry</p>
+                        </a>
+                    </div>
+
                 </td>
             </tr>
         </table>
@@ -95,17 +95,15 @@ session_start();
 
             while ($row = $result->fetch_assoc()) {
 
-                if ($i%5==0) {
-   
-                   if($i==0){
-   
-                   }
-                   else{
-                       echo "</tr><tr>";
-                   }
-                   $url = "content.php?id=".$row['id'];
-               }
-               echo <<< HTML
+                if ($i % 5 == 0) {
+
+                    if ($i == 0) {
+                    } else {
+                        echo "</tr><tr>";
+                    }
+                }
+                $url = "res/content/content.php?id=" . $row['id'];
+                echo <<< HTML
                    <td>
                    
                    <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
@@ -119,14 +117,14 @@ session_start();
                    </div>
                    </td>
                    HTML;
-              
-               $i++;
-           }
-   
-           echo "</tr></table>";
+
+                $i++;
+            }
+
+            echo "</tr></table>";
         }
 
- 
+
 
         ?>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
@@ -144,17 +142,15 @@ session_start();
 
             while ($row = $result->fetch_assoc()) {
 
-                if ($i%5==0) {
-   
-                   if($i==0){
-   
-                   }
-                   else{
-                       echo "</tr><tr>";
-                   }
-                   $url = "content.php?id=".$row['id'];
-               }
-               echo <<< HTML
+                if ($i % 5 == 0) {
+
+                    if ($i == 0) {
+                    } else {
+                        echo "</tr><tr>";
+                    }
+                }
+                $url = "res/content/content.php?id=" . $row['id'];
+                echo <<< HTML
                    <td>
                    
                    <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
@@ -168,11 +164,11 @@ session_start();
                    </div>
                    </td>
                    HTML;
-              
-               $i++;
-           }
-   
-           echo "</tr></table>";
+
+                $i++;
+            }
+
+            echo "</tr></table>";
         }
 
 
