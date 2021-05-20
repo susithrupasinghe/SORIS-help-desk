@@ -15,6 +15,7 @@ session_start();
     <title>SORIS Help Desk</title>
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="icon" href="images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
 </head>
