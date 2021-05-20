@@ -119,10 +119,12 @@
                     $resultQuery = $conn->query($sqlquery);
 
                     if ($resultQuery->num_rows != 0) {
-                        echo "<div class='alert warning' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                              <span class='closebtn'>&times;</span>
-                              <strong style= 'text-align:center;font-size: 30x;'>$Error</strong> 
-                              </div> ";
+                        echo <<<HTML
+                                <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                                <span class='closebtn'>&times;</span>
+                                <strong style= 'text-align:center;font-size: 30x;'>$Error</strong> 
+                                </div> "
+                                HTML;
                     } else {
                         $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
                                  values( '0', '$eMail', '$fName', '$lName', '$faculty','$hashPass', 'Student','$sid')";
@@ -132,7 +134,7 @@
                         if ($result === TRUE) {
 
                               $verification_token = base64_encode($hashPass);
-                              $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail";
+                              $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
                               $verify_mail= send_Verify_Email($eMail,$link);
                             ///  Link format //////////////////
 
@@ -148,16 +150,20 @@
                             //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
                             //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
 
-                            echo "<div class='alert info' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                                  <span class='closebtn'>&times;</span>
-                                  <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
-                                  </div> ";
+                            echo <<< HTML
+                                    <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                                    <span class='closebtn'>&times;</span>
+                                    <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
+                                    </div> 
+                                  HTML;
 
                         } else if ($result === FALSE) {
-                            echo "<div class='alert warning' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                                  <span class='closebtn'>&times;</span>
-                                  <strong style= 'text-align:center;font-size: 30x;'>Please register again!/strong> 
-                                  </div> ";
+                            echo <<<HTML
+                                    <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                                    <span class='closebtn'>&times;</span>
+                                    <strong style= 'text-align:center;font-size: 30x;'>Please register again!</strong> 
+                                    </div> 
+                                 HTML;
                         }
                     }
                 }
