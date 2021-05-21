@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form method="POST">
 
-            <div class="card" style="margin:auto;text-align:center;">
+            <div class="card" style="margin-left:auto;margin-right:auto;text-align:center;border:3px solid #08A73A;">
 
                 <h1 style="text-align:center;"> Staff/Administrator signIn </h1>
                 <br>
