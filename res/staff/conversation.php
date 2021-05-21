@@ -131,7 +131,7 @@ function message($name, $date, $text, $attachment, $role)
         <!-- <div class="card"> -->
         <table>
         <tr>
-        <td rowspan="2"><img src="/SORIS-help-desk/images/student.png" alt="" style="max-width:65px;border-radius:50%;border:2px solid #1D4354;"></td>
+        <td rowspan="2"><img src="../../images/student.png" alt="" style="max-width:65px;border-radius:50%;border:2px solid #1D4354;"></td>
         <td> <h3 class ="txt-green" style="display:inline;margin-top:-40px;padding-left:15px;">$name</h3></td>
         </tr>
         <tr>
@@ -151,7 +151,7 @@ function message($name, $date, $text, $attachment, $role)
             echo <<< HTML
 
             <a href="$attachment" target="_blank" style="text-decoration: none"> 
-            <img width=25 src="/SORIS-help-desk/images/attachment.svg"> <h5 style="display:inline;">Download attachment</h5>
+            <img width=25 src="../../images/attachment.svg"> <h5 style="display:inline;">Download attachment</h5>
             </a>
             HTML;
         }
@@ -174,7 +174,7 @@ function message($name, $date, $text, $attachment, $role)
         <!-- <div class="card" style="min-width:80%;"> -->
         <table>
         <tr>
-        <td rowspan="2"><img src="/SORIS-help-desk/images/staff.png" alt="" style="max-width:65px;border-radius:50%;border:2px solid #1D4354;"></td>
+        <td rowspan="2"><img src="../../images/staff.png" alt="" style="max-width:65px;border-radius:50%;border:2px solid #1D4354;"></td>
         <td> <h3  class ="txt-green" style="display:inline;margin-top:-40px;padding-left:15px;">$name</h3></td>
         </tr>
         <tr>
@@ -193,7 +193,7 @@ function message($name, $date, $text, $attachment, $role)
             echo <<< HTML
 
             <a href="$attachment" target="_blank" style="text-decoration: none"> 
-            <img width=25 src="/SORIS-help-desk/images/attachment.svg"> <h5 style="display:inline;">Download attachment</h5>
+            <img width=25 src="../../images/attachment.svg"> <h5 style="display:inline;">Download attachment</h5>
             </a>
             HTML;
         }

@@ -55,7 +55,7 @@
                 echo <<< HTML
                     <td>
                     
-                    <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;">
+                    <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
                         <h4 class="txt-green" style="font-family: 'Sitara', sans-serif;text-align:center;">$row[title]"</h4>
                         <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
                         <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>

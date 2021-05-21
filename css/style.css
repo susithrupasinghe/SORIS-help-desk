@@ -143,6 +143,7 @@ body {
 
 .body-container {
   min-height: 60vh;
+  /*background-color: #ecf3ee;*/
   background-color: #ecf3ee;
   padding-left: 100px;
   padding-right: 100px;
