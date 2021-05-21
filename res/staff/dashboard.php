@@ -48,8 +48,35 @@ include("../../res/templates/navigation.php");
 
  <div class="body-container">
 
-    <h2 style="font-family:Sitara;margin-left:10px;font-family:Sitara, sans-serif;color:#08A73A;">Active Inquery</h2>
-    </br></br>
+    <?php
+    //require '../../config/config.php';
+
+    $con=openCon();
+
+    //$sq = "SELECT COUNT(id) FROM inqiry WHERE isActive='1'";
+    echo"<h3> gg</h3>";
+    //$row = mysqli_fetch_row($result);
+    if (isset($_GET['email']))
+    {
+        $email = $_GET["email"];
+        
+        $sq = "SELECT COUNT(id) FROM inquiry WHERE isActive='1' && email='$email'";
+        $result = $con->query($sq);
+        if ($result->num_rows > 0)
+        {
+            
+            $count = $sq;
+            echo <<< HTML
+            <h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">Active inquiry count : </h3><h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">$count</h3>
+            HTML;
+        }
+    }
+    
+    
+    ?>
+
+    <h2 style="font-family:Sitara;margin-left:10px;color:#08A73A;">Active Inquery</h2>
+    </br>
 
     <table class="table-style" style="max-width: 80%;margin:auto;">
             <tr>
@@ -64,10 +91,27 @@ include("../../res/templates/navigation.php");
             </tr>
 
             <?php
-                require '../../config/config.php';
+               //require '../../config/config.php';
 
                 $con=openCon();
-                $sql1 = "SELECT id,title,createdDate,lastModifiedDate,";
+
+                if (isset($_GET['email']))
+                {
+                    $email = $_GET["email"];
+
+                    $sql1 = "SELECT id,title,createdDate,lastModifiedDate FROM inquiry WHERE isActive='1' && email='$email'";
+                    $result = $con->query($sql1);
+
+                   if($result->num_rows>0)
+                   {
+                       while($row = $result->fetch_assoc())
+                       {
+                           
+                       }
+                   }
+
+                }
+                
             ?>
     <?php
       /*  $conn = openCon();

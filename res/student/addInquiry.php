@@ -2,121 +2,120 @@
 <?php
 session_start();
 
-if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
-    header("Location: ../../index.php");
-}
+//if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+//header("Location: ../../index.php");
+//}
 ?>
 
 <?php
- include_once  '../../config/config.php';
+include_once  '../../config/config.php';
 
- $error = "";
-
+//Upload attachment
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $conn = openCon();
+    if (isset($_POST['btnsubmit'])) {
+        $target_dir = "../uploads/";
+        $target_file = $target_dir . $_FILES["attachment"]["name"];
+        $upload = 1;
 
-            if (isset($_POST['btnsubmit'])) {
-
-
-                    $target_dir = "../uploads/";
-                    $target_file = $target_dir .$_FILES["attachment"]["name"];
-                    $upload = 1;
-
-                    //Check file size
-                    if ($_FILES["attachment"]["size"] > 500000) {
-                        echo <<< HTML
-                            <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                            <span class='closebtn'>&times;</span>
-                            <strong style= 'text-align:center;font-size: 30x;'>Sorry,your file is too large.</strong>
-                            </div>
-                            HTML;
-                        $upload = 0;
-                    }
-
-                    if ($upload == 0) {
-                    } else {
-                        if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
-                            header("Location: dashboard.php");
-                        } else {
-                            echo <<< HTML
-                                <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                                <span class='closebtn'>&times;</span>
-                                <strong style= 'text-align:center;font-size: 30x;'>Sorry, there was an error uploading your file.</strong>
-                                </div>
-                                HTML;
-                           
-                        }
-                    }
-                
-
-                $conn = openCon();
-               
-                $TitleName = $_POST['TitleName'];
-                $Cdatetime = date("Y-m-d h:i:s");
-                $Mdatetime = date("Y-m-d h:i:s");
-                $active=1;
-        
-               /* $filename = $_FILES['attachment']['name'];
-        
-                if($filename != ""){
-        
-                $destination = '../uploads/' . $filename;
-        
-                $file = $_FILES['attachment']['tmp_name'];
-        
-                if (move_uploaded_file($file, $destination)) {
-        
-                    $attachment = $filename;
-                           
-                } else {
-                    echo "Failed to upload file.";
-                    }
-                }
-                
-                $sql = "INSERT INTO conversations(attachment)VALUES('$attachment')";
-                $result = $conn->query($sql);*/
-
-                $sql = "INSERT INTO inquiry(title,createdDate,lastModifiedDate,isActive) VALUES ('$TitleName','$Cdatetime','$Mdatetime','$active')";
-                $result = $conn->query($sql);
-
-                //insert into Content to the conversations table
-                $sqli = "SELECT id from inquiry";
-
-                $sql2="SELECT id from conversations WHERE id=".$sqli;
-                $result = $conn->query($sql2);
-
-                if ($result->num_rows > 0) {
-                   
-                    $content=$_POST['addContent'];
-                    $sql3="INSERT INTO conversations(text)VALUE('$content')";
-
-                }
-
-                //insert into file
-               /* $sqli = "SELECT id from inquiry";
-
-                $sql2="SELECT id from conversations WHERE id=".$sqli;
-                $result = $conn->query($sql2);
-
-                if ($result->num_rows > 0) {
-                    $row = mysqli_fetch_row($result);
-                    $filename = $_FILES['attachment']['name'];
-
-                }*/
-
-                //insert into staffid
-                $sql4="SELECT stdid from users WHERE role='staff'";
-                $res =  $conn->query($sql4);
-
-                while($res->num_rows > 0) {
-                    $row = mysqli_fetch_row($res);
-                   // $section = $_POST['section'];
-                    $sql="INSERT INTO inquiry (currentStaffId) VALUE ('$sql4 ')";
-                    break;
-                    }
-                }
-
+        //Check file size
+        if ($_FILES["attachment"]["size"] > 500000) {
+            echo <<< HTML
+                    <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                    <span class='closebtn'>&times;</span>
+                    <strong style= 'text-align:center;font-size: 30x;'>Sorry,your file is too large.</strong>
+                    </div>
+                HTML;
+            $upload = 0;
         }
-            ?>
+
+        if ($upload == 0) {
+        } else {
+            if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
+                header("Location: dashboard.php");
+            } else {
+                /*echo <<< HTML
+            <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+            <span class='closebtn'>&times;</span>
+            <strong style= 'text-align:center;font-size: 30x;'>Sorry, there was an error uploading your file.</strong>
+            </div>
+            HTML;*/
+            }
+        }
+
+
+        $conn = openCon();
+
+        $TitleName = $_POST['TitleName'];
+        $Cdatetime = date("Y-m-d h:i:s");
+        $Mdatetime = date("Y-m-d h:i:s");
+        $active = 1;
+
+        //insert into staffid
+        $sql4 = "SELECT id from users WHERE role='staff'";
+        $res =  $conn->query($sql4);
+
+        if ($res->num_rows > 0) {
+            $row = mysqli_fetch_row($res);
+            $staffid =  $row[0];
+           // $section = $_POST['section'];
+            $sql = "INSERT INTO inquiry (currentStaffId) VALUES ('$staffid')";
+            echo "vvvvvvvvvvvv";
+        }
+
+        $sql = "INSERT INTO inquiry(title,createdDate,lastModifiedDate,isActive) VALUES ('$TitleName','$Cdatetime','$Mdatetime','$active')";
+        $result1 = $conn->query($sql);
+
+        if ($result1 === true) {
+            $last_id = $conn->insert_id;
+
+            $sql1 = "SELECT conversationStarter FROM inquiry WHERE id='$last_id'";
+            $result2 = $conn->query($sql1);
+
+            if ($result2->num_rows > 0) {
+                //$row = mysqli_fetch_row($result2);
+                $text = $_POST['addContent'];
+
+                $sql2 = "INSERT INTO conversations(inquiryId,text) VALUES(' $last_id','$text')";
+                $result = $conn->query($sql2);
+
+                //insert file
+                $fname = $_FILES['attachment']['name'];
+
+                if ($fname != "") {
+
+
+                    $destination = '../uploads/' . $fname;
+
+                    $file = $_FILES['attachment']['tmp_name'];
+
+                    if (move_uploaded_file($file, $destination)) {
+
+                        $attachment = $fname;
+                        $sql3 = "INSERT INTO conversations(attachment) VALUES ('$attachment')";
+                        $result = $conn->query($sql3);
+                    } else {
+                        echo "Failed to upload file.";
+                    }
+                }
+            }
+        }
+
+        //insert into  conversationStarter
+        $email = $_GET["email"];
+
+        $sql2 = "SELECT id FROM users WHERE email='$email'";
+        $res = $conn->query($sql);
+
+        if ($res->num_rows > 0) {
+            $row = mysqli_fetch_row($res);
+
+            $conversationStarter = $sql2;
+            $sql3 = "INSERT INTO inquiry(conversationStarter) VALUES (' $conversationStarter')";
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -162,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:45px;">Section</Section> </label>
                 <select class="txt-input" name="section" style="margin-left:50px ;min-width: 405px;">
-                    
+
                     <?php {
 
                         $conn = openCon();
@@ -188,13 +187,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="file" name="attachment" id="fileselect" style="margin-left:150px;">
                 <input type="submit" value="Submit" class="btt type1" name="btnsubmit" style="margin-left:3px;margin-bottom:20px"></br>
 
-            </div> 
+            </div>
 
         </form>
     </div>
 
-    <?php 
-    echo "<script>alert".$error."</script>";
+    <?php
     include("../../res/templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
 
