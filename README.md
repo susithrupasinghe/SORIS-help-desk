@@ -28,3 +28,11 @@ FAQ will be displayed on the site so students can browse them to solve their pro
 5.  Ekanayake E.M.S.D
 
 
+## 3.   Technologies
+
+1.  PHP
+2.  CSS
+3.  Java Script
+4.  HTML
+5.  MYSQL 
+6.  SMTP for sending emails
