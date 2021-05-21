@@ -35,4 +35,4 @@ FAQ will be displayed on the site so students can browse them to solve their pro
 3.  Java Script
 4.  HTML
 5.  MYSQL 
-6.  SMTP for sending emails
+6.  SMTP for sending an emails
