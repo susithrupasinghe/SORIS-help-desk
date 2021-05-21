@@ -39,7 +39,7 @@
     <div class="body-container">
 
         <form method="post">
-            <div class="card" id="card" style="min-width:50%;margin-left:auto;margin-right:auto;">
+            <div class="card" id="card" style="min-width:50%;margin-left:auto;margin-right:auto;border:3px solid #08A73A;">
                 <h1 style="text-align:center; font-style:bold; font-family:'sitara',sans-serif;"> Student SignUp </h1>
                 <br>
 
