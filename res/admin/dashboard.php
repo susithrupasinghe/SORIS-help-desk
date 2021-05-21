@@ -47,28 +47,32 @@
         <h1 style="text-align:center; font-style:bold; font-family:'sitara',sans-serif;">Add Section </h1>
         <br>
 
+        <label for="staffID" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Staff ID </label>
+        <input class="txt-input" type="text" style="margin-left:95px;" name="staffID" id="staffID" required>
+        <br>
+
         <label for="sectionName" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Section Name </label>
-        <input class="txt-input" type="text" style="margin-left:65px;" name="firstName" id="sectionName" required>
+        <input class="txt-input" type="text" style="margin-left:45px;" name="sectionName" id="sectionName" required>
         <br>
 
         <label for="sectionUserName" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Name </label>
-        <input class="txt-input" type="text" style="margin-left:63px;" name="lname" id="sectionUserName" required>
+        <input class="txt-input" type="text" style="margin-left:107px;" name="sectionUserName" id="sectionUserName" required>
         <br>
 
         <label for="mail" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Email </label>
-        <input class="txt-input" type="text" oninput="validateEmail(this)" style="margin-left:103px;" name="email" id="mail" required>
+        <input class="txt-input" type="text" oninput="validateEmail(this)" style="margin-left:110px;" name="email" id="mail" required>
         <br>
 
         <label for="faculty" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Faculty </label>
-        <input class="txt-input" type="text" style="margin-left:63px;" name="faculty" id="faculty" required>
+        <input class="txt-input" type="text" style="margin-left:97px;" name="faculty" id="faculty" required>
         <br>
 
         <label for="password" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;"> Password </label>
-        <input class="txt-input" type="password" style="margin-left:72px;" id="psw1" oninput="verifyPassword(this)" id="password" name="psw" required>
+        <input class="txt-input" type="password" style="margin-left:79px;" id="psw1" oninput="verifyPassword(this)" id="password" name="psw" required>
         <br>
 
         <label for="reEnterPassword" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Password re-type </label>
-        <input class="txt-input" type="password" style="margin-left:15px;" id="psw2" oninput="verifyPassword(this)" id="reEnterPassword" name="rpsw" required>
+        <input class="txt-input" type="password" style="margin-left:22px;" id="psw2" oninput="verifyPassword(this)" id="reEnterPassword" name="rpsw" required>
         <br>
 
         <br><br>
@@ -80,12 +84,12 @@
 
 
         $conn = openCon();
-        $Error = "You are already redistered! Visit SignIn page.";
+        
         if (isset($_POST['submit'])) {
 
-            $sid = $_POST['sid'];
-            $fName = $_POST['fname'];
-            $lName = $_POST['lname'];
+            $staffId = $_POST['staffID'];
+            $sectionName = $_POST['sectionName'];
+            $userName = $_POST['sectionUserName'];
             $eMail = $_POST['email'];
             $faculty = $_POST['faculty'];
             $nPassword = $_POST['psw'];
@@ -105,7 +109,7 @@
                         HTML;
             } else {
                 $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
-                         values( '0', '$eMail', '$fName', '$lName', '$faculty','$hashPass', 'Student','$sid')";
+                         values( '0', '$eMail', '$sectionName', '$userName', '$faculty','$hashPass', 'Staff','$staffId')";
 
                 $result = $conn->query($query);
 
