@@ -78,7 +78,7 @@
                             echo "<option> $faculty </option>";
                         }
                     }
-                    $con->close();
+                    closeCon($conn);
                     ?>
                 </select>
 
@@ -167,7 +167,7 @@
                         }
                     }
                 }
-
+                closeCon($conn);
                 ?>
             </div>
         </form>

@@ -1,17 +1,13 @@
 <?php
 
-    session_start();
-    if(isset($_SESSION['userid']) && isset($_SESSION['role']))
-    {
-        if($_SESSION['role'] != 'administrator')
-        {
-            header("Location: ../../index.php");
-        }
-    }
-    else
-    {
+session_start();
+if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
+    if ($_SESSION['role'] != 'administrator') {
         header("Location: ../../index.php");
     }
+} else {
+    header("Location: ../../index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +77,8 @@
                         HTML;
                 $i++;
             }
+
+            closeCon($conn);
             ?>
 
         </table>
@@ -165,19 +163,6 @@
                             $verification_token = base64_encode($hashPass);
                             $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
                             $verify_mail = send_Verify_Email($eMail, $link);
-                            ///  Link format //////////////////
-
-                            // http://localhost/SORIS-help-desk/res/others/verification.php?verification=< verification token >&email=< email >
-
-                            // How to Create verification Token
-                            // Retive password hash from database according to given email
-                            // Then encode it as Base64 string, Like this,
-                            // $verification_token = base64_encode($password_hash)
-                            // Now you can create URL like above i mentioned
-
-                            //$verification_token = base64_encode($password_hash)
-                            //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
-                            //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
 
                             echo <<< HTML
                             <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
@@ -195,7 +180,7 @@
                         }
                     }
                 }
-
+                closeCon($conn);
                 ?>
             </div>
         </form>

@@ -72,6 +72,7 @@
         }
 
         echo "</table>";
+        closeCon($conn);
 
         ?>
 
