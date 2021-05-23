@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     if ($_SESSION['role'] != 'administrator') {
@@ -22,14 +21,19 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/signup.css">
 
-
+    <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
+    <!-- <style>
+       th{
+            text-align:center;
+        }
+    </style> -->
 </head>
 
 <body>
 
     <?php
-    $page = "admin dashboard";
+    $page = "adminDashboard";
     require '../../config/config.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
@@ -37,25 +41,23 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
     <div class="body-container">
 
-
         <h3 class="txt-green" style="margin-left:80px;font-size:25px;">Statictics </h3><br>
 
-        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto; text-align:center;">
+        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto;text-align:center;">
             <tr>
-                <th style="text-align:center;">Section Name</th>
-                <th style="text-align:center;">Active Inquiries</th>
-                <th style="text-align:center;">Close Inquiries</th>
+                <th style=" text-align:center;">Section Name</th>
+                <th style=" text-align:center;">Active Inquiries</th>
+                <th style=" text-align:center;">Close Inquiries</th>
             </tr>
 
             <?php
             $conn = openCon();
             $sqlquery = "SELECT DISTINCT id , firstName , lastName  FROM users WHERE role='staff';";
-
             $result = $conn->query($sqlquery);
-
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $stID = $row['id'];
+
                 $sqlQuery1 = "SELECT count(isActive) As 'Active' from inquiry where isActive = '1' AND currentStaffId = '$stID';";
                 $result1 = $conn->query($sqlQuery1);
                 $row1 = $result1->fetch_assoc();
@@ -77,15 +79,9 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                         HTML;
                 $i++;
             }
-
             closeCon($conn);
             ?>
-
         </table>
-
-
-
-
 
         <form method="post">
             <div class="card" id="card" style="min-width:50%;margin-left:auto;margin-right:auto;">
@@ -121,13 +117,9 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                 <br>
 
                 <br><br>
-                <input type="submit" value="Add Section" name="submit" class="btt type1" style="align-items:center; margin-left: 40%;" href="signIn.php">
-
-
+                <input type="submit" value="Add Section" name="submit" class="btt type1" style="align-items:center; margin-left:35%; padding:10px 70px;" href="signIn.php">
 
                 <?php
-
-
                 $conn = openCon();
 
                 if (isset($_POST['submit'])) {
@@ -142,7 +134,6 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
 
                     $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
-
                     $resultQuery = $conn->query($sqlquery);
 
                     if ($resultQuery->num_rows != 0) {
@@ -154,29 +145,27 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                         HTML;
                     } else {
                         $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
-                         values( '0', '$eMail', '$sectionName', '$userName', '$faculty','$hashPass', 'Staff','$staffId')";
-
+                                values( '0', '$eMail', '$sectionName', '$userName', '$faculty','$hashPass', 'Staff','$staffId')";
                         $result = $conn->query($query);
 
                         if ($result === TRUE) {
-
                             $verification_token = base64_encode($hashPass);
                             $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
                             $verify_mail = send_Verify_Email($eMail, $link);
 
                             echo <<< HTML
-                            <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                            <span class='closebtn'>&times;</span>
-                            <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
-                            </div> 
-                          HTML;
+                                    <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                                    <span class='closebtn'>&times;</span>
+                                    <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
+                                    </div> 
+                                HTML;
                         } else if ($result === FALSE) {
                             echo <<< HTML
-                            <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                            <span class='closebtn'>&times;</span>
-                            <strong style= 'text-align:center;font-size: 30x;'>Please register again!</strong> 
-                            </div> 
-                         HTML;
+                                    <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                                    <span class='closebtn'>&times;</span>
+                                    <strong style= 'text-align:center;font-size: 30x;'>Please register again!</strong> 
+                                    </div> 
+                                 HTML;
                         }
                     }
                 }
@@ -184,10 +173,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                 ?>
             </div>
         </form>
-
     </div>
-
-
 
     <script>
         function validateEmail(param) {
@@ -213,6 +199,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
             if ((input.match(upperCase)) && (input.match(lowerCase)) && (input.match(number)) && (len >= 4) && (len <= 10) && (input.match(symbol))) {
                 newPassword.style.border = "3px solid #1d4354";
+                return true;
             } else {
                 newPassword.style.border = "3px solid #ff0000";
                 return false;
@@ -225,21 +212,15 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
             if (reTypePassword === enterPassword) {
                 rePassword.style.border = "3px solid #1d4354";
+                return true;
             } else {
                 rePassword.style.border = "3px solid #ff0000";
+                return false;
             }
         }
     </script>
 
-
-
-
-
-
-    <?php
-    include("../templates/footer.php");
-    ?>
-
+    <?php include("../templates/footer.php"); ?>
     <script src="../../js/script.js"></script>
 
 </body>
