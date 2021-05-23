@@ -23,11 +23,15 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
     <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
-    <!-- <style>
-       th{
-            text-align:center;
+    <style>
+        .table-style th {
+            text-align: center;
         }
-    </style> -->
+
+        .table-style td {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +47,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
         <h3 class="txt-green" style="margin-left:80px;font-size:25px;">Statictics </h3><br>
 
-        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto;text-align:center;">
+        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto;">
             <tr>
                 <th style=" text-align:center;">Section Name</th>
                 <th style=" text-align:center;">Active Inquiries</th>
