@@ -51,41 +51,46 @@ include("../../res/templates/navigation.php");
 
     <?php
         //require '../../config/config.php';
-
         $con=openCon();
 
-        $uMail=$_SESSION['userid'];
+            $uMail=$_SESSION['userid'];
+        
+            $sql1 = "SELECT id FROM users WHERE email='$uMail'";
+            $result1= $con->query($sql1);
 
-        $sql1 = "SELECT id FROM users WHERE email='$uMail'";
-        $result1= $con->query($sql1);
+            while ($row = $result1->fetch_assoc())
+            { 
+                $uid = $row['id'];
+            }
 
-        if($result1->num_rows > 0)
-        {
-            $row = mysqli_fetch_row($result1);
-            $stffId = $row[0];
+            $sqlA = "SELECT COUNT(isActive) AS 'Active' FROM inquiry WHERE currentStaffId = $uid  && isActive = '1'";
+            $result1A= $con->query($sqlA);
 
-            //while($row = $result1->fetch_assoc())
-           // {
-                //$stffId = $row['id'];
-
-            $sql2 = "SELECT COUNT(isActive) FROM inqiry WHERE isActive='1' AND currentStaffId = $sql1";
-            $result2 = $con->query($sql2);
-            //$row1 = $result2->fetch_assoc();
-           
-           // while($row = $result2->fetch_assoc())
-           // {
-                //$Active = $row['isActive']; 
-            //echo $Active;
-           // }
-                
-           // }
+            while ($row = $result1A->fetch_assoc())
+            {
+                $Active = $row['Active'];
+            }
             
-
-            /*echo <<< HTML
-            <h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">Active inquiry count : </h3><h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">$Active</h3>
-            HTML;*/
-
             echo <<< HTML
+            <h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;Active inquiry count : style=font-family:Sitara;margin-left:10px;color:#1D4354;">$Active</h3>
+            HTML;
+
+            //=================
+            $sqlC = "SELECT COUNT(isActive) AS 'Active' FROM inquiry WHERE currentStaffId = $uid  && isActive = '0'";
+            $result1C= $con->query($sqlC);
+
+            while ($row = $result1C->fetch_assoc())
+            {
+                $close = $row['Active'];
+            }
+            
+            echo <<< HTML
+            <h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;Close inquiry count : style=font-family:Sitara;margin-left:10px;color:#1D4354;">$close</h3>
+            HTML;
+
+
+            //active
+           echo <<< HTML
             <h2 style="font-family:Sitara;margin-left:10px;color:#08A73A;">Active Inquery</h2>
             <br>
 
@@ -102,75 +107,94 @@ include("../../res/templates/navigation.php");
             </tr>
             HTML;
 
-            $sql3 = "SELECT id FROM users WHERE email='$uMail'";
-            $result3 = $con->query($sql3);
+            $sql1 = "SELECT id,title,createdDate,lastModifiedDate,conversationStarter FROM inquiry WHERE currentStaffId='$uid' && isActive = '1'";
+            $result1= $con->query($sql1);
 
-            if ($result3->num_rows > 0)
-            { 
-                $uid = $row[0];
-                $sql4 = "SELECT id,title FROM inquiry WHERE id='$uid'";
-               // $row = mysqli_fetch_row($result3);
+            while ($rows = $result1->fetch_assoc()) 
+            {
+                $idA = $rows['id']; 
+                $titleA = $rows['title'];
+                $SubmitedDateA = $rows['createdDate'];
+                $LastModifiedDateA = $rows['lastModifiedDate'];
+                $StudentIDA = $rows['conversationStarter'];
 
-                $id = $row['id']; 
+                $sql2 = "SELECT faculty FROM users WHERE id = '$StudentIDA'";
+                $result2= $con->query($sql2);
+
+                while ($rows = $result2->fetch_assoc())
+                {
+                    $FacultyA = $rows['faculty'];
+                }
 
                 echo <<< HTML
-                <td>>f</td>
+                <tr>
+                <td>$idA</td>
+                <td>$titleA</td>
+                <td>$$SubmitedDateA</td>
+                <td>$LastModifiedDateA</td>
+                <td>$StudentIDA</td>
+                <td>$FacultyA</td>
+                </tr>
+                <br><br>
                 HTML;
+                
             }
-        }
-    
-    
-    ?>
 
+            //cldjksol===================
+            echo <<< HTML
+            <!--<h2 style="font-family:Sitara;margin-left:10px;color:#08A73A;">Close Inquery</h2>-->
+            <br>
 
-    
+            <table class="table-style" style="max-width: 80%;margin:auto;">
+            <tr>
+                <th>Inquiry ID</th>
+                <th>Title</th>
+                <th>Faculty</th>
+                <th>Student ID</th>
+                <th>Section</th>
+                <th>Last Modified Date</th>
+                <th>Submited Date</th>
+                <th>Details</th>
+            </tr>
+            HTML;
 
-            <?php
+            $sql3= "SELECT id,title,createdDate,lastModifiedDate,conversationStarter FROM inquiry WHERE currentStaffId='$uid' && isActive = '0'";
+            $result3= $con->query($sql3);
 
-               //require '../../config/config.php';
-
-                //$con=openCon();
-
-                
-
-                /*if (isset($_GET['email']))
-                {
-                    $email = $_GET["email"];
-
-                    $sql1 = "SELECT id,title,createdDate,lastModifiedDate FROM inquiry WHERE isActive='1' && email='$email'";
-                    $result = $con->query($sql1);
-
-                   if($result->num_rows>0)
-                   {
-                       while($row = $result->fetch_assoc())
-                       {
-                           
-                       }
-                   }
-
-                }*/
-                
-            ?>
-    <?php
-      /*  $conn = openCon();
-
-        $sql="SELECT id FROM inquiry WHERE isActive='1'";
-        $result = $conn->query($sql);
-        $i=0;
-
-        if($result->num_rows > 0)
-        {
-            while($result!=true)
+            while ($rows = $result3->fetch_assoc()) 
             {
-                $i=$i+1;
-                break;
-            }
-            
-           
-        }
-        echo "Active inquiry count :$i";*/
+                $idC = $rows['id']; 
+                $titleC = $rows['title'];
+                $SubmitedDateC = $rows['createdDate'];
+                $LastModifiedDateC = $rows['lastModifiedDate'];
+                $StudentIDC = $rows['conversationStarter'];
 
+                $sql4 = "SELECT faculty FROM users WHERE id = '$StudentIDC'";
+                $result4 = $con->query($sql4);
+
+                while ($rows = $result4->fetch_assoc())
+                {
+                    $FacultyC = $rows['faculty'];
+                }
+
+                echo <<< HTML
+                <tr>
+                <td>$idC</td>
+                <td>$titleC</td>
+                <td>$SubmitedDateC</td>
+                <td>$LastModifiedDateC</td>
+                <td>$StudentIDC</td>
+                <td>$FacultyC</td>
+                </tr>
+                HTML;
+                
+            }
+
+            
+    
+    
     ?>
+
 </table>
  </div>
 
