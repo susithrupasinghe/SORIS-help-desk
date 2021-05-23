@@ -1,9 +1,7 @@
 <?php
-
     session_start();
     if(isset($_SESSION['userid']) && isset($_SESSION['role']))
-    {
-       
+    {    
             header("Location: ../../index.php");
     }
 ?>
@@ -19,10 +17,8 @@
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/signup.css">
-
-
+    <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
-
 </head>
 
 <body>
@@ -33,8 +29,6 @@
     include("../templates/header.php");
     include("../templates/navigation.php");
     ?>
-
-
 
     <div class="body-container">
 
@@ -63,25 +57,19 @@
                 <select class="txt-input" size="1" style="margin-left:90px; width:347px;" name="faculty" id="faculty" required>
 
                     <?php
-
                     $con = openCon();
 
                     $sql_query = "SELECT DISTINCT faculty FROM users WHERE role= 'admin' OR role= 'staff'";
-
                     $result = $con->query($sql_query);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-
                             $faculty = $row['faculty'];
-
                             echo "<option> $faculty </option>";
                         }
-                    }
-                    $con->close();
+                    }                  
                     ?>
                 </select>
-
                 <br>
 
                 <label for="password" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;"> Password </label>
@@ -90,19 +78,17 @@
 
                 <label for="reEnterPassword" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Password re-type </label>
                 <input class="txt-input" type="password" style="margin-left:15px;" id="psw2" oninput="verifyPassword(this)" id="reEnterPassword" name="rpsw" required>
-                <br>
-
-                <br><br>
+                <br><br><br>
+                
                 <input type="submit" value="SignUp Now" name="submit" class="btt type1" style="align-items:center; margin-left: 40%;" href="signIn.php">
-                <br>
-                <br>
+                <br><br>
+                
                 <a href="signIn.php" style="text-align:center;  margin-left: 30%;"> Already user? Click here to SignIn </a>
 
                 <?php
-
-
                 $conn = openCon();
                 $Error = "You are already redistered! Visit SignIn page.";
+
                 if (isset($_POST['submit'])) {
 
                     $sid = $_POST['sid'];
@@ -111,11 +97,9 @@
                     $eMail = $_POST['email'];
                     $faculty = $_POST['faculty'];
                     $nPassword = $_POST['psw'];
-
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
 
                     $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
-
                     $resultQuery = $conn->query($sqlquery);
 
                     if ($resultQuery->num_rows != 0) {
@@ -128,11 +112,9 @@
                     } else {
                         $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
                                  values( '0', '$eMail', '$fName', '$lName', '$faculty','$hashPass', 'Student','$sid')";
-
                         $result = $conn->query($query);
 
                         if ($result === TRUE) {
-
                               $verification_token = base64_encode($hashPass);
                               $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
                               $verify_mail= send_Verify_Email($eMail,$link);
@@ -167,7 +149,7 @@
                         }
                     }
                 }
-
+                closeCon($conn);
                 ?>
             </div>
         </form>
@@ -217,11 +199,6 @@
             }
         }
     </script>
-
-
-
-
-
 
     <?php include("../templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
