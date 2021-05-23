@@ -49,9 +49,9 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
         <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto;">
             <tr>
-                <th style=" text-align:center;">Section Name</th>
-                <th style=" text-align:center;">Active Inquiries</th>
-                <th style=" text-align:center;">Close Inquiries</th>
+                <th>Section Name</th>
+                <th>Active Inquiries</th>
+                <th>Close Inquiries</th>
             </tr>
 
             <?php
