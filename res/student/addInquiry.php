@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </br></br>
 
                 <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;;margin-left:45px;margin-right:10pxs">Content</label><br>
-                <textarea class="txt-input" name="addContent" rows="10" cols="51" style="margin-left:50px;"></textarea>
+                <textarea class="txt-input" name="addContent" rows="10" cols="51" style="margin-left:160px;"></textarea>
                 </br></br>
 
                 <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:45px;">Section</Section> </label>
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $lName = $rows['lastName'];
                             $facul = $rows['faculty'];
                             $id = $rows['id'];
-                            echo "<option value='$id' style='background:$color;'> $section / $lName /  $facul</option>";
+                            echo "<option value='$id' style='background:$color;'>$section / $lName /  $facul</option>";
                         }
                     }
                     ?>
