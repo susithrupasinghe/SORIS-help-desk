@@ -34,7 +34,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         <!--Front end-->
         <form method="POST" >
-            <div class="card" style="margin:auto;text-align:center;">
+            <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;">
                 <h2 style="font-family:Sitara, sans-serif;">Forgot Password</h2>
                 
                 <div >

@@ -21,6 +21,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     <title>SORIS Help Desk</title>
     <link rel="stylesheet" href="../../css/style.css">
 
+    <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
     <style>
@@ -49,36 +50,46 @@ include("../../res/templates/navigation.php");
  <div class="body-container">
 
     <?php
-    //require '../../config/config.php';
+        //require '../../config/config.php';
 
-    $con=openCon();
+        $con=openCon();
 
-    //$sq = "SELECT COUNT(id) FROM inqiry WHERE isActive='1'";
-    echo"<h3> gg</h3>";
-    //$row = mysqli_fetch_row($result);
-    if (isset($_GET['email']))
-    {
-        $email = $_GET["email"];
-        
-        $sq = "SELECT COUNT(id) FROM inquiry WHERE isActive='1' && email='$email'";
-        $result = $con->query($sq);
-        if ($result->num_rows > 0)
+        $uMail=$_SESSION['userid'];
+
+        $sql1 = "SELECT id FROM users WHERE email='$uMail'";
+        $result1= $con->query($sql1);
+
+        if($result1->num_rows > 0)
         {
+            $row = mysqli_fetch_row($result1);
+            $stffId = $row[0];
+
+            //while($row = $result1->fetch_assoc())
+           // {
+                //$stffId = $row['id'];
+
+            $sql2 = "SELECT COUNT(isActive) FROM inqiry WHERE isActive='1' AND currentStaffId = $sql1";
+            $result2 = $con->query($sql2);
+            //$row1 = $result2->fetch_assoc();
+           
+           // while($row = $result2->fetch_assoc())
+           // {
+                //$Active = $row['isActive']; 
+            //echo $Active;
+           // }
+                
+           // }
             
-            $count = $sq;
+
+            /*echo <<< HTML
+            <h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">Active inquiry count : </h3><h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">$Active</h3>
+            HTML;*/
+
             echo <<< HTML
-            <h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">Active inquiry count : </h3><h3 style="font-family:Sitara;margin-left:10px;color:#1D4354;">$count</h3>
-            HTML;
-        }
-    }
-    
-    
-    ?>
+            <h2 style="font-family:Sitara;margin-left:10px;color:#08A73A;">Active Inquery</h2>
+            <br>
 
-    <h2 style="font-family:Sitara;margin-left:10px;color:#08A73A;">Active Inquery</h2>
-    </br>
-
-    <table class="table-style" style="max-width: 80%;margin:auto;">
+            <table class="table-style" style="max-width: 80%;margin:auto;">
             <tr>
                 <th>Inquiry ID</th>
                 <th>Title</th>
@@ -89,13 +100,40 @@ include("../../res/templates/navigation.php");
                 <th>Submited Date</th>
                 <th>Details</th>
             </tr>
+            HTML;
+
+            $sql3 = "SELECT id FROM users WHERE email='$uMail'";
+            $result3 = $con->query($sql3);
+
+            if ($result3->num_rows > 0)
+            { 
+                $uid = $row[0];
+                $sql4 = "SELECT id,title FROM inquiry WHERE id='$uid'";
+               // $row = mysqli_fetch_row($result3);
+
+                $id = $row['id']; 
+
+                echo <<< HTML
+                <td>>f</td>
+                HTML;
+            }
+        }
+    
+    
+    ?>
+
+
+    
 
             <?php
+
                //require '../../config/config.php';
 
-                $con=openCon();
+                //$con=openCon();
 
-                if (isset($_GET['email']))
+                
+
+                /*if (isset($_GET['email']))
                 {
                     $email = $_GET["email"];
 
@@ -110,7 +148,7 @@ include("../../res/templates/navigation.php");
                        }
                    }
 
-                }
+                }*/
                 
             ?>
     <?php

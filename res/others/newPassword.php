@@ -99,7 +99,7 @@ closeCon($con);
 
         <!--Front end-->
         <form method="POST" name="changPassword">
-            <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%">
+            <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%;border:3px solid #08a73a;">
                 <h2 style="font-family:Sitara;margin-left:165px;font-family:Sitara, sans-serif;">Add New Password</h2>
 
                 <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:30px;">Password</label>
