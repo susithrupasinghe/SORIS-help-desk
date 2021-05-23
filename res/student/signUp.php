@@ -70,7 +70,7 @@
                             echo "<option> $faculty </option>";
                         }
                     }
-                    closeCon($conn);
+                   
                     ?>
                 </select>
                 <br>
