@@ -30,8 +30,6 @@
     include("../templates/navigation.php");
     ?>
 
-
-
     <div class="body-container">
 
         <form method="post">
@@ -69,8 +67,7 @@
                             $faculty = $row['faculty'];
                             echo "<option> $faculty </option>";
                         }
-                    }
-                   
+                    }                  
                     ?>
                 </select>
                 <br>
