@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input style="margin-left:77px;min-width:375px" class="txt-input" type="text" name="TitleName"></br>
                 </br></br>
 
-                <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;;margin-left:45px;margin-right:10pxs">Content</label>
+                <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;;margin-left:45px;margin-right:10pxs">Content</label><br>
                 <textarea class="txt-input" name="addContent" rows="10" cols="51" style="margin-left:50px;"></textarea>
                 </br></br>
 
