@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $lName = $rows['lastName'];
                             $facul = $rows['faculty'];
                             $id = $rows['id'];
-                            echo "<option value='$id' style='background:$color;'>$section / $lName /  $facul</option>";
+                            echo "<option value='$id' style='background:$color;'>$facul - $section - $lName </option>";
                         }
                     }
                     ?>
