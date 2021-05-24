@@ -14,8 +14,9 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORIS Help Desk/Forgot Password</title>
+    <title>Forgot Password</title>
 
+    <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link rel="stylesheet" href="../../css/style.css">
 
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
@@ -34,7 +35,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         <!--Front end-->
         <form method="POST" >
-            <div class="card" style="margin:auto;text-align:center;">
+            <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;">
                 <h2 style="font-family:Sitara, sans-serif;">Forgot Password</h2>
                 
                 <div >
