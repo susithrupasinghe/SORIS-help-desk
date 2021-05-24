@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,32 +38,42 @@
 
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            echo "<table>";
-            echo "<tr>";
+
+            echo "<table style='margin:auto;'><tr>";
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                if ($i%5==0) {
+   
+                   if($i==0){
+   
+                   }
+                   else{
+                       echo "</tr><tr>";
+                   }
+                   $url = "content.php?id=".$row['id'];
+               }
+               echo <<< HTML
+                   <td>
+                   
+                   <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
+                       <h4 class="txt-green" style="font-family: 'Sitara', sans-serif;text-align:center;">$row[title]"</h4>
+                       <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
+                       <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>
+                       <div style="position: absolute;bottom: 15px;left: 37px;">
+                       <a class="btt type1" href="$url" target="_blank"> Read more</a>
+                       </div>
+                      
+                   </div>
+                   </td>
+                   HTML;
+              
+               $i++;
+           }
+   
+           echo "</tr></table>";
         }
 
-        $i = 1;
-        $c=7;
-        while ($row = $result->fetch_assoc()) {
-            if ($i==$c) {
-                echo "</tr><tr>";
-               $c=$c+6;
-            }
-            echo "<td>";
-            echo <<< HTML
-                <div class="card" style="width: 150px; margin: 15px;min-height: 250px;padding-right: 20px;">
-                    <h3 class="txt-green" style="font-family: 'Sitara', sans-serif;">$row[title]"</h3>
-                    <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
-                    <p style="font-family: 'Sitara', sans-serif;">$row[thumbnailText]</p>
-                    <a href="" style="margin-left:80px;"> Read more</a>
-        
-                </div>
-                HTML;
-            echo "</td>";
-            $i++;
-        }
-
-        echo "</table>";
+       
 
         ?>
         
