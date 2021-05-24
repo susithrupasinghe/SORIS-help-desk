@@ -42,10 +42,11 @@ closeCon($con);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORIS Help Desk/New Password</title>
+    <title>New Password</title>
 
     <link rel="stylesheet" href="../../css/style.css">
 
+    <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
 </head>
@@ -99,7 +100,7 @@ closeCon($con);
 
         <!--Front end-->
         <form method="POST" name="changPassword">
-            <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%">
+            <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%;border:3px solid #08a73a;">
                 <h2 style="font-family:Sitara;margin-left:165px;font-family:Sitara, sans-serif;">Add New Password</h2>
 
                 <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:30px;">Password</label>
