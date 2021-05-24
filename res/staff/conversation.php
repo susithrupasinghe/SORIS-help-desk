@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["closeinq"])){
        
         $inquiryId = $_GET["id"];
-        $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
+        // $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
+        $sql = "UPDATE inquiry SET isActive = '0' WHERE id='$inquiryId'";
 
         $result = $con->query($sql);
 
@@ -369,11 +370,19 @@ function message($name, $date, $text, $attachment, $role)
                     </select>
                         <input  class="btt type3" name="forward" style="margin-left:15px;" type="submit" value="Forward Now">
                     </form>
+                    HTML;
 
-                    <form method="POST">
-                        <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;background-color: #1D4354;color: #FCFCFC;padding:15px;" type="submit" value="Close Inquiry">
-                    </form>
-                  HTML;
+                    if($status=="Open"){
+
+                        echo <<< HTML
+
+                        <form method="POST">
+                            <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;background-color: #1D4354;color: #FCFCFC;padding:15px;" type="submit" value="Close Inquiry">
+                        </form>
+                      HTML;
+
+                    }
+                   
                     } else {
 
                         echo "You dont have permisssion to View this converstation";

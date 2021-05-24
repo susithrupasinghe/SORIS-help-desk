@@ -20,7 +20,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Content Dashboard</title>
     <link rel="stylesheet" href="../../css/style.css">
 
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
@@ -44,13 +44,16 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     ?>
     <div class="body-container">
 
+        <div style="margin-top: 50px;">
         <a href="composeContent.php" target="_blank">
             <div class="btt type3" style="float: right;">Post New Content</div>
         </a>
         <h2 class="txt-green" style="margin-left:20%;margin-right:auto;">Content List</h2>
 
+        </div>
+       
 
-        <table class="table-style" style="max-width: 80%;margin:auto;">
+        <table class="table-style" style="max-width: 80%;margin:auto;margin-top:30px;">
             <tr>
                 <th>Title</th>
                 <th>Thumbnail Subtitle</th>

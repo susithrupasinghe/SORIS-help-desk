@@ -29,7 +29,7 @@ if (isset($_POST['htmlcontent'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Compose Content</title>
     <link rel="stylesheet" href="../../css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -60,6 +60,8 @@ if (isset($_POST['htmlcontent'])) {
     ?>
 
     <div class="body-container">
+        
+        <div style="margin-top: 50px;">
 
         <form action="" style="text-align: center;" method="POST" name="mainform" enctype="multipart/form-data" onsubmit="Attch_html_wrapper()">
             <label for="title" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-right:60px;">Title </label>
@@ -78,6 +80,9 @@ if (isset($_POST['htmlcontent'])) {
             <input type="submit" class="btt type1" name="submit" value="submit" style="min-width: 150px;font-size:large;">
 
         </form>
+        </div>
+
+       
 
 
     </div>
