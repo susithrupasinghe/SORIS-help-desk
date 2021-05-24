@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["closeinq"])){
         $con = openCon();
         $inquiryId = $_GET["id"];
-        $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
+        // $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
+        $sql = "UPDATE FROM inquiry SET isActive = '0' WHERE id='$inquiryId'";
 
         $result = $con->query($sql);
 
