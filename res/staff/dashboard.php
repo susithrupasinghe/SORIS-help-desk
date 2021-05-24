@@ -106,7 +106,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 </tr>
                 HTML;
 
-
+                
         //Select active inquiries
         $sql1 = "SELECT id,title,createdDate,lastModifiedDate,conversationStarter FROM inquiry WHERE currentStaffId='$uid' && isActive = '1'";
         $result1 = $con->query($sql1);
