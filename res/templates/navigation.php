@@ -18,7 +18,7 @@
                 HTML;
             }
 
-            if ($page == "contentmanagement") {
+            if ($page == "contentDashboard") {
 
                 echo <<<HTML
                 <li style="background-color:#ECF3EE;"><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>
@@ -42,7 +42,7 @@
                 HTML;
             }
 
-            if ($page == "contentmanagement") {
+            if ($page == "contentDashboard") {
 
                 echo <<<HTML
                 <li style="background-color:#ECF3EE;"><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>

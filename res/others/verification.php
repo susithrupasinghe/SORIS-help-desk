@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,27 +29,25 @@
 
         <?php
 
-           ///  Link format //////////////////
+        ///  Link format //////////////////
 
         // http://localhost/SORIS-help-desk/res/others/verification.php?verification=< verification token >&&email=< email > &forogt=1
-        
+
         // How to Create verification Token
         // Retive password hash from database according to given email
         // Then encode it as Base64 string, Like this,
         // $verification_token = base64_encode($password_hash)
         // Now you can create URL like above i mentioned
-        
+
         //$verification_token = base64_encode($password_hash)
-                //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
-                //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+        //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
+        //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
 
         $con = openCon();
         if (isset($_GET['verification']) && isset($_GET['email'])) {
 
             $email = $_GET["email"];
             $token = base64_decode($_GET["verification"]);
-            $isforgot = $_GET["forgot"];
-
 
 
             $sql = "SELECT password FROM users WHERE email='$email'";
@@ -61,32 +60,40 @@
 
                 if ($token != $row[0]) {
 
+                    echo <<< HTML
+                     <img src="../../images/incorrect_url.svg" style="margin-left:300px; " width="750px" alt="Verification image">
+                     HTML;
                     //header("Location: ../../index.php");
-                }
-                else{
+                    header("refresh:5;url= ../../index.php");
+                } else {
 
                     echo <<< HTML
-                    <img src="../../images/Verification_success.svg"style="margin-left:200px; " width="750px" alt="Verification image">
+                    <img src="../../images/Verification_success.svg"style="margin-left:300px; " width="750px" alt="Verification image">
                     HTML;
-
+                    header("refresh:5;url= ../../index.php");
                     //header("Location: ../../index.php");
 
                 }
             } else {
+
+                echo <<< HTML
+                <img src="../../images/incorrect_url.svg" style="margin-left:300px; " width="750px" alt="Verification image">
+                HTML;
                 //header("Location: ../../index.php");
+                header("refresh:5;url= ../../index.php");
             }
 
     
         }
 
         closeCon($con);
-             
+
         ?>
-     
-    
-       
-       
-     </div>   
+
+
+
+
+    </div>
 
     <?php include("../templates/footer.php");  ?>
     <script src="../../js/script.js"></script>
