@@ -16,7 +16,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORIC Administrator Dashboard</title>
+    <title>SORIC adminDashboard</title>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/signup.css">
@@ -39,6 +39,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     <?php
     $page = "adminDashboard";
     require '../../config/config.php';
+    require '../mail/mailer.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
     ?>
