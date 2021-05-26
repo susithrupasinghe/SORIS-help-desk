@@ -118,7 +118,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 $SubmitedDateA = $rows['createdDate'];
                 $LastModifiedDateA = $rows['lastModifiedDate'];
                 $StudentIDA = $rows['conversationStarter'];
-                $linkA = "conversation.php?id=$idA";
+                $linkA = "conversation.php?id=$idA ";
 
                 $sql2 = "SELECT faculty FROM users WHERE id = '$StudentIDA'";
                 $result2 = $con->query($sql2);
@@ -135,7 +135,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                         <td>$StudentIDA</td>
                         <td>$SubmitedDateA</td>
                         <td>$LastModifiedDateA</td>
-                        <td> <a href="$linkA">See more</a></td>
+                        <td> <a href="$linkA" target = "_blank">See more</a></td>
                         </tr>
                     HTML;
             }
@@ -191,7 +191,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 <td>$StudentIDC</td>
                 <td>$SubmitedDateC</td>
                 <td>$LastModifiedDateC</td>
-                <td> <a href="$linkC">See more</a></td>
+                <td> <a href="$linkC" target = "_blank">See more</a></td>
                 </tr>
                 HTML;
             }
