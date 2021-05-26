@@ -1,3 +1,17 @@
+<?php 
+
+session_start();
+
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+
+
+        header("Location: ../../index.php");
+    
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +19,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Staff/Admin SignIn</title>
     <link rel="stylesheet" href="../../css/style.css">
 
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
@@ -17,90 +31,114 @@
     <?php
 
 
-    $page = "student login";
+    $page = "staff login";
     require '../../config/config.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
 
 
     ?>
+   
+
+
+   
+    <div class="body-container">
+
     <?php
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $user = $_POST["user"];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $user = $_POST["user"];
 
-        $con = openCon();
+    $con = openCon();
 
-        if ($user == "staff") {
-
-
-            $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='staff'";
-            $result = $con->query($sqlquery);
-
-            
-
-            if ($result->num_rows > 0) {
-
-                $row = $result->fetch_assoc();
+    if ($user == "staff") {
 
 
-                //echo $row["password"];
-                if (password_verify($password, $row["password"])) {
+        $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='staff'";
+        $result = $con->query($sqlquery);
 
-                    $_SESSION["userid"] = $email;
-                    $_SESSION["role"] = "staff";
-                    header("Location: /SORIS-help-desk/res/staff/dashboard.php");
-                } else {
-                    echo "<script>alert('Your email or password is incorrect');</script>";
-                }
+        
+
+        if ($result->num_rows > 0) {
+
+            $row = $result->fetch_assoc();
+
+
+            //echo $row["password"];
+            if (password_verify($password, $row["password"])) {
+
+                $_SESSION["userid"] = $email;
+                $_SESSION["role"] = "staff";
+                header("Location: dashboard.php");
             } else {
+                echo <<< HTML
+        <div class="alert">
+        <span class="closebtn">&times;</span>
+        <strong>Wrong Email !</strong> Entered password is incorrrect !. Please input correct password.
+        </div>
+        HTML;
             }
-        } else if ($user == "administrator") {
-
-            $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='admin'";
-            $result = $con->query($sqlquery);
-
-            print_r($result);
-
-            if ($result->num_rows > 0) {
-
-                $row = $result->fetch_assoc();
-
-
-                //echo $row["password"];
-                if (password_verify($password, $row["password"])) {
-
-                    $_SESSION["userid"] = $email;
-                    $_SESSION["role"] = "administrator";
-                    header("Location: /SORIS-help-desk/res/admin/dashboard.php");
-                } else {
-                    echo "<script>alert('Your email or password is incorrect');</script>";
-                }
-            } else {
-            }
+        } else { 
+            echo <<< HTML
+            <div class="alert">
+            <span class="closebtn">&times;</span>
+            <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
+            </div>
+            HTML;
         }
+    } else if ($user == "administrator") {
+
+        $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='admin'";
+        $result = $con->query($sqlquery);
+
+      
+
+        if ($result->num_rows > 0) {
+
+            $row = $result->fetch_assoc();
 
 
-        closeCon($con);
+            //echo $row["password"];
+            if (password_verify($password, $row["password"])) {
+
+                $_SESSION["userid"] = $email;
+                $_SESSION["role"] = "administrator";
+                header("Location: ../admin/dashboard.php");
+            } else {
+                echo <<< HTML
+                <div class="alert">
+                <span class="closebtn">&times;</span>
+                <strong>Wrong Email !</strong> Entered password is incorrrect !. Please input correct password.
+                </div>
+                HTML;
+            }
+        } else {
+        echo <<< HTML
+        <div class="alert">
+        <span class="closebtn">&times;</span>
+        <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
+        </div>
+        HTML;
+        }
     }
 
 
+    closeCon($con);
+}
+?>
 
-
-    ?>
-    <div class="body-container">
         <form method="POST">
 
-            <div class="card" style="margin-left:25vw; margin-right:25vw; padding-left:30px">
+            <div class="card" style="margin-left:auto;margin-right:auto;text-align:center;border:3px solid #08A73A;">
 
-                <h1 style="text-align:center;"> Staff/Adminstrator signIn </h1>
+                <h1 style="text-align:center;"> Staff/Administrator signIn </h1>
                 <br>
-                Select User<select name="user" class="txt-input" style="margin-left: 18px;">
+                Select User<select name="user"class="txt-input"style="min-width: 340px; margin-left: 12px;">
                     <option value="staff">Staff</option>
-                    <option value="administrator">Adminstrator</option>
+                    <option value="administrator">Administrator</option>
                 </select>
                 <br>
                 Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px;">
@@ -108,9 +146,11 @@
                 Password <input class="txt-input" type="password" name="password" style="margin-left: 18px;">
                 <br><br><br>
 
-
-                <button style="margin-right: 50px;margin-left: 100px;" class="btt type3">Forget password</button>
-                <input type="submit" value="Login" class="btt type1" name="Login">
+                <!-- <div style="margin-right: 50px;margin-left: 100px;" >
+                
+                </div> -->
+                <a  href="../others/forgotPassword.php"  class="btt type3">Forget password</a>
+                <input type="submit" value="Login" class="btt type1" name="Login" style="padding-left: 35px;padding-right: 35px;padding-top: 8px;padding-bottom: 8px;">
 
                 <br><br><br>
 

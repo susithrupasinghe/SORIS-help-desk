@@ -1,3 +1,16 @@
+<?php 
+
+session_start();
+
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
+
+
+        header("Location: ../../index.php");
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student SignIn</title>
     <link rel="stylesheet" href="../../css/style.css">
 
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
@@ -47,8 +60,8 @@
                 if (password_verify($password, $row["password"])) {
 
                     $_SESSION["userid"] = $email;
-                    $_SESSION["role"] = "Student";
-                    header("Location: /SORIS-help-desk/res/student/dashboard.php");
+                    $_SESSION["role"] = "student";
+                    header("Location: dashboard.php");
                 } else {
                     echo <<< HTML
             <div class="alert">
@@ -62,7 +75,7 @@
                 echo <<< HTML
             <div class="alert">
             <span class="closebtn">&times;</span>
-            <strong>Wrong Email !</strong> Not registred email !. Please enter correct one.
+            <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
             </div>
             HTML;
             }
@@ -72,23 +85,26 @@
 
         <form method="POST">
 
-            <div class="card" style="margin-left:auto; margin-right:auto;">
+            <div class="card" style="margin-left:auto; margin-right:auto;border:3px solid #08A73A;">
 
                 <h1 style="text-align:center;"> Student signIn </h1>
                 <br>
-                Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px;" required>
-                
-                <br>
-                Password <input class="txt-input" type="password" name="password" style="margin-left: 18px;"required>
-                <br><br><br>
+                <div style="margin-left: 5%">Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px; min-width: 60%;" required>
+                </div>
+
+      
+
+                <div style="margin-left: 5%"> Password <input class="txt-input" type="password" name="password" style="margin-left: 18px; min-width: 60%;"required>
+                </div>
+                <br><br>
 
         	    <a href="../others/forgotPassword.php"> <div  style="margin-right: 50px;margin-left: 100px;" class="btt type3" >Forget password</div></a>
                
-                <input type="submit" value="Login" class="btt type1" name="Login">
+                <input type="submit" value="Login" class="btt type1" name="Login" style="padding-left: 35px;padding-right: 35px;padding-top: 8px;padding-bottom: 8px;">
 
                 <br><br><br>
 
-                <a href='signUp.php' style="margin-left: 100px;"> New user? Click here to signUp </a>
+                <a href="../student/signUp.php" style="color: #1D4354;margin-left:100px;"> New user? Click here to signUp </a>
                 <br>
                 <br>
             </div>

@@ -143,10 +143,11 @@ body {
 
 .body-container {
   min-height: 60vh;
+  /*background-color: #ecf3ee;*/
   background-color: #ecf3ee;
   padding-left: 100px;
   padding-right: 100px;
-  padding-top: 50px;
+  padding-top: 25px;
   padding-bottom: 75px;
 }
 
@@ -156,7 +157,7 @@ body {
   margin-top: 20px;
   border-radius: 8px;
   background-color: #f8f9f8;
-  border-width: 3px;
+  border-width: 4px;
   font-size: medium;
   padding-top: 7px;
   padding-bottom: 7px;
