@@ -97,8 +97,11 @@
                     $eMail = $_POST['email'];
                     $faculty = $_POST['faculty'];
                     $nPassword = $_POST['psw'];
+                    $rePassword = $_POST['psw2'];
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
-
+                    
+                   
+        
                     $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
                     $resultQuery = $conn->query($sqlquery);
 
@@ -192,7 +195,8 @@
             var enterPassword = document.getElementById(psw1);
             var reTypePassword = document.getElementById(psw2);
 
-            if (reTypePassword === enterPassword) {
+
+            if ((reTypePassword === enterPassword) && (len1 == len2)) {
                 rePassword.style.border = "3px solid #1d4354";
             } else {
                 rePassword.style.border = "3px solid #ff0000";
