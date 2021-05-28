@@ -54,8 +54,9 @@ session_start();
                     else{
                         echo "</tr><tr>";
                     }
-                    $url = "content.php?id=".$row['id'];
+                   
                 }
+                $url = "content.php?id=".$row['id'];
                 echo <<< HTML
                     <td>
                     
