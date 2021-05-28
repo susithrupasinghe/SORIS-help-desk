@@ -23,7 +23,7 @@
 
 <body>
     <?php
-    $page = "studentsignup";
+    $page = "studentSignup";
     require '../../config/config.php';
     require '../mail/mailer.php';
     include("../templates/header.php");
