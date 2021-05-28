@@ -102,6 +102,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                     $faculty = $_POST['faculty'];
                     $nPassword = $_POST['psw'];
                     $rePassword = $_POST['rpsw'];
+                    
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
 
                     if ($nPassword == $rePassword) {
