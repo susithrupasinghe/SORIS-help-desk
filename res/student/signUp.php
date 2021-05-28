@@ -97,7 +97,6 @@
                     $eMail = $_POST['email'];
                     $faculty = $_POST['faculty'];
                     $nPassword = $_POST['psw'];
-                    $rePassword = $_POST['psw2'];
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
                     
                     $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
