@@ -207,7 +207,7 @@ function message($name, $date, $text, $attachment, $role)
     <title>Document</title>
 
     <link rel="stylesheet" href="../../css/style.css">
-
+    <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
     <style>
