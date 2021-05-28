@@ -27,6 +27,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
         .table-style th {
             text-align: center;
         }
+
         .table-style td {
             text-align: center;
         }
@@ -144,39 +145,38 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                         $resultQuery = $conn->query($sqlquery);
 
                         if ($resultQuery->num_rows != 0) {
-                         echo <<<HTML
+                            echo <<<HTML
                             <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                             <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                             <strong style= 'text-align:center;font-size: 30x;'>You are already redistered! Visit SignIn page.</strong> 
                             </div> "
                             HTML;
-                            
                         } else {
                             $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
                                 values( '0', '$eMail', '$sectionName', '$userName', '$faculty','$hashPass', 'Staff','$staffId')";
                             $result = $conn->query($query);
 
-                        if ($result === TRUE) {
-                            $verification_token = base64_encode($hashPass);
-                            $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
-                            $verify_mail = send_Verify_Email($eMail, $link);
+                            if ($result === TRUE) {
+                                $verification_token = base64_encode($hashPass);
+                                $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
+                                $verify_mail = send_Verify_Email($eMail, $link);
 
-                            echo <<< HTML
+                                echo <<< HTML
                                     <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                                     <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
                                     </div> 
                                 HTML;
-                        } else if ($result === FALSE) {
-                            echo <<< HTML
+                            } else if ($result === FALSE) {
+                                echo <<< HTML
                                     <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                                     <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please register again!</strong> 
                                     </div> 
                                  HTML;
+                            }
                         }
-                    }
-                }else {
+                    } else {
                         echo <<< HTML
                         <div class='alert' style= 'width:40%; margin-left:auto; margin-right:auto; position:absolute; top: 20%;'>
                         <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
