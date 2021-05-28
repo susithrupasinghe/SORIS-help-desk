@@ -99,15 +99,15 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
 
                 echo <<< HTML
-                        <div class='alert success' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                        <span class='closebtn'>&times;</span>
+                        <div class='alert success' style= 'width:40%; margin-left:285px; position:absolute; top: 20%;'>
+                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
                         </div>
                         HTML;
             } else {
                 echo <<< HTML
-                <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                <span class='closebtn'>&times; </span>
+                <div class='alert' style= 'width:40%; margin-left:285px; position:absolute; top: 20%;'>
+                <span class='closebtn' onclick="this.parentElement.style.display='none';">&times; </span>
                 <strong style= 'text-align:center;font-size: 30x;'>You are not registered!</strong>
                 </div>
                 HTML;

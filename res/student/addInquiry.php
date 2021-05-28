@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_FILES["attachment"]["size"] > 50000000) {
         echo <<< HTML
                     <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                    <span class='closebtn'>&times;</span>
+                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                     <strong style= 'text-align:center;font-size: 30x;'>Sorry,your file is too large.</strong>
                     </div>
                 HTML;

@@ -3,9 +3,9 @@ session_start();
 
 if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
-    if ($_SESSION["role"] == "student") {
+    if ($_SESSION["role"] == "staff") {
 
-        header("Location: ../../index.php");
+        //header("Location: ../../index.php");
     }
 } else {
     header("Location: ../../index.php");

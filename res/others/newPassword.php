@@ -71,7 +71,7 @@ closeCon($con);
 
             if ($new_pass == $re_pass) {
 
-                $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
+                $hashPass = password_hash($new_pass, PASSWORD_DEFAULT);
                 $sql = "UPDATE users SET password = '$hashPass' WHERE email='$email'";
                 $result = $con->query($sql);
 
@@ -81,7 +81,7 @@ closeCon($con);
                 } else {
                     echo <<< HTML
                             <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                            <span class='closebtn'>&times;</span>
+                            <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                             <strong>Error!</strong> Password not changed !!!
                             </div>
                             HTML;
@@ -89,7 +89,7 @@ closeCon($con);
             } else {
                 echo <<< HTML
                     <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                    <span class='closebtn'>&times;</span>
+                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                     <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
                     </div>
                     HTML;
@@ -104,11 +104,11 @@ closeCon($con);
                 <h2 style="font-family:Sitara;margin-left:165px;font-family:Sitara, sans-serif;">Add New Password</h2>
 
                 <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:30px;">Password</label>
-                <input style="margin-left:80px;" class="txt-input" type="text" id="newPass" name="newPass" oninput="validpassword(this)" required></br>
+                <input style="margin-left:80px;" class="txt-input" type="password" id="newPass" name="newPass" oninput="validpassword(this)" required></br>
                 </br>
 
                 <label for="repassword" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:30px;">Password re-type</label>
-                <input style="margin-left:25px;" class="txt-input" type="text" id="RePass" name="RePass" required></br>
+                <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" required></br>
                 </br> </br> </br>
 
                 <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-left:150px;">
