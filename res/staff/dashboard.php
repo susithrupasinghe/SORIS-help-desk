@@ -86,7 +86,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara, sans-serif;margin-left:835px;color:#1D4354;">Closed inquiry count : $close</h3>
+                <h3 style="font-family:Sitara, sans-serif;margin-left:60%;color:#1D4354;">Closed inquiry count : $close</h3>
                 HTML;
 
 
