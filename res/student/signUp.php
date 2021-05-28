@@ -1,9 +1,8 @@
 <?php
-    session_start();
-    if(isset($_SESSION['userid']) && isset($_SESSION['role']))
-    {    
-            header("Location: ../../index.php");
-    }
+session_start();
+if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
+    header("Location: ../../index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,28 +66,27 @@
                             $faculty = $row['faculty'];
                             echo "<option> $faculty </option>";
                         }
-                    }                  
+                    }
                     ?>
                 </select>
                 <br>
-                
-                
 
                 <label for="password" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;"> Password </label>
                 <input class="txt-input" type="password" style="margin-left:72px;" id="psw1" oninput="verifyPassword(this)" id="password" name="psw" required>
-                
-                <div style=" font-family:'sitara',sans-serif; font-size: 10px; margin-left:35%; "> 
-                **Password must contain <strong Style = "font-weight:bold; "> 4-10 characters</strong>.
-                <br> Password must contain <strong Style = "font-weight:bold;"> Uppercase Letters , LowerCase Letters, <br> Numbers </strong>
-                And <strong Style = "font-weight:bold; ">Symbols(@,#,$,%,&,*)</strong></div>
+
+                <div style=" font-family:'sitara',sans-serif; font-size: 10px; margin-left:35%;">
+                    **Password must contain <strong Style="font-weight:bold; "> 4-10 characters</strong>.
+                    <br> Password must contain <strong Style="font-weight:bold;"> Uppercase Letters , LowerCase Letters,
+                        <br> Numbers </strong> And <strong Style="font-weight:bold; ">Symbols(@,#,$,%,&,*)</strong>
+                </div>
 
                 <label for="reEnterPassword" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Password re-type </label>
                 <input class="txt-input" type="password" style="margin-left:15px;" id="psw2" oninput="verifyPassword(this)" id="reEnterPassword" name="rpsw" required>
                 <br><br><br>
-                
+
                 <input type="submit" value="SignUp Now" name="submit" class="btt type1" style="align-items:center; margin-left: 40%;" href="signIn.php">
                 <br><br>
-                
+
                 <a href="signIn.php" style="text-align:center;  margin-left: 30%;"> Already user? Click here to SignIn </a>
 
                 <?php
@@ -105,61 +103,57 @@
                     $nPassword = $_POST['psw'];
                     $rePassword = $_POST['rpsw'];
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
-                    
-                    
-                    if($nPassword == $rePassword)
-                    {
-                      $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
-                      $resultQuery = $conn->query($sqlquery);
 
-                     if ($resultQuery->num_rows != 0) {
-                        echo <<<HTML
+                    if ($nPassword == $rePassword) {
+                        $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
+                        $resultQuery = $conn->query($sqlquery);
+
+                        if ($resultQuery->num_rows != 0) {
+                            echo <<<HTML
                                 <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                                 <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                 <strong style= 'text-align:center;font-size: 30x;'>$Error</strong> 
                                 </div> "
                                 HTML;
-                    } else {
-                        $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
+                        } else {
+                            $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
                                  values( '0', '$eMail', '$fName', '$lName', '$faculty','$hashPass', 'Student','$sid')";
-                        $result = $conn->query($query);
+                            $result = $conn->query($query);
 
-                        if ($result === TRUE) {
-                              $verification_token = base64_encode($hashPass);
-                              $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
-                              $verify_mail= send_Verify_Email($eMail,$link);
-                            ///  Link format //////////////////
+                            if ($result === TRUE) {
+                                $verification_token = base64_encode($hashPass);
+                                $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
+                                $verify_mail = send_Verify_Email($eMail, $link);
+                                ///  Link format //////////////////
 
-                            // http://localhost/SORIS-help-desk/res/others/verification.php?verification=< verification token >&email=< email >
+                                // http://localhost/SORIS-help-desk/res/others/verification.php?verification=< verification token >&email=< email >
 
-                            // How to Create verification Token
-                            // Retive password hash from database according to given email
-                            // Then encode it as Base64 string, Like this,
-                            // $verification_token = base64_encode($password_hash)
-                            // Now you can create URL like above i mentioned
+                                // How to Create verification Token
+                                // Retive password hash from database according to given email
+                                // Then encode it as Base64 string, Like this,
+                                // $verification_token = base64_encode($password_hash)
+                                // Now you can create URL like above i mentioned
 
-                            //$verification_token = base64_encode($password_hash)
-                            //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
-                            //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
+                                //$verification_token = base64_encode($password_hash)
+                                //send_Verify_Email("shavidilunika10s@gmail.com","https://testetst.com");
+                                //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
 
-                            echo <<< HTML
+                                echo <<< HTML
                                     <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                                     <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
                                     </div> 
                                   HTML;
-
-                        } else if ($result === FALSE) {
-                            echo <<<HTML
+                            } else if ($result === FALSE) {
+                                echo <<<HTML
                                     <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                                     <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please register again!</strong> 
                                     </div> 
                                  HTML;
+                            }
                         }
-                    }
-                }
-                    else{
+                    } else {
                         echo <<< HTML
                         <div class='alert' style= 'width:40%; margin-left:auto; margin-right:auto; position:absolute; top: 20%;'>
                         <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
@@ -174,8 +168,6 @@
         </form>
 
     </div>
-
-
 
     <script>
         function validateEmail(param) {
