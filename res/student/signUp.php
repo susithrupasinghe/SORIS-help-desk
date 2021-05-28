@@ -100,8 +100,6 @@
                     $rePassword = $_POST['psw2'];
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
                     
-                   
-        
                     $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
                     $resultQuery = $conn->query($sqlquery);
 
@@ -194,7 +192,6 @@
         function confirmPassword(rePassword) {
             var enterPassword = document.getElementById(psw1);
             var reTypePassword = document.getElementById(psw2);
-
 
             if ((reTypePassword === enterPassword) && (len1 == len2)) {
                 rePassword.style.border = "3px solid #1d4354";
