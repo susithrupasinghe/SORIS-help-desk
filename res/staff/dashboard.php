@@ -3,9 +3,9 @@ session_start();
 
 if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
-    if ($_SESSION["role"] == "student") {
+    if ($_SESSION["role"] == "staff") {
 
-        header("Location: ../../index.php");
+        //header("Location: ../../index.php");
     }
 } else {
     header("Location: ../../index.php");
@@ -19,7 +19,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORIS Help Desk</title>
+    <title>Staff Dashboard</title>
     <link rel="stylesheet" href="../../css/style.css">
 
     <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
@@ -73,7 +73,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara;margin-left:835px;color:#1D4354;">Active inquiry count : $Active</h3>
+                <h3 style="font-family:Sitara, sans-serif;margin-left:835px;color:#1D4354;">Active inquiry count : $Active</h3>
                 HTML;
 
 
@@ -86,13 +86,13 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara;margin-left:835px;color:#1D4354;">Closed inquiry count : $close</h3>
+                <h3 style="font-family:Sitara, sans-serif;margin-left:60%;color:#1D4354;">Closed inquiry count : $close</h3>
                 HTML;
 
 
         //active
         echo <<< HTML
-                <h2 style="font-family:Sitara;margin-left:116px;color:#08A73A;">Active Inquery</h2>
+                <h2 style="font-family:Sitara, sans-serif;margin-left:116px;color:#08A73A;">Active Inquery</h2>
             
                 <table class="table-style" style="max-width: 80%;margin:auto;">
                 <tr>
