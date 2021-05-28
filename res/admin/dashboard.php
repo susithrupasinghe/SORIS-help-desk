@@ -27,7 +27,6 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
         .table-style th {
             text-align: center;
         }
-
         .table-style td {
             text-align: center;
         }
@@ -138,6 +137,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                     $rePassword = $_POST['rpsw'];
 
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
+
                     if ($nPassword == $rePassword) {
 
                         $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
@@ -150,6 +150,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                             <strong style= 'text-align:center;font-size: 30x;'>You are already redistered! Visit SignIn page.</strong> 
                             </div> "
                             HTML;
+                            
                         } else {
                             $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
                                 values( '0', '$eMail', '$sectionName', '$userName', '$faculty','$hashPass', 'Staff','$staffId')";
