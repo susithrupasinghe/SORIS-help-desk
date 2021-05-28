@@ -267,7 +267,7 @@ function message($name, $date, $text, $attachment, $role)
                         $status = "";
 
                         if($row[3] == "1"){
-                            $status = "Active";
+                            $status = "Open";
                         }
                         else{
                             $status = "Closed";
@@ -312,8 +312,8 @@ function message($name, $date, $text, $attachment, $role)
                             }
                         }
 
-
-                        echo <<<HTML
+                        if($status=="Open"){
+                            echo <<<HTML
                     <form style="margin-left:120px;margin-top:100px;" method="post" enctype="multipart/form-data">
                     <textarea name="text" placeholder="Type here your message" id="" cols="100" rows="10"></textarea><br><br><br>
          
@@ -325,6 +325,11 @@ function message($name, $date, $text, $attachment, $role)
 
                     HTML;
 
+
+                        }
+                        
+
+                        
                     if($status=="Open"){
 
                         echo <<< HTML
