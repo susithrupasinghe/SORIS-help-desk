@@ -93,6 +93,14 @@ else
                 <h3 style="font-family:Sitara;margin-left:835px;color:#1D4354;">Closed inquiry count : $close</h3>
                 HTML;
 
+        //add create inquiry button
+
+        echo <<< HTML
+          <a href="addinquiry.php"> <div style="font-family:Sitara;margin-left:80%;" class="btt type1" >Add Inquiry</div></a>
+
+        HTML;
+
+
 
         //active
         echo <<< HTML
