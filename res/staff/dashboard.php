@@ -73,7 +73,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara;margin-left:835px;color:#1D4354;">Active inquiry count : $Active</h3>
+                <h3 style="font-family:Sitara, sans-serif;margin-left:835px;color:#1D4354;">Active inquiry count : $Active</h3>
                 HTML;
 
 
@@ -86,13 +86,13 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara;margin-left:835px;color:#1D4354;">Closed inquiry count : $close</h3>
+                <h3 style="font-family:Sitara, sans-serif;margin-left:835px;color:#1D4354;">Closed inquiry count : $close</h3>
                 HTML;
 
 
         //active
         echo <<< HTML
-                <h2 style="font-family:Sitara;margin-left:116px;color:#08A73A;">Active Inquery</h2>
+                <h2 style="font-family:Sitara, sans-serif;margin-left:116px;color:#08A73A;">Active Inquery</h2>
             
                 <table class="table-style" style="max-width: 80%;margin:auto;">
                 <tr>
