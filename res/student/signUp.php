@@ -161,7 +161,7 @@
                 }
                     else{
                         echo <<< HTML
-                        <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                        <div class='alert' style= 'width:40%; margin-left:auto; margin-right:auto; position:absolute; top: 20%;'>
                         <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
                         </div>
