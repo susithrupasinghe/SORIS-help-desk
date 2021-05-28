@@ -144,7 +144,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                     if ($resultQuery->num_rows != 0) {
                         echo <<<HTML
                         <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                        <span class='closebtn'>&times;</span>
+                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong style= 'text-align:center;font-size: 30x;'>$Error</strong> 
                         </div> "
                         HTML;
@@ -160,14 +160,14 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
                             echo <<< HTML
                                     <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                                    <span class='closebtn'>&times;</span>
+                                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
                                     </div> 
                                 HTML;
                         } else if ($result === FALSE) {
                             echo <<< HTML
                                     <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                                    <span class='closebtn'>&times;</span>
+                                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please register again!</strong> 
                                     </div> 
                                  HTML;
