@@ -67,14 +67,12 @@ session_start();
             echo "</td>";
             $i++;
         }
-        echo "</table>";
+        echo "</tr></table>";
         closeCon($conn);
         ?>
     </div>
 
-    <?php
-    include("../templates/footer.php");
-    ?>
+    <?php include("../templates/footer.php"); ?>
     <script src="../../js/script.js"></script>
 
 </body>
