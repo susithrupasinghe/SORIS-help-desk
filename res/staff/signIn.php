@@ -148,9 +148,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- <div style="margin-right: 50px;margin-left: 100px;" >
                 
                 </div> -->
-                <a  href="../others/forgotPassword.php">  <div  style="margin-right: 50px;margin-left: 100px;" class="btt type3">Forget password</div></a>
+                <div style="margin: auto;">
+                <a  href="../others/forgotPassword.php">  <div  style="margin-right: 50px;" class="btt type3">Forget password</div></a>
                 <input type="submit" value="Login" class="btt type1" name="Login" style="padding-left: 35px;padding-right: 35px;padding-top: 8px;padding-bottom: 8px;">
-
+                </div>
                 <br><br><br>
 
             </div>
