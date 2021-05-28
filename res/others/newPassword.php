@@ -80,7 +80,7 @@ closeCon($con);
                     header("Location: ../../index.php");
                 } else {
                     echo <<< HTML
-                            <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                            <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
                             <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                             <strong>Error!</strong> Password not changed !!!
                             </div>
@@ -88,7 +88,7 @@ closeCon($con);
                 }
             } else {
                 echo <<< HTML
-                    <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                    <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
                     <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                     <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
                     </div>
@@ -100,21 +100,20 @@ closeCon($con);
 
         <!--Front end-->
         <form method="POST" name="changPassword">
+         <div style="text-align:center;">
             <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%;border:3px solid #08a73a;">
-                <h2 style="font-family:Sitara;margin-left:165px;font-family:Sitara, sans-serif;">Add New Password</h2>
+                <h2 style="margin:auto;font-family:Sitara, sans-serif;margin-bottom:30px;">Add New Password</h2>
 
-                <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:30px;">Password</label>
-                <input style="margin-left:80px;" class="txt-input" type="password" id="newPass" name="newPass" oninput="validpassword(this)" required></br>
-                </br>
+                <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password</label>
+                <input style="margin-left:80px;" class="txt-input" type="password" id="newPass" name="newPass" oninput="validpassword(this)" required>
 
-                <label for="repassword" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:30px;">Password re-type</label>
-                <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" required></br>
-                </br> </br> </br>
+                <label for="repassword" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password re-type</label>
+                <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" required>
 
-                <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-left:150px;">
+                <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-top:50px;">
                 <input type="submit" value="Change password" class="btt type1" name="btnsubmit" style="margin-left:10px;">
-                </br></br></br>
             </div>
+        </div>
         </form>
 
     </div>
