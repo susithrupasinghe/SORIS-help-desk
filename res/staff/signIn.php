@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo <<< HTML
         <div class="alert">
-        <span class="closebtn">&times;</span>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <strong>Wrong Email !</strong> Entered password is incorrrect !. Please input correct password.
         </div>
         HTML;
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else { 
             echo <<< HTML
             <div class="alert">
-            <span class="closebtn">&times;</span>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
             </div>
             HTML;
@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo <<< HTML
                 <div class="alert">
-                <span class="closebtn">&times;</span>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <strong>Wrong Email !</strong> Entered password is incorrrect !. Please input correct password.
                 </div>
                 HTML;
@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
         echo <<< HTML
         <div class="alert">
-        <span class="closebtn">&times;</span>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
         </div>
         HTML;
