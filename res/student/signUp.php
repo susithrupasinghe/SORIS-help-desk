@@ -103,12 +103,16 @@
                     $eMail = $_POST['email'];
                     $faculty = $_POST['faculty'];
                     $nPassword = $_POST['psw'];
+                    $rePassword = $_POST['rpsw'];
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
                     
-                    $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
-                    $resultQuery = $conn->query($sqlquery);
+                    
+                    if($nPassword == $rePassword)
+                    {
+                      $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
+                      $resultQuery = $conn->query($sqlquery);
 
-                    if ($resultQuery->num_rows != 0) {
+                     if ($resultQuery->num_rows != 0) {
                         echo <<<HTML
                                 <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                                 <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
@@ -153,6 +157,15 @@
                                     </div> 
                                  HTML;
                         }
+                    }
+                }
+                    else{
+                        echo <<< HTML
+                        <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
+                        </div>
+                        HTML;
                     }
                 }
                 closeCon($conn);
