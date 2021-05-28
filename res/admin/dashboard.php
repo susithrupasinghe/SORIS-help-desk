@@ -37,7 +37,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 <body>
 
     <?php
-    $page = "adminDashboard";
+    $page = "dashboard";
     require '../../config/config.php';
     require '../mail/mailer.php';
     include("../templates/header.php");
