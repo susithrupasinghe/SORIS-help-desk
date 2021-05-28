@@ -192,7 +192,7 @@
             var enterPassword = document.getElementById(psw1);
             var reTypePassword = document.getElementById(psw2);
 
-            if ((reTypePassword === enterPassword) && (len1 == len2)) {
+            if (reTypePassword === enterPassword) {
                 rePassword.style.border = "3px solid #1d4354";
             } else {
                 rePassword.style.border = "3px solid #ff0000";
