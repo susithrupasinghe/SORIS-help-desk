@@ -225,7 +225,7 @@ function message($name, $date, $text, $attachment, $role)
     <title>Document</title>
 
     <link rel="stylesheet" href="../../css/style.css">
-
+    <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
     <style>
@@ -285,7 +285,7 @@ function message($name, $date, $text, $attachment, $role)
                         $status = "";
 
                         if($row[3] == "1"){
-                            $status = "Active";
+                            $status = "Open";
                         }
                         else{
                             $status = "Closed";
@@ -331,48 +331,58 @@ function message($name, $date, $text, $attachment, $role)
                         }
 
 
-                        echo <<<HTML
-                    <form style="margin-left:120px;margin-top:100px;" method="post" enctype="multipart/form-data">
-                    <textarea name="text" placeholder="Type here your message" id="" cols="100" rows="10"></textarea><br><br><br>
-         
-                    
-                    <input type="file" id="fileselect" name="attachment"/>
+                        if($status=="Open"){
 
-                    <input class="btt type1" type="submit" name="newmsg"style="margin-left:100px;font-size:17px;"> 
-                    </form>
+                            echo <<<HTML
+                            <form style="margin-left:120px;margin-top:100px;" method="post" enctype="multipart/form-data">
+                            <textarea name="text" placeholder="Type here your message" id="" cols="100" rows="10"></textarea><br><br><br>
+                 
+                            
+                            <input type="file" id="fileselect" name="attachment"/>
+        
+                            <input class="btt type1" type="submit" name="newmsg"style="margin-left:100px;font-size:17px;"> 
+                            </form>
+        
+                            <hr style="border-top: 3px solid #1D4354; color:#1D4354;margin-top:50px;">
+        
+                            
+                            <form method="POST">
+        
+                            <label for="section" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Forward to inquiry : </label>
+                            <select class="txt-input" size="1" style="width:auto;" name="section">
+        
+                            HTML;
+        
 
-                    <hr style="border-top: 3px solid #1D4354; color:#1D4354;margin-top:50px;">
 
-                    
-                    <form method="POST">
-
-                    <label for="section" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Forward to inquiry : </label>
-                    <select class="txt-input" size="1" style="width:auto;" name="section">
-
-                    HTML;
-
-                    
-                    $sql = "SELECT id, firstName from users WHERE role='staff'";
-                    $result = $con->query($sql);
-
-                    if ($result->num_rows > 0) {
-
-                        while ($row = $result->fetch_assoc()) {
-
-                            $id = $row["id"];
-                            $name = $row["firstName"];
-
-                            echo "<option value='$id'> $name </option>";
                         }
-                    }
+                       
+                    
 
-                    echo <<< HTML
-                    </select>
-                        <input  class="btt type3" name="forward" style="margin-left:15px;" type="submit" value="Forward Now">
-                    </form>
-                    HTML;
 
                     if($status=="Open"){
+
+                        $sql = "SELECT id, firstName from users WHERE role='staff'";
+                        $result = $con->query($sql);
+    
+                        if ($result->num_rows > 0) {
+    
+                            while ($row = $result->fetch_assoc()) {
+    
+                                $id = $row["id"];
+                                $name = $row["firstName"];
+    
+                                echo "<option value='$id'> $name </option>";
+                            }
+                        }
+    
+                       
+
+                        echo <<< HTML
+                        </select>
+                            <input  class="btt type3" name="forward" style="margin-left:15px;" type="submit" value="Forward Now">
+                        </form>
+                        HTML;
 
                         echo <<< HTML
 
