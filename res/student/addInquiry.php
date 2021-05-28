@@ -7,104 +7,6 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     header("Location: ../../index.php");
 ?>
 
-
-<?php
-include_once  '../../config/config.php';
-
-//Upload attachment
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $conn = openCon();
-
-    $target_dir = "../uploads/";
-    $target_file = $target_dir . $_FILES["attachment"]["name"];
-    $upload = 1;
-
-
-    //Check file size
-    if ($_FILES["attachment"]["size"] > 50000000) {
-        echo <<< HTML
-                    <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                    <span class='closebtn'>&times;</span>
-                    <strong style= 'text-align:center;font-size: 30x;'>Sorry,your file is too large.</strong>
-                    </div>
-                HTML;
-        $upload = 0;
-    }
-
-    if ($upload == 0) {
-    } else {
-        if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
-            //header("Location: dashboard.php");
-        }
-    }
-
-    //Check submission        
-    if (isset($_POST['btnsubmit'])) {
-
-        $conn = openCon();
-
-        $TitleName = $_POST['TitleName'];
-        $Cdatetime = date("Y-m-d h:i:s");
-        $Mdatetime = date("Y-m-d h:i:s");
-        $active = 1;
-        $sec = $_POST['section'];
-
-
-        //insert into  conversationStarter
-        $uMail = $_SESSION['userid'];
-
-        $sql3 = "SELECT id FROM users WHERE email='$uMail'";
-        $result3 = $conn->query($sql3);
-        $uid = "";
-
-        while ($row = $result3->fetch_assoc()) {
-
-            $uid = $row['id'];
-        }
-
-        //insert into title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId
-        $sql5 = "INSERT INTO inquiry(title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId) VALUES ('$TitleName','$Cdatetime','$Mdatetime','$active','$uid',' $sec')";
-        $result5 = $conn->query($sql5);
-
-        if ($result5 === true) {
-            $last_id = $conn->insert_id;
-
-            $sql6 = "SELECT conversationStarter FROM inquiry WHERE id='$last_id'";
-            $result6 = $conn->query($sql6);
-
-            if ($result6->num_rows > 0) {
-
-                $text = $_POST['addContent'];
-
-                $sql7 = "INSERT INTO conversations(inquiryId,text,userId) VALUES(' $last_id','$text',' $uid')";
-                $result7 = $conn->query($sql7);
-
-
-
-                //insert file
-                $fname = $_FILES['attachment']['name'];
-
-                if ($fname != "") {
-
-                    $destination = '../uploads/' . $fname;
-
-                    $file = $_FILES['attachment']['tmp_name'];
-
-                    if (move_uploaded_file($file, $destination)) {
-
-                        $attachment = $fname;
-                        $sql8 = "INSERT INTO conversations(attachment) VALUES ('$attachment')";
-                        $result8 = $conn->query($sql8);
-                    }
-                }
-            }
-        }
-        //header("Location: dashboard.php");
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORIS Help Desk</title>
+    <title>Add Inquiry</title>
     <link rel="stylesheet" href="../../css/style.css">
 
     <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
@@ -131,17 +33,107 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="body-container">
 
+        <?php
+        include_once  '../../config/config.php';
+
+        //Upload attachment
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $conn = openCon();
+
+            $target_dir = "../uploads/";
+            $target_file = $target_dir . $_FILES["attachment"]["name"];
+            $upload = 1;
+
+
+            //Check file size
+            if ($_FILES["attachment"]["size"] > 50000000) {
+                echo <<< HTML
+                    <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong style= 'text-align:center;font-size: 30x;'>Sorry,your file is too large.</strong>
+                    </div>
+                HTML;
+                $upload = 0;
+            }
+
+            if ($upload == 0) {
+            } else {
+                if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
+                    //header("Location: dashboard.php");
+                }
+            }
+
+            //Check submission        
+            if (isset($_POST['btnsubmit'])) {
+
+                $conn = openCon();
+
+                $TitleName = $_POST['TitleName'];
+                $Cdatetime = date("Y-m-d h:i:s");
+                $Mdatetime = date("Y-m-d h:i:s");
+                $active = 1;
+                $sec = $_POST['section'];
+                $text = $_POST['addContent'];
+
+
+                //insert into  conversationStarter
+                $uMail = $_SESSION['userid'];
+
+                $sql3 = "SELECT id FROM users WHERE email='$uMail'";
+                $result3 = $conn->query($sql3);
+                $uid = "";
+
+                while ($row = $result3->fetch_assoc()) {
+
+                    $uid = $row['id'];
+
+                }
+
+                //insert into title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId
+                $sql5 = "INSERT INTO inquiry(title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId) VALUES ('$TitleName','$Cdatetime','$Mdatetime','$active','$uid',' $sec')";
+                $result5 = $conn->query($sql5);
+
+                if ($result5 === true) {
+                    $last_id = $conn->insert_id;
+
+                    $sql7 = "INSERT INTO conversations(inquiryId,text,userId) VALUES('$last_id','$text',' $uid',)";
+                    $result7 = $conn->query($sql7);
+
+
+                    //insert file
+                    $fname = $_FILES['attachment']['name'];
+
+                    if ($fname != "") {
+
+                        $destination = '../uploads/' . $fname;
+
+                        $file = $_FILES['attachment']['tmp_name'];
+
+                        if (move_uploaded_file($file, $destination)) {
+
+                            $attachment = $fname;
+                            //$sql8 = "INSERT INTO conversations(attachment) VALUES ('$attachment')";
+                            //$result8 = $conn->query($sql8);
+
+                        }
+                    }
+                }             
+            }
+        }
+        ?>
+
         <form method="POST" enctype="multipart/form-data">
 
             <div class="card" style="margin-left:20vw;margin-right:25vw;width:55%;border:3px solid #08a73a">
                 <h2 style="font-family:Sitara;margin-left:250px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
 
                 <label for="title" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:45px;margin-right:30pxs;">Title </label>
-                <input style="margin-left:77px;min-width:375px" class="txt-input" type="text" name="TitleName"></br>
+                <input style="margin-left:77px;min-width:375px" class="txt-input" type="text" name="TitleName"required></br>
                 </br></br>
 
                 <label for="content" style="font-family:Sitara, sans-serif;font-weight:bold;;margin-left:45px;margin-right:10pxs">Content</label><br>
-                <textarea class="txt-input" name="addContent" rows="10" cols="51" style="margin-left:160px;"></textarea>
+                <textarea class="txt-input" name="addContent" rows="10" cols="51" style="margin-left:160px;"required></textarea>
                 </br></br>
 
                 <label for="section " style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:45px;">Section</Section> </label>

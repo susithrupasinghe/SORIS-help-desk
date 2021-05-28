@@ -35,8 +35,7 @@ session_start();
         <!-- adding welcome message-->
         <div class="card" style="background-color:#fce384;margin:auto;width:60%;margin-top:auto;padding-left:50px;padding-right:50px;border-radius:20px;">
             <h4 style="text-align:center;font-family:'Sitara',sans-serif;"> Welcome to Soris Help Desk </h4>
-            <p style="text-align:center;font-family:'Sitara',sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in tempus urna, eu faucibus risus. Ut pharetra non ex eu fermentum.
-                Vestibulum in luctus leo, eu vestibulum lorem. Quisque rhoncus </p>
+            <p style="text-align:center;font-family:'Sitara',sans-serif;">The help desk is the source of information at SORIS University.If you have problem accessing information in the FAQ.So you can get contact details of university from Contact Us.We are continually updating details to provide up - to -date for you</p>
         </div>
         <!--adding icons to news, information and make a inquiry-->
 
@@ -46,7 +45,7 @@ session_start();
                     <!--ADDING INFORMATION LINK BLOCK-->
 
                     <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
-                        <a href="res/content/information.php" style="text-decoration: none;color:#000000;">
+                        <a href="res/content/information.php" target="_blank" style="text-decoration: none;color:#000000;">
                             <img src="images/info.svg" alt="" width="55%">
                             <p style="font-family: 'Sitara', sans-serif;">Information</p>
 
@@ -59,7 +58,7 @@ session_start();
                     <!-- ADDING NEWS LINK BLOCK-->
 
                     <div class="card" style="border:3px solid #08A73A;height:100px;width:110px;text-align:center;border-radius:25px;">
-                        <a href="res/content/news.php" style="text-decoration: none;color:#000000;">
+                        <a href="res/content/news.php" target="_blank" style="text-decoration: none;color:#000000;">
                             <img src="images/news.svg" alt="" width="55%">
                             <p style="font-family: 'Sitara', sans-serif;">NEWS</p>
                         </a>
