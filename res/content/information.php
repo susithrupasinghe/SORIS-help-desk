@@ -44,10 +44,15 @@ session_start();
         while ($row = $result->fetch_assoc()) {
             $postLink = "content.php?id=" . $row["id"];
 
-            if ($i % 6 == 0) {
-                echo "</tr><tr>";
-            }
+            if ($i%5==0) {
+    
+                if($i==0){
 
+                }
+                else{
+                    echo "</tr><tr>";
+                }
+            }
             echo "<td style='width:25%'>";
             echo <<< HTML
                 <div class= "card" style= "width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
