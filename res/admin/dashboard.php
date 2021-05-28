@@ -145,7 +145,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                         echo <<<HTML
                         <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
                         <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
-                        <strong style= 'text-align:center;font-size: 30x;'>$Error</strong> 
+                        <strong style= 'text-align:center;font-size: 30x;'>You are already redistered! Visit SignIn page.</strong> 
                         </div> "
                         HTML;
                     } else {
