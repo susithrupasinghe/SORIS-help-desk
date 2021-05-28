@@ -125,7 +125,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         <form method="POST" enctype="multipart/form-data">
 
-            <div class="card" style="margin-left:20vw;margin-right:25vw;width:55%;border:3px solid #08a73a">
+            <div class="card" style="margin-left:auto;margin-right:auto;width:55%;border:3px solid #08a73a">
                 <h2 style="font-family:Sitara;margin-left:250px;font-family:Sitara, sans-serif;">Add Inquiry</h2>
 
                 <label for="title" style="font-family:Sitara, sans-serif;font-weight:bold;margin-left:45px;margin-right:30pxs;">Title </label>
