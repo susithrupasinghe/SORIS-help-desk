@@ -77,10 +77,10 @@
                 <label for="password" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;"> Password </label>
                 <input class="txt-input" type="password" style="margin-left:72px;" id="psw1" oninput="verifyPassword(this)" id="password" name="psw" required>
                 
-                <p style=" font-family:'sitara',sans-serif; font-size: 10px; margin-left:35%; "> 
+                <div style=" font-family:'sitara',sans-serif; font-size: 10px; margin-left:35%; "> 
                 **Password must contain <strong Style = "font-weight:bold; "> 4-10 characters</strong>.
                 <br> Password must contain <strong Style = "font-weight:bold;"> Uppercase Letters , LowerCase Letters, <br> Numbers </strong>
-                And <strong Style = "font-weight:bold; ">Symbols(@,#,$,%,&,*)</strong></p>
+                And <strong Style = "font-weight:bold; ">Symbols(@,#,$,%,&,*)</strong></div>
 
                 <label for="reEnterPassword" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-left:60px;">Password re-type </label>
                 <input class="txt-input" type="password" style="margin-left:15px;" id="psw2" oninput="verifyPassword(this)" id="reEnterPassword" name="rpsw" required>
