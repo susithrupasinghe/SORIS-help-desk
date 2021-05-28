@@ -1,23 +1,20 @@
 <?php
 session_start();
 
-if (isset($_SESSION["userid"]) && isset($_SESSION["role"]))
-{
+if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
-    if ($_SESSION["role"] != "student") 
-    {
+    if ($_SESSION["role"] != "student") {
 
         header("Location: ../../index.php");
     }
-} 
-else 
-{
+} else {
     header("Location: ../../index.php");
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,8 +58,7 @@ else
         $sql = "SELECT id FROM users WHERE email='$uMail'";
         $result = $con->query($sql);
 
-        while ($row = $result->fetch_assoc()) 
-        {
+        while ($row = $result->fetch_assoc()) {
             $uid = $row['id'];
         }
 
@@ -71,13 +67,12 @@ else
         $sqlA = "SELECT COUNT(isActive) AS 'Active' FROM inquiry WHERE conversationStarter = $uid  && isActive = '1'";
         $result1A = $con->query($sqlA);
 
-        while ($row = $result1A->fetch_assoc()) 
-        {
+        while ($row = $result1A->fetch_assoc()) {
             $Active = $row['Active'];
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara;margin-left:835px;color:#1D4354;">Active inquiry count : $Active</h3>
+                <h3 style="font-family:Sitara;color:#1D4354;margin-left:auto;margin-right:auto;">Active inquiry count : $Active</h3>
                 HTML;
 
 
@@ -90,13 +85,17 @@ else
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara;margin-left:835px;color:#1D4354;">Closed inquiry count : $close</h3>
+                <h3 style="font-family:Sitara;color:#1D4354;">Closed inquiry count : $close</h3>
                 HTML;
 
         //add create inquiry button
 
         echo <<< HTML
-          <a href="addinquiry.php"> <div style="font-family:Sitara;margin-left:80%;" class="btt type1" >Add Inquiry</div></a>
+         <div style="width:100%;float:right;"> 
+         <a href="addinquiry.php"> 
+             <div style="font-family:Sitara;" class="btt type1" >Create Inquiry</div>
+            </a>
+        </div>
 
         HTML;
 
@@ -104,7 +103,7 @@ else
 
         //active
         echo <<< HTML
-                <h2 style="font-family:Sitara;margin-left:116px;color:#08A73A;">Active Inquery</h2>
+                <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Active Inquery</h2>
             
                 <table class="table-style" style="max-width: 80%;margin:auto;">
                 <tr>
@@ -118,15 +117,14 @@ else
                 </tr>
                 HTML;
 
-                
-       
+
+
         $sql = "SELECT i.id,i.title,i.createdDate,i.lastModifiedDate,i.currentStaffId,u.firstName,u.lastName FROM inquiry i,users u WHERE conversationStarter='$uid' && isActive = '1' && i.currentStaffId = u.id";
 
         $result = $con->query($sql);
 
         if ($result == TRUE) {
-            while ($rows = $result->fetch_assoc()) 
-            {
+            while ($rows = $result->fetch_assoc()) {
 
                 $id = $rows['id'];
                 $title = $rows['title'];
@@ -134,7 +132,7 @@ else
                 $LastModifiedDate = $rows['lastModifiedDate'];
                 $StaffID = $rows['currentStaffId'];
                 $link = "conversation.php?id=$id ";
-                $Faculty=$rows['firstName']." ".$rows['lastName'];
+                $Faculty = $rows['firstName'] . " " . $rows['lastName'];
 
 
 
@@ -156,9 +154,9 @@ else
                     HTML;
         }
 
-            //archived
-            echo <<< HTML
-            <h2 style="font-family:Sitara;margin-left:116px;color:#08A73A;">Archived Inquery</h2>
+        //archived
+        echo <<< HTML
+            <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Archived Inquery</h2>
         
             <table class="table-style" style="max-width: 80%;margin:auto;">
             <tr>
@@ -172,27 +170,26 @@ else
             </tr>
             HTML;
 
-            
-   
-    $sql = "SELECT i.id,i.title,i.createdDate,i.lastModifiedDate,i.currentStaffId,u.firstName,u.lastName FROM inquiry i,users u WHERE conversationStarter='$uid' && isActive = '0' && i.currentStaffId = u.id";
-
-    $result = $con->query($sql);
-
-    if ($result == TRUE) {
-        while ($rows = $result->fetch_assoc()) 
-        {
-
-            $id = $rows['id'];
-            $title = $rows['title'];
-            $SubmitedDate = $rows['createdDate'];
-            $LastModifiedDate = $rows['lastModifiedDate'];
-            $StaffID = $rows['currentStaffId'];
-            $link = "conversation.php?id=$id ";
-            $Faculty=$rows['firstName']." ".$rows['lastName'];
 
 
+        $sql = "SELECT i.id,i.title,i.createdDate,i.lastModifiedDate,i.currentStaffId,u.firstName,u.lastName FROM inquiry i,users u WHERE conversationStarter='$uid' && isActive = '0' && i.currentStaffId = u.id";
 
-            echo <<< HTML
+        $result = $con->query($sql);
+
+        if ($result == TRUE) {
+            while ($rows = $result->fetch_assoc()) {
+
+                $id = $rows['id'];
+                $title = $rows['title'];
+                $SubmitedDate = $rows['createdDate'];
+                $LastModifiedDate = $rows['lastModifiedDate'];
+                $StaffID = $rows['currentStaffId'];
+                $link = "conversation.php?id=$id ";
+                $Faculty = $rows['firstName'] . " " . $rows['lastName'];
+
+
+
+                echo <<< HTML
                     <tr>  
                     <td>$id</td>
                     <td>$title</td>
@@ -203,15 +200,15 @@ else
                     <td> <a href="$link" target = "_blank">See more</a></td>
                     </tr>
                 HTML;
-        }
-        echo <<< HTML
+            }
+            echo <<< HTML
                 </table>
                 <br><br><br>
                 HTML;
-    }
+        }
 
 
-        
+
 
         ?>
 
