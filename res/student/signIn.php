@@ -65,7 +65,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 } else {
                     echo <<< HTML
             <div class="alert">
-            <span class="closebtn">&times;</span>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>Wrong Password !</strong> Entered password is incorrrect !. Please input correct password.
             </div>
             HTML;
@@ -74,7 +74,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                 echo <<< HTML
             <div class="alert">
-            <span class="closebtn">&times;</span>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>Wrong Email !</strong> Not registred email or password !. Please enter correct one.
             </div>
             HTML;
