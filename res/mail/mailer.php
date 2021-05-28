@@ -151,11 +151,11 @@ $mail->msgHTML("
 
 
 if(!$mail->send()){
-    echo "Mailer Error: " . $mail->ErrorInfo;
+    // echo "Mailer Error: " . $mail->ErrorInfo;
 
     return false;
 }else{
-    echo "Message sent!";
+    // echo "Message sent!";
     return true;
 }
 
@@ -282,11 +282,11 @@ function send_Forgot_password($to,$Link){
     
     
     if(!$mail->send()){
-        echo "Mailer Error: " . $mail->ErrorInfo;
+        // echo "Mailer Error: " . $mail->ErrorInfo;
     
         return false;
     }else{
-        echo "Message sent!";
+        // echo "Message sent!";
         return true;
     }
     

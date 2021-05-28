@@ -52,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             padding-bottom: 0px;
         }
 
-        tr {}
     </style>
 </head>
 
