@@ -33,38 +33,6 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
     <div class="body-container">
 
-        <!--Front end-->
-        <form method="POST" >
-            <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;">
-                <h2 style="font-family:Sitara, sans-serif;">Forgot Password</h2>
-                
-                <div >
-                <label for="email " style="font-family:Sitara,sans-serif;font-weight:bold;">Email </label>
-                <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
-                </div>
-               
-                </br> </br>
-
-                <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" >
-            </div>
-        </form>
-
-        <!--Check e-mail pattern-->
-        <script>
-            function validemail(mail) {
-                var email = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-                var inputemail = mail.value;
-
-                if (inputemail.match(email)) {
-                    mail.style.border = "3px solid #1d4354";
-                    return true;
-                } else {
-                    mail.style.border = "3px solid #ff0000";
-                    return false;
-                }
-            }
-        </script>
-
         <!--Send e-mail verification-->
         <?php
         require '../../res/mail/mailer.php';
@@ -99,15 +67,15 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 //send_Forgot_password("shavidilunika10s@gmail.com","https://testetst.com");
 
                 echo <<< HTML
-                        <div class='alert success' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                        <span class='closebtn'>&times;</span>
+                        <div class='alert success' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
+                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
                         </div>
                         HTML;
             } else {
                 echo <<< HTML
-                <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
-                <span class='closebtn'>&times; </span>
+                <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
+                <span class='closebtn' onclick="this.parentElement.style.display='none';">&times; </span>
                 <strong style= 'text-align:center;font-size: 30x;'>You are not registered!</strong>
                 </div>
                 HTML;
@@ -115,11 +83,46 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         }
         ?>
 
-        </div>
+        <!--Front end-->
+        <form method="POST">
+        <div style="text-align:center;">
+            <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;">
+                <h2 style="font-family:Sitara, sans-serif;margin:auto;margin-bottom:20px;">Forgot Password</h2>
 
-        <!--Footer-->
-        <?php include("../../res/templates/footer.php");  ?>
-        <script src="../../js/script.js"></script>
+                <div>
+                    <label for="email " style="font-family:Sitara,sans-serif;font-weight:bold;margin:auto;">Email </label>
+                    <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
+                </div>
+
+                </br> </br>
+
+                <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" style="margin:auto;">
+            </div>
+        </div>
+        </form>
+
+        <!--Check e-mail pattern-->
+        <script>
+            function validemail(mail) {
+                var email = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                var inputemail = mail.value;
+
+                if (inputemail.match(email)) {
+                    mail.style.border = "3px solid #1d4354";
+                    return true;
+                } else {
+                    mail.style.border = "3px solid #ff0000";
+                    return false;
+                }
+            }
+        </script>
+
+
+    </div>
+
+    <!--Footer-->
+    <?php include("../../res/templates/footer.php");  ?>
+    <script src="../../js/script.js"></script>
 
 </body>
 
