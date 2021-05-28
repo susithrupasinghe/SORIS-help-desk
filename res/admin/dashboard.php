@@ -16,7 +16,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORIC adminDashboard</title>
+    <title>SORIC Administrator Dashboard</title>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/signup.css">
@@ -37,7 +37,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 <body>
 
     <?php
-    $page = "adminDashboard";
+    $page = "dashboard";
     require '../../config/config.php';
     require '../mail/mailer.php';
     include("../templates/header.php");
@@ -135,43 +135,54 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                     $eMail = $_POST['email'];
                     $faculty = $_POST['faculty'];
                     $nPassword = $_POST['psw'];
+                    $rePassword = $_POST['rpsw'];
 
                     $hashPass = password_hash($nPassword, PASSWORD_DEFAULT);
 
-                    $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
-                    $resultQuery = $conn->query($sqlquery);
+                    if ($nPassword == $rePassword) {
 
-                    if ($resultQuery->num_rows != 0) {
-                        echo <<<HTML
-                        <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                        <span class='closebtn'>&times;</span>
-                        <strong style= 'text-align:center;font-size: 30x;'>$Error</strong> 
-                        </div> "
-                        HTML;
-                    } else {
-                        $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
+                        $sqlquery = "SELECT email FROM users WHERE email= '$eMail'";
+                        $resultQuery = $conn->query($sqlquery);
+
+                        if ($resultQuery->num_rows != 0) {
+                            echo <<<HTML
+                            <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
+                            <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                            <strong style= 'text-align:center;font-size: 30x;'>You are already redistered! Visit SignIn page.</strong> 
+                            </div> "
+                            HTML;
+                        } else {
+                            $query = "INSERT INTO users(isverified, email, firstName, lastName, faculty, password, role, stdid)
                                 values( '0', '$eMail', '$sectionName', '$userName', '$faculty','$hashPass', 'Staff','$staffId')";
-                        $result = $conn->query($query);
+                            $result = $conn->query($query);
 
-                        if ($result === TRUE) {
-                            $verification_token = base64_encode($hashPass);
-                            $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
-                            $verify_mail = send_Verify_Email($eMail, $link);
+                            if ($result === TRUE) {
+                                $verification_token = base64_encode($hashPass);
+                                $link = "http://localhost/SORIS-help-desk/res/others/verification.php?verification=$verification_token&email=$eMail&forgot=0";
+                                $verify_mail = send_Verify_Email($eMail, $link);
 
-                            echo <<< HTML
+                                echo <<< HTML
                                     <div class='alert success' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                                    <span class='closebtn'>&times;</span>
+                                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please visit your E-mail! Click on verify link</strong> 
                                     </div> 
                                 HTML;
-                        } else if ($result === FALSE) {
-                            echo <<< HTML
+                            } else if ($result === FALSE) {
+                                echo <<< HTML
                                     <div class='alert' style= 'width:40%; margin-left:10px; position:absolute; top: 20%;'>
-                                    <span class='closebtn'>&times;</span>
+                                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
                                     <strong style= 'text-align:center;font-size: 30x;'>Please register again!</strong> 
                                     </div> 
                                  HTML;
+                            }
                         }
+                    } else {
+                        echo <<< HTML
+                        <div class='alert' style= 'width:40%; margin-left:auto; margin-right:auto; position:absolute; top: 20%;'>
+                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
+                        </div>
+                        HTML;
                     }
                 }
                 closeCon($conn);
