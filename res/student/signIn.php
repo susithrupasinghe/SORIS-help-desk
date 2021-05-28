@@ -87,14 +87,14 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
             <div class="card" style="margin-left:auto; margin-right:auto;border:3px solid #08A73A;">
 
-                <h1 style="text-align:center;"> Student signIn </h1>
+                <h1 style="text-align:center; font-style:bold; font-family:'sitara',sans-serif;"> Student signIn </h1>
                 <br>
-                <div style="margin-left: 5%">Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px; min-width: 60%;" required>
+                <div style=" font-family:'sitara',sans-serif; font-weight:bold; margin-left: 5%">Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:50px; min-width: 60%;" required>
                 </div>
 
       
 
-                <div style="margin-left: 5%"> Password <input class="txt-input" type="password" name="password" style="margin-left: 18px; min-width: 60%;"required>
+                <div style=" font-family:'sitara',sans-serif; font-weight:bold; margin-left: 5%"> Password <input class="txt-input" type="password" name="password" style="margin-left: 18px; min-width: 60%;"required>
                 </div>
                 <br><br>
 
@@ -104,7 +104,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                 <br><br><br>
 
-                <a href="../student/signUp.php" style="color: #1D4354;margin-left:100px;"> New user? Click here to signUp </a>
+                <a href="../student/signUp.php" style="color: #1D4354;margin-left:100px;" target="_blank"> New user? Click here to signUp </a>
                 <br>
                 <br>
             </div>

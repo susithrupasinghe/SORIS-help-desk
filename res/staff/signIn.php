@@ -134,22 +134,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="card" style="margin-left:auto;margin-right:auto;text-align:center;border:3px solid #08A73A;">
 
-                <h1 style="text-align:center;"> Staff/Administrator signIn </h1>
+                <h1 style="text-align:center; font-style:bold; font-family:'sitara',sans-serif;"> Staff/Administrator signIn </h1>
                 <br>
-                Select User<select name="user"class="txt-input"style="min-width: 340px; margin-left: 12px;">
+                <div style=" font-family:'sitara',sans-serif; font-weight:bold;">Select User<select name="user"class="txt-input"style="min-width: 340px; margin-left: 12px;">
                     <option value="staff">Staff</option>
                     <option value="administrator">Administrator</option>
-                </select>
-                <br>
-                Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:40px;">
-                <br>
-                Password <input class="txt-input" type="password" name="password" style="margin-left: 18px;">
-                <br><br><br>
-
+                </select></div>
+                <div style=" font-family:'sitara',sans-serif; font-weight:bold;"> Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:50px;"required>
+                </div>
+                <div style=" font-family:'sitara',sans-serif; font-weight:bold;">Password <input class="txt-input" type="password" name="password" style="margin-left: 18px;"required>
+                </div>
+                <br><br>
                 <!-- <div style="margin-right: 50px;margin-left: 100px;" >
                 
                 </div> -->
-                <a  href="../others/forgotPassword.php"  class="btt type3">Forget password</a>
+                <a  href="../others/forgotPassword.php">  <div  style="margin-right: 50px;margin-left: 100px;" class="btt type3">Forget password</div></a>
                 <input type="submit" value="Login" class="btt type1" name="Login" style="padding-left: 35px;padding-right: 35px;padding-top: 8px;padding-bottom: 8px;">
 
                 <br><br><br>
