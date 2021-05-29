@@ -362,12 +362,18 @@ function message($name, $date, $text, $attachment, $role)
 
                     if($status=="Open"){
 
-                        $sql = "SELECT id, firstName from users WHERE role='staff'";
+                        $sql = "SELECT id, firstName ,email from users WHERE role='staff'";
                         $result = $con->query($sql);
     
                         if ($result->num_rows > 0) {
     
                             while ($row = $result->fetch_assoc()) {
+
+                                $staff_mail = $row["email"];
+
+                                if($staff_mail == $_SESSION["userid"]){
+                                    continue;
+                                }
     
                                 $id = $row["id"];
                                 $name = $row["firstName"];
@@ -387,7 +393,7 @@ function message($name, $date, $text, $attachment, $role)
                         echo <<< HTML
 
                         <form method="POST">
-                            <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;background-color: #1D4354;color: #FCFCFC;padding:15px;" type="submit" value="Close Inquiry">
+                            <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;color: #FCFCFC;padding:15px;background-color: #f44336;" type="submit" value="Close Inquiry">
                         </form>
                       HTML;
 
