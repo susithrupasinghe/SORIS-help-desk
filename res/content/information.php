@@ -39,7 +39,7 @@ session_start();
             echo "<table style='margin-left: 10%;'>";
             echo "<tr>";
         }
-        $i = 1;
+        $i = 0;
 
         while ($row = $result->fetch_assoc()) {
             $postLink = "content.php?id=" . $row["id"];
