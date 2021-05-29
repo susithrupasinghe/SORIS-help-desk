@@ -205,7 +205,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 
 
-
+        closeCon($con);
         ?>
 
         </table>

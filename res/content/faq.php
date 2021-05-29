@@ -75,7 +75,7 @@ session_start();
            echo "</tr></table>";
         }
 
-       
+        closeCon($conn);
 
         ?>
         
