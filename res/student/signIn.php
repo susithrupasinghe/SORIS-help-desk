@@ -37,7 +37,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     ?>
 
 
-    <div class="body-container">
+    <div class="body-container" style="background-image:url('../../images/bg4.svg');background-repeat: no-repeat;background-size: 80%;">
         <?php
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
