@@ -241,7 +241,7 @@ function message($name, $date, $text, $attachment, $role)
 
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('../../images/convs.png');background-repeat: repeat;">
 
         <?php
 
