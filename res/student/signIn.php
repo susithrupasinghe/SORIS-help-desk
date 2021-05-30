@@ -48,7 +48,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
             $con = openCon();
 
-            $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='student'";
+            $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='student' AND isverified='1'";
             $result = $con->query($sqlquery);
 
             if ($result->num_rows > 0) {

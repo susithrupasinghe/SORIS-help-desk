@@ -13,6 +13,30 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 ?>
 
+<?php
+
+require '../../config/config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    if (isset($_GET['delete'])) {
+
+        $contentId = $_GET["delete"];
+        $con = openCon();
+        $sql = "DELETE FROM content WHERE id='$contentId'";
+        $result = $con->query($sql);
+        closeCon($con);
+        header("Location: contentDashboard.php");
+
+
+    }
+
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +86,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
             </tr>
             <?php
 
-            require '../../config/config.php';
+            
 
             $con = openCon();
             $sql = "SELECT id,title,thumbnailText,tag FROM content";

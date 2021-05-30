@@ -31,7 +31,7 @@ session_start();
 
     ?>
 
-    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('images/bg2.svg');background-repeat: no-repeat;background-size: 200%;background-position:center;">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url('images/bg2.svg');background-repeat: no-repeat;background-size: 200%;background-position:center;">
         <!-- adding welcome message-->
         <div class="card" style="background-color:#fce384;margin:auto;width:60%;margin-top:auto;padding-left:50px;padding-right:50px;border-radius:20px;">
             <h4 style="text-align:center;font-family:'Sitara',sans-serif;"> Welcome to Soris Help Desk </h4>
