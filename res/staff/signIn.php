@@ -42,7 +42,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 
    
-    <div class="body-container">
+    <div class="body-container" style="background-image:url('../../images/bg6.svg');background-repeat: no-repeat;background-size: 100%;background-position:center;">
 
     <?php
 

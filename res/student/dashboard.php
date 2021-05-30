@@ -71,9 +71,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
             $Active = $row['Active'];
         }
 
-        echo <<< HTML
-                <h3 style="font-family:Sitara;color:#1D4354;margin-left:auto;margin-right:auto;">Active inquiry count : $Active</h3>
-                HTML;
+
 
 
         //Count closed inquires
@@ -84,20 +82,18 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
             $close = $row['Close'];
         }
 
-        echo <<< HTML
-                <h3 style="font-family:Sitara;color:#1D4354;">Closed inquiry count : $close</h3>
-                HTML;
 
-        //add create inquiry button
-
+        //add create inquiry button,active inquiry,closed inquiry
         echo <<< HTML
-         <div style="width:100%;float:right;"> 
-         <a href="addinquiry.php"> 
-             <div style="font-family:Sitara;" class="btt type1" >Create Inquiry</div>
+        <div style="text-align:right;margin-right:10%;">
+        <h3 style="font-family:Sitara;color:#1D4354;">Active inquiry count : $Active</h3>
+        <h3 style="font-family:Sitara;color:#1D4354;">Closed inquiry count : $close</h3>
+         <a href="addinquiry.php" target="blank"> 
+             <div style="font-family:Sitara;margin-right:0px;" class="btt type1" >Create Inquiry</div>
             </a>
         </div>
-
         HTML;
+
 
 
 
@@ -209,7 +205,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 
 
-
+        closeCon($con);
         ?>
 
         </table>
