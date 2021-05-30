@@ -13,14 +13,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 ?>
 
-<?php
 
-if (isset($_POST['htmlcontent'])) {
-
-    header("Refresh:0");
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,29 +53,85 @@ if (isset($_POST['htmlcontent'])) {
     ?>
 
     <div class="body-container">
-        
+
+        <?php
+        require '../../config/config.php';
+
+        if (isset($_POST['submit'])) {
+
+            $conn = openCon();
+
+
+            $email = $_SESSION['userid'];
+            $sql = "SELECT id FROM users WHERE email='$email'";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+
+
+            $userId = $row["id"];
+            $titlee = $_POST['title'];
+            $subtitle = $_POST['subtitle'];
+            $tag = $_POST['tag'];
+            $Createddatetime = date("Y-m-d h:i:s");
+            $htmlcontent = $_POST['htmlContent'];
+
+
+            $sql = "INSERT INTO content (title, thumbnailText, authorId, tag, createdDate, htmltext) VALUES ('$titlee','$subtitle','$userId','$tag','$Createddatetime','$htmlcontent')";
+            $result = $conn->query($sql);
+            if ($result === TRUE) {
+
+                header("Location: contentDashboard.php");
+            } else {
+                echo <<< HTML
+                        <div class='alert' style= 'width:40%; margin-left:400px; position:absolute; top: 20%;'>
+                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong style= 'text-align:center;font-size: 30x;'>Sorry,Content not posted succusfully.</strong>
+                        </div>
+                    HTML;
+            }
+        }
+
+        ?>
+
         <div style="margin-top: 50px;">
 
-        <form action="" style="text-align: center;" method="POST" name="mainform" enctype="multipart/form-data" onsubmit="Attch_html_wrapper()">
-            <label for="title" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-right:60px;">Title </label>
-            <input type="text" id="title" class="txt-input" name="title" style="min-width: 60%;margin-left:80px;">
-            <br>
+            <form action="" style="text-align: left;" method="POST" name="mainform" enctype="multipart/form-data" onsubmit="Attch_html_wrapper()">
 
-            <label for="thumbnailtext" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-right:60px;">Thumbnail Text </label>
-            <input type="text" id="thumbnailtext" class="txt-input" name="subtitle" style="min-width: 60%;">
-            <br>
+                <div style="margin-left: 10%;">
+                    <label for="title" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-right:60px;">Title </label>
+                    <input type="text" id="title" class="txt-input" name="title" style="min-width: 60%;margin-left:80px;" required>
+                    <br>
 
-            <div style="padding: 100px;">
-                <div id="wordwrap" name="wordwrap" value=""></div>
-            </div>
+                    <label for="thumbnailtext" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-right:60px;">Thumbnail Text </label>
+                    <input type="text" id="thumbnailtext" class="txt-input" name="subtitle" style="min-width: 60%;" required>
+                    <br>
 
-            <input type="hidden" id="htmlContent" name="htmlContent" value="">
-            <input type="submit" class="btt type1" name="submit" value="submit" style="min-width: 150px;font-size:large;">
+                    <label for="tag" style=" font-family:'sitara',sans-serif; font-weight:bold;margin-right:60px;">Tag </label>
+                    <select class="txt-input" name="tag" id="" style="margin-left: 90px;" required>
+                        <option value="NEWS">NEWS</option>
+                        <option value="FAQ">FAQ</option>
+                        <option value="Information">Information</option>
+                    </select>
+                </div>
 
-        </form>
+
+
+                <div style="padding: 100px;">
+                    <div id="wordwrap" name="wordwrap" value=""></div>
+                </div>
+                <br>
+
+
+                <input type="hidden" id="htmlContent" name="htmlContent" value="">
+                <div style="text-align:center;">
+                <input type="submit" class="btt type1" name="submit" value="submit" style="min-width: 150px;font-size:large;">
+
+                </div>
+                
+            </form>
         </div>
 
-       
+
 
 
     </div>
