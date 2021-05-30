@@ -44,7 +44,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     include("../templates/navigation.php");
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url('../../images/bg13.svg');background-repeat: no-repeat;background-size: 100%;">
 
         <h3 class="txt-green" style="margin-left:80px;font-size:25px;">Statictics </h3><br>
 
