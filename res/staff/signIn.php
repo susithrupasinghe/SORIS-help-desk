@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user == "staff") {
 
 
-        $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='staff'";
+        $sqlquery = "SELECT password FROM users WHERE email='" . $email . "' AND role='staff' AND isverified='1'";
         $result = $con->query($sqlquery);
 
         
