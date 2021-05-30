@@ -29,7 +29,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     include("../templates/navigation.php");
     ?>
 
-    <div class="body-container" style="background-image:url('../../images/bg3.svg');background-repeat: no-repeat;background-size: 90%;">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg3.svg');background-repeat: no-repeat;background-size: 90%;">
 
         <form method="post">
             <div class="card" id="card" style="min-width:50%;margin-left:auto;margin-right:auto;border:3px solid #08A73A;">
