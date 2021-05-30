@@ -69,62 +69,38 @@ closeCon($con);
             $new_pass = $_POST['newPass'];
             $re_pass = $_POST['RePass'];
 
-            $sql = "SELECT password FROM users Where email='$email'";
-            $result = $con->query($sql);
+            if ($new_pass == $re_pass) {
 
-            //if ($result->num_rows > 0)
-            //{
-                $rows = $result->fetch_assoc();
-               //$odl_pass = $rows['password'];
-               //$hashPass = password_hash($new_pass, PASSWORD_DEFAULT);
-                
+                $hashPass = password_hash($new_pass, PASSWORD_DEFAULT);
+                $sql = "UPDATE users SET password = '$hashPass' WHERE email='$email'";
+                $result = $con->query($sql);
 
-               //if (password_verify( $new_pass, $rows["password"]))
-                //{
-                    //echo <<< HTML
-                           // <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
-                           // <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
-                            //<strong>Error!</strong> Password exit !!!
-                            //</div>
-                           // HTML;
-               // }
-                /*else{*/ if ($new_pass == $re_pass)
-                    {
-                        echo <<< HTML
-                        <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
-                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
-                        <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
-                        </div>
-                        HTML;
-                    }
-                    else{
-                        if ($new_pass == $re_pass) {
+                if ($result) {
 
-                            $hashPass = password_hash($new_pass, PASSWORD_DEFAULT);
-                            $sql = "UPDATE users SET password = '$hashPass' WHERE email='$email'";
-                            $result = $con->query($sql);
-            
-                            if ($result) {
-            
-                                //header("Location: ../../index.php");
-                            } else {
-                                echo <<< HTML
-                                        <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
-                                        <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
-                                        <strong>Error!</strong> Password not changed !!!
-                                        </div>
-                                        HTML;
-                            }
-                    }
-
+                    header("Location: ../../index.php");
+                } else {
+                    echo <<< HTML
+                            <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
+                            <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                            <strong>Error!</strong> Password not changed !!!
+                            </div>
+                            HTML;
                 }
             }
-
-            
-          
-                
+            else
+            if ($new_pass != $re_pass)
+            {
+                echo <<< HTML
+                <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
+                <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
+                </div>
+                HTML;
             }
+                
         }
+            
+
         closeCon($con);
         ?>
 

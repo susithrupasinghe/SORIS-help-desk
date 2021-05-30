@@ -56,43 +56,43 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         $uMail = $_SESSION['userid'];
 
-        $sql1 = "SELECT id FROM users WHERE email='$uMail'";
-        $result1 = $con->query($sql1);
+        $sql = "SELECT id FROM users WHERE email='$uMail'";
+        $result = $con->query($sql);
 
-        while ($row = $result1->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $uid = $row['id'];
         }
 
 
         //Count active inquires
-        $sqlA = "SELECT COUNT(isActive) AS 'Active' FROM inquiry WHERE currentStaffId = $uid  && isActive = '1'";
-        $result1A = $con->query($sqlA);
+        $sql = "SELECT COUNT(isActive) AS 'Active' FROM inquiry WHERE currentStaffId = $uid  && isActive = '1'";
+        $result = $con->query($sql);
 
-        while ($row = $result1A->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $Active = $row['Active'];
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara, sans-serif;margin-left:835px;color:#1D4354;">Active inquiry count : $Active</h3>
+                <h3 style="font-family:Sitara, sans-serif;margin-left:70.5%;color:#1D4354;">Active inquiry count : $Active</h3>
                 HTML;
 
 
         //Count closed inquires
-        $sqlC = "SELECT COUNT(isActive) AS 'Close' FROM inquiry WHERE currentStaffId = $uid  && isActive = '0'";
-        $result1C = $con->query($sqlC);
+        $sql = "SELECT COUNT(isActive) AS 'Close' FROM inquiry WHERE currentStaffId = $uid  && isActive = '0'";
+        $result = $con->query($sql);
 
-        while ($row = $result1C->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $close = $row['Close'];
         }
 
         echo <<< HTML
-                <h3 style="font-family:Sitara, sans-serif;margin-left:60%;color:#1D4354;">Closed inquiry count : $close</h3>
+                <h3 style="font-family:Sitara, sans-serif;margin-left:70.5%;color:#1D4354;">Closed inquiry count : $close</h3>
                 HTML;
 
 
         //active
         echo <<< HTML
-                <h2 style="font-family:Sitara, sans-serif;margin-left:116px;color:#08A73A;">Active Inquery</h2>
+                <h2 style="font-family:Sitara, sans-serif;margin-left:10%;color:#08A73A;">Active Inquiry</h2>
             
                 <table class="table-style" style="max-width: 80%;margin:auto;">
                 <tr>
@@ -108,11 +108,11 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                 
         //Select active inquiries
-        $sql1 = "SELECT id,title,createdDate,lastModifiedDate,conversationStarter FROM inquiry WHERE currentStaffId='$uid' && isActive = '1'";
-        $result1 = $con->query($sql1);
+        $sql = "SELECT id,title,createdDate,lastModifiedDate,conversationStarter FROM inquiry WHERE currentStaffId='$uid' && isActive = '1'";
+        $result = $con->query($sql);
 
-        if ($result1 == TRUE) {
-            while ($rows = $result1->fetch_assoc()) {
+        if ($result == TRUE) {
+            while ($rows = $result->fetch_assoc()) {
                 $idA = $rows['id'];
                 $titleA = $rows['title'];
                 $SubmitedDateA = $rows['createdDate'];
@@ -148,7 +148,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         //Archived Inquery
         echo <<< HTML
-            <h2 style="font-family:Sitara;margin-left:116px;color:#08A73A;">Archived Inquery</h2>
+            <h2 style="font-family:Sitara, sans-serif;margin-left:10%;color:#08A73A;">Archived Inquiry</h2>
 
             <table class="table-style" style="max-width: 80%;margin:auto;">
             <tr>
@@ -164,11 +164,11 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 
         //Select Archived Inquery
-        $sql3 = "SELECT id,title,createdDate,lastModifiedDate,conversationStarter FROM inquiry WHERE currentStaffId='$uid' && isActive = '0'";
-        $result3 = $con->query($sql3);
+        $sql = "SELECT id,title,createdDate,lastModifiedDate,conversationStarter FROM inquiry WHERE currentStaffId='$uid' && isActive = '0'";
+        $result = $con->query($sql);
 
-        if ($result3 == TRUE) {
-            while ($rows = $result3->fetch_assoc()) {
+        if ($result == TRUE) {
+            while ($rows = $result->fetch_assoc()) {
                 $idC = $rows['id'];
                 $titleC = $rows['title'];
                 $SubmitedDateC = $rows['createdDate'];
@@ -201,6 +201,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 HTML;
         }
 
+        closeCon($con);
         ?>
 
         </table>
