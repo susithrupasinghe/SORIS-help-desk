@@ -99,7 +99,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         //active
         echo <<< HTML
-                <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Active Inquery</h2>
+                <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Active Inquiry</h2>
             
                 <table class="table-style" style="max-width: 80%;margin:auto;">
                 <tr>
@@ -152,7 +152,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         //archived
         echo <<< HTML
-            <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Archived Inquery</h2>
+            <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Archived Inquiry</h2>
         
             <table class="table-style" style="max-width: 80%;margin:auto;">
             <tr>
