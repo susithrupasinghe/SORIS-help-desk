@@ -86,15 +86,21 @@ closeCon($con);
                             </div>
                             HTML;
                 }
-            } else {
-                echo <<< HTML
-                    <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
-                    <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
-                    <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
-                    </div>
-                    HTML;
             }
+            else
+            if ($new_pass != $re_pass)
+            {
+                echo <<< HTML
+                <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
+                <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong style= 'text-align:center;font-size: 30x;'>Password and Password re-type Field do not match</strong>
+                </div>
+                HTML;
+            }
+                
         }
+            
+
         closeCon($con);
         ?>
 
@@ -106,6 +112,12 @@ closeCon($con);
 
                 <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password</label>
                 <input style="margin-left:80px;" class="txt-input" type="password" id="newPass" name="newPass" oninput="validpassword(this)" required>
+                <div style=" font-family:'sitara',sans-serif; font-size: 10px; margin-left:35%; "> 
+
+                **Password must contain <strong Style = "font-weight:bold; "> 4-10 characters</strong>.
+                <br> Password must contain <strong Style = "font-weight:bold;"> Uppercase Letters , LowerCase Letters, <br> Numbers </strong>
+                And <strong Style = "font-weight:bold; ">Symbols(@,#,$,%,&,*)</strong>
+                </div>
 
                 <label for="repassword" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password re-type</label>
                 <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" required>
