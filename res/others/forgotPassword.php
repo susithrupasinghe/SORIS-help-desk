@@ -31,7 +31,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     include("../../res/templates/navigation.php");
     ?>
 
-    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('../../images/bg13.svg');background-repeat: no-repeat;background-size: 80%;background-position:center;">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('../../images/bg16.svg');background-repeat: no-repeat;background-size: 80%;background-position:center;">
 
         <!--Send e-mail verification-->
         <?php
