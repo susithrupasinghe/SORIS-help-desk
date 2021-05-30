@@ -87,7 +87,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
                 <input type="submit" value="SignUp Now" name="submit" class="btt type1" style="align-items:center; margin-left: 40%;" href="signIn.php">
                 <br><br>
 
-                <a href="signIn.php" style="text-align:center;  margin-left: 30%;"> Already user? Click here to SignIn </a>
+                <a href="signIn.php" style="text-align:center;  margin-left: 30%;"> Already a user? Click here to SignIn </a>
 
                 <?php
                 $conn = openCon();
