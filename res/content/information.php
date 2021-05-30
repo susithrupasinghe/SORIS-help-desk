@@ -25,7 +25,7 @@ session_start();
     include("../templates/navigation.php");
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('../../images/bg8.svg');background-repeat: no-repeat;background-size: 80%;background-position:center;">
 
         <h3 style="margin:0px;margin-left:10vw;">Information </h3><br>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">

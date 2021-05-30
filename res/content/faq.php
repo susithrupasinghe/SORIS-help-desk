@@ -25,7 +25,7 @@ session_start();
 
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg10.svg');background-repeat: no-repeat;background-size: 85%;background-position:center;">
 
 
         <h3 style="margin:0px;margin-left:10vw;"> FAQ </h3><br>
