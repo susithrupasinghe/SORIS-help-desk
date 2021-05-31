@@ -6,7 +6,7 @@ $server_root = "/SORIS-help-desk/";
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    header("Location: ".$server_root."index.php");
+    header("Location: " . $server_root . "index.php");
 }
 
 
@@ -16,7 +16,7 @@ if (isset($_GET['logout'])) {
 <div>
     <div class="header">
 
-        <div >
+        <div>
             <h1 class="logo txt-green" style="padding-left:17%; padding-top:8px; text-align:left;float:left;">SO</h1>
             <h1 class="logo txt-white" style="padding-top:8px; text-align:right; float:left;">RIS</h1>
             <div style="clear: both;"></div>
@@ -28,7 +28,7 @@ if (isset($_GET['logout'])) {
             $std_signUp =  $server_root . "res/student/signUp.php";
             $std_SignIn =  $server_root . "res/student/signIn.php";
             $staff_login = $server_root . "res/staff/signIn.php";
-            
+
 
             if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
@@ -37,7 +37,7 @@ if (isset($_GET['logout'])) {
                 <ul style='list-style-type: None;text-align: right;'>
                 <li><h4 style='margin-right:30px;color:#f8f9f8;display: block;'>
                 HTML;
-                
+
                 echo $_SESSION["userid"] . " : " . $_SESSION["role"];
 
                 echo <<< HTML

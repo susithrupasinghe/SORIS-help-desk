@@ -86,10 +86,8 @@ closeCon($con);
                             </div>
                             HTML;
                 }
-            }
-            else
-            if ($new_pass != $re_pass)
-            {
+            } else
+            if ($new_pass != $re_pass) {
                 echo <<< HTML
                 <div class='alert' style= 'width:40%; margin-left:auto;margin-right:auto;top: 20%;'>
                 <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
@@ -97,35 +95,34 @@ closeCon($con);
                 </div>
                 HTML;
             }
-                
         }
-            
+
 
         closeCon($con);
         ?>
 
         <!--Front end-->
         <form method="POST" name="changPassword">
-         <div style="text-align:center;">
-            <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%;border:3px solid #08a73a;">
-                <h2 style="margin:auto;font-family:Sitara, sans-serif;margin-bottom:30px;">Add New Password</h2>
+            <div style="text-align:center;">
+                <div class="card" style="margin-left:20vw;margin-right:20vw;width:50%;border:3px solid #08a73a;">
+                    <h2 style="margin:auto;font-family:Sitara, sans-serif;margin-bottom:30px;">Add New Password</h2>
 
-                <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password</label>
-                <input style="margin-left:80px;" class="txt-input" type="password" id="newPass" name="newPass" oninput="validpassword(this)" required>
-                <div style=" font-family:'sitara',sans-serif; font-size: 10px; margin-left:35%; "> 
+                    <label for="password" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password</label>
+                    <input style="margin-left:80px;" class="txt-input" type="password" id="newPass" name="newPass" oninput="validpassword(this)" required>
+                    <div style=" font-family:'sitara',sans-serif; font-size: 10px; margin-left:35%; ">
 
-                **Password must contain <strong Style = "font-weight:bold; "> 4-10 characters</strong>.
-                <br> Password must contain <strong Style = "font-weight:bold;"> Uppercase Letters , LowerCase Letters, <br> Numbers </strong>
-                And <strong Style = "font-weight:bold; ">Symbols(@,#,$,%,&,*)</strong>
+                        **Password must contain <strong Style="font-weight:bold; "> 4-10 characters</strong>.
+                        <br> Password must contain <strong Style="font-weight:bold;"> Uppercase Letters , LowerCase Letters, <br> Numbers </strong>
+                        And <strong Style="font-weight:bold; ">Symbols(@,#,$,%,&,*)</strong>
+                    </div>
+
+                    <label for="repassword" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password re-type</label>
+                    <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" oninput="validpassword(this)" required>
+
+                    <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-top:50px;">
+                    <input type="submit" value="Change password" class="btt type1" name="btnsubmit" style="margin-left:10px;">
                 </div>
-
-                <label for="repassword" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password re-type</label>
-                <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" oninput="validpassword(this)" required>
-
-                <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-top:50px;">
-                <input type="submit" value="Change password" class="btt type1" name="btnsubmit" style="margin-left:10px;">
             </div>
-        </div>
         </form>
 
     </div>

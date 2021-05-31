@@ -27,10 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $result = $con->query($sql);
         closeCon($con);
         header("Location: contentDashboard.php");
-
-
     }
-
 }
 
 
@@ -56,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         .table-style td {
             text-align: center;
         }
+
         .table-style td a {
             text-decoration: none;
             color: #08A73A;
@@ -74,13 +72,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg19.svg');background-repeat: no-repeat;background-size: 95%;background-position:center;">
 
         <div style="margin-top: 50px;">
-        <a href="composeContent.php" target="_blank">
-            <div class="btt type3" style="float: right;">Post New Content</div>
-        </a>
-        <h2 class="txt-green" style="margin-left:20%;margin-right:auto;">Content List</h2>
+            <a href="composeContent.php" target="_blank">
+                <div class="btt type3" style="float: right;">Post New Content</div>
+            </a>
+            <h2 class="txt-green" style="margin-left:20%;margin-right:auto;">Content List</h2>
 
         </div>
-       
+
 
         <table class="table-style" style="max-width: 80%;margin:auto;margin-top:30px;background-color:#FFF;">
             <tr>
@@ -92,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             </tr>
             <?php
 
-            
+
 
             $con = openCon();
             $sql = "SELECT id,title,thumbnailText,tag FROM content";

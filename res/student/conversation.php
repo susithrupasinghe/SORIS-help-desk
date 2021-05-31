@@ -16,7 +16,7 @@ require '../../config/config.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    if(isset($_POST["closeinq"])){
+    if (isset($_POST["closeinq"])) {
         $con = openCon();
         $inquiryId = $_GET["id"];
         // $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
@@ -24,16 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $result = $con->query($sql);
 
-        if($result===TRUE){
+        if ($result === TRUE) {
             header("Location: dashboard.php");
-        }
-        else{
+        } else {
             header("Refresh:0");
         }
-
-
-
-
     }
 
     if (isset($_POST['newmsg'])) {
@@ -57,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $filename = $_FILES['attachment']['name'];
 
-            if($filename != ""){
+            if ($filename != "") {
 
-                
+
                 $destination = '../uploads/' . $filename;
 
                 $file = $_FILES['attachment']['tmp_name'];
@@ -69,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (move_uploaded_file($file, $destination)) {
 
                     $attachment = $filename;
-                   
                 } else {
                     echo "Failed to upload file.";
                 }
@@ -78,27 +72,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql = "INSERT INTO conversations (inquiryId,userId,createdDate,attachment,text) VALUES('$inquiryId','$uid','$datetime','$attachment','$text')";
             $result = $con->query($sql);
 
-            if($result === TRUE){
+            if ($result === TRUE) {
 
                 $sql = "UPDATE inquiry SET lastModifiedDate='$datetime' WHERE id='$inquiryId'";
                 $result = $con->query($sql);
 
                 header("Refresh:0");
-            }
-            else{
+            } else {
 
                 echo "Error .";
-
             }
-
         }
-
-
-        
-
     }
-
-
 }
 
 
@@ -129,7 +114,7 @@ function message($name, $date, $text, $attachment, $role)
 
         if ($attachment != "") {
 
-            $attachment = "../uploads/".$attachment;
+            $attachment = "../uploads/" . $attachment;
 
             echo <<< HTML
 
@@ -171,7 +156,7 @@ function message($name, $date, $text, $attachment, $role)
 
         if ($attachment != "") {
 
-            $attachment = "../uploads/".$attachment;
+            $attachment = "../uploads/" . $attachment;
 
             echo <<< HTML
 
@@ -233,7 +218,7 @@ function message($name, $date, $text, $attachment, $role)
 
 
     $page = "conversation";
-   // require '../../config/config.php';
+    // require '../../config/config.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
 
@@ -266,10 +251,9 @@ function message($name, $date, $text, $attachment, $role)
                         $createdDate = $row[1];
                         $status = "";
 
-                        if($row[3] == "1"){
+                        if ($row[3] == "1") {
                             $status = "Open";
-                        }
-                        else{
+                        } else {
                             $status = "Closed";
                         }
 
@@ -314,10 +298,9 @@ function message($name, $date, $text, $attachment, $role)
                             }
 
                             echo "</div>";
-
                         }
 
-                        if($status=="Open"){
+                        if ($status == "Open") {
                             echo <<<HTML
                     <form style="margin-left:120px;margin-top:100px;" method="post" enctype="multipart/form-data">
                     <textarea name="text" placeholder="Type here your message" id="" cols="100" rows="10"></textarea><br><br><br>
@@ -329,38 +312,32 @@ function message($name, $date, $text, $attachment, $role)
                     </form>
 
                     HTML;
-
-
                         }
-                        
 
-                        
-                    if($status=="Open"){
 
-                        echo <<< HTML
+
+                        if ($status == "Open") {
+
+                            echo <<< HTML
 
                         <form method="POST">
                             <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;color: #FCFCFC;padding:15px;background-color: #f44336;" type="submit" value="Close Inquiry">
                         </form>
                       HTML;
-
-                    }
+                        }
                     } else {
 
                         echo "You dont have permisssion to View this converstation";
                     }
-                }
-                else{
+                } else {
 
                     echo <<<HTML
                     <img style="display: block;margin-left: auto;margin-right: auto;width: 40%;" src="../../images/inquiry_not_found.svg">
                     HTML;
                     header("Refresh:5; url=dashboard.php");
-
                 }
 
                 closeCon($con);
-              
             }
         }
 

@@ -85,21 +85,21 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         <!--Front end-->
         <form method="POST">
-        <div style="text-align:center;">
-        <br>
-            <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;margin-bottom:60px;">
-                <h2 style="font-family:Sitara, sans-serif;margin:auto;margin-bottom:20px;">Forgot Password</h2>
+            <div style="text-align:center;">
+                <br>
+                <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;margin-bottom:60px;">
+                    <h2 style="font-family:Sitara, sans-serif;margin:auto;margin-bottom:20px;">Forgot Password</h2>
 
-                <div>
-                    <label for="email " style="font-family:Sitara,sans-serif;font-weight:bold;margin:auto;">Email </label>
-                    <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
+                    <div>
+                        <label for="email " style="font-family:Sitara,sans-serif;font-weight:bold;margin:auto;">Email </label>
+                        <input style="margin-left:35px;" class="txt-input" type="text" id="email" name="email" oninput="validemail(this)" required></br>
+                    </div>
+
+                    </br> </br>
+
+                    <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" style="margin:auto;">
                 </div>
-
-                </br> </br>
-
-                <input type="submit" value="Send verification email" class="btt type1" name="btnsubmit" style="margin:auto;">
             </div>
-        </div>
         </form>
 
         <!--Check e-mail pattern-->

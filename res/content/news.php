@@ -34,29 +34,26 @@ session_start();
 
         <?php
 
-       
+
 
         $conn = opencon();
         $sql = "SELECT u.firstName,u.lastName,c.id ,c.title,c.thumbnailText,c.authorid,c.tag FROM users u ,content c WHERE  c.tag = 'NEWS' AND c.authorId= u.id;";
 
         $result = $conn->query($sql);
-     
+
         if ($result->num_rows > 0) {
-            
+
             echo "<table style='margin:auto;'><tr>";
             $i = 0;
             while ($row = $result->fetch_assoc()) {
-                 if ($i%5==0) {
-    
-                    if($i==0){
-    
-                    }
-                    else{
+                if ($i % 5 == 0) {
+
+                    if ($i == 0) {
+                    } else {
                         echo "</tr><tr>";
                     }
-                   
                 }
-                $url = "content.php?id=".$row['id'];
+                $url = "content.php?id=" . $row['id'];
                 echo <<< HTML
                     <td>
                     
@@ -71,13 +68,13 @@ session_start();
                     </div>
                     </td>
                     HTML;
-               
+
                 $i++;
             }
-    
+
             echo "</tr></table>";
         }
-       
+
         closeCon($conn);
 
         ?>

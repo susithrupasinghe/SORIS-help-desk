@@ -72,21 +72,16 @@
 
                     if ($result === TRUE) {
 
-                    echo <<< HTML
+                        echo <<< HTML
                     <img src="../../images/Verification_success.svg"style="margin-left:300px; " width="750px" alt="Verification image">
                     HTML;
-                    header("refresh:5;url= ../../index.php");
-                    //header("Location: ../../index.php");
+                        header("refresh:5;url= ../../index.php");
+                        //header("Location: ../../index.php");
 
-                    }
-                    else{
+                    } else {
 
                         header("refresh:5;url= ../../index.php");
                     }
-
-
-                    
-
                 }
             } else {
 
@@ -96,8 +91,6 @@
                 //header("Location: ../../index.php");
                 header("refresh:5;url= ../../index.php");
             }
-
-    
         }
 
         closeCon($con);

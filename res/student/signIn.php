@@ -1,12 +1,11 @@
-<?php 
+<?php
 
 session_start();
 
 if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 
-        header("Location: ../../index.php");
-
+    header("Location: ../../index.php");
 }
 
 
@@ -92,14 +91,16 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 <div style=" font-family:'sitara',sans-serif; font-weight:bold; margin-left: 5%">Email <input class="txt-input" type="text" name="email" oninput="validateEmail(this)" style="margin-left:50px; min-width: 60%;" required>
                 </div>
 
-      
 
-                <div style=" font-family:'sitara',sans-serif; font-weight:bold; margin-left: 5%"> Password <input class="txt-input" type="password" name="password" style="margin-left: 18px; min-width: 60%;"required>
+
+                <div style=" font-family:'sitara',sans-serif; font-weight:bold; margin-left: 5%"> Password <input class="txt-input" type="password" name="password" style="margin-left: 18px; min-width: 60%;" required>
                 </div>
                 <br><br>
 
-        	    <a href="../others/forgotPassword.php"> <div  style="margin-right: 50px;margin-left: 100px;" class="btt type3" >Forget password</div></a>
-               
+                <a href="../others/forgotPassword.php">
+                    <div style="margin-right: 50px;margin-left: 100px;" class="btt type3">Forget password</div>
+                </a>
+
                 <input type="submit" value="Login" class="btt type1" name="Login" style="padding-left: 35px;padding-right: 35px;padding-top: 8px;padding-bottom: 8px;">
 
                 <br><br><br>

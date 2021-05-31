@@ -26,5 +26,3 @@ function closeCon($con){
     $con->close();
 
 }
-
-?>

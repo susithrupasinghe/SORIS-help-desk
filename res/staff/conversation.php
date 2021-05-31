@@ -16,24 +16,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $con = openCon();
 
 
-    if(isset($_POST["closeinq"])){
-       
+    if (isset($_POST["closeinq"])) {
+
         $inquiryId = $_GET["id"];
         // $sql = "DELETE t1,t2 from inquiry as t1 INNER JOIN conversations as t2 on t1.id = t2.inquiryId WHERE t1.id='$inquiryId'";
         $sql = "UPDATE inquiry SET isActive = '0' WHERE id='$inquiryId'";
 
         $result = $con->query($sql);
 
-        if($result===TRUE){
+        if ($result === TRUE) {
             header("Location: dashboard.php");
-        }
-        else{
+        } else {
             header("Refresh:0");
         }
-
-
-    }
-    else if(isset($_POST["forward"])){
+    } else if (isset($_POST["forward"])) {
 
         $inquiryId = $_GET["id"];
         $forwardedUser = $_POST["section"];
@@ -43,23 +39,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $result = $con->query($sql);
 
-        if($result===TRUE){
+        if ($result === TRUE) {
             header("Location: dashboard.php");
-        }
-        else{
+        } else {
             header("Refresh:0");
         }
-
-    }
-
-    else if (isset($_POST['newmsg'])) {
+    } else if (isset($_POST['newmsg'])) {
 
         $text = $_POST['text'];
         $attachment = "";
         $inquiryId = $_GET["id"];
         $uid = "";
 
-       
+
         $sql = "SELECT U.id from users U, inquiry I WHERE I.id = '$inquiryId' AND I.currentStaffId = U.id";
 
         $result = $con->query($sql);
@@ -73,9 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $filename = $_FILES['attachment']['name'];
 
-            if($filename != ""){
+            if ($filename != "") {
 
-                
+
                 $destination = '../uploads/' . $filename;
 
                 $file = $_FILES['attachment']['tmp_name'];
@@ -85,7 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (move_uploaded_file($file, $destination)) {
 
                     $attachment = $filename;
-                   
                 } else {
                     echo "Failed to upload file.";
                 }
@@ -94,29 +85,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql = "INSERT INTO conversations (inquiryId,userId,createdDate,attachment,text) VALUES('$inquiryId','$uid','$datetime','$attachment','$text')";
             $result = $con->query($sql);
 
-            if($result === TRUE){
+            if ($result === TRUE) {
 
                 $sql = "UPDATE inquiry SET lastModifiedDate='$datetime' WHERE id='$inquiryId'";
                 $result = $con->query($sql);
 
                 header("Refresh:0");
-            }
-            else{
+            } else {
 
                 echo "Error .";
-
             }
-
         }
-
-
-        
-
     }
 
     closeCon($con);
-
-
 }
 
 
@@ -147,7 +129,7 @@ function message($name, $date, $text, $attachment, $role)
 
         if ($attachment != "") {
 
-            $attachment = "../uploads/".$attachment;
+            $attachment = "../uploads/" . $attachment;
 
             echo <<< HTML
 
@@ -189,7 +171,7 @@ function message($name, $date, $text, $attachment, $role)
 
         if ($attachment != "") {
 
-            $attachment = "../uploads/".$attachment;
+            $attachment = "../uploads/" . $attachment;
 
             echo <<< HTML
 
@@ -251,7 +233,7 @@ function message($name, $date, $text, $attachment, $role)
 
 
     $page = "conversation";
-   // require '../../config/config.php';
+    // require '../../config/config.php';
     include("../templates/header.php");
     include("../templates/navigation.php");
 
@@ -284,10 +266,9 @@ function message($name, $date, $text, $attachment, $role)
                         $createdDate = $row[1];
                         $status = "";
 
-                        if($row[3] == "1"){
+                        if ($row[3] == "1") {
                             $status = "Open";
-                        }
-                        else{
+                        } else {
                             $status = "Closed";
                         }
 
@@ -335,7 +316,7 @@ function message($name, $date, $text, $attachment, $role)
                         }
 
 
-                        if($status=="Open"){
+                        if ($status == "Open") {
 
                             echo <<<HTML
                             <form style="margin-left:120px;margin-top:100px;" method="post" enctype="multipart/form-data">
@@ -356,69 +337,61 @@ function message($name, $date, $text, $attachment, $role)
                             <select class="txt-input" size="1" style="width:auto;" name="section">
         
                             HTML;
-        
-
-
                         }
-                       
-                    
 
 
-                    if($status=="Open"){
 
-                        $sql = "SELECT id, firstName ,email from users WHERE role='staff'";
-                        $result = $con->query($sql);
-    
-                        if ($result->num_rows > 0) {
-    
-                            while ($row = $result->fetch_assoc()) {
 
-                                $staff_mail = $row["email"];
+                        if ($status == "Open") {
 
-                                if($staff_mail == $_SESSION["userid"]){
-                                    continue;
+                            $sql = "SELECT id, firstName ,email from users WHERE role='staff'";
+                            $result = $con->query($sql);
+
+                            if ($result->num_rows > 0) {
+
+                                while ($row = $result->fetch_assoc()) {
+
+                                    $staff_mail = $row["email"];
+
+                                    if ($staff_mail == $_SESSION["userid"]) {
+                                        continue;
+                                    }
+
+                                    $id = $row["id"];
+                                    $name = $row["firstName"];
+
+                                    echo "<option value='$id'> $name </option>";
                                 }
-    
-                                $id = $row["id"];
-                                $name = $row["firstName"];
-    
-                                echo "<option value='$id'> $name </option>";
                             }
-                        }
-    
-                       
 
-                        echo <<< HTML
+
+
+                            echo <<< HTML
                         </select>
                             <input  class="btt type3" name="forward" style="margin-left:15px;" type="submit" value="Forward Now">
                         </form>
                         HTML;
 
-                        echo <<< HTML
+                            echo <<< HTML
 
                         <form method="POST">
                             <input  class="btt" name="closeinq" style="float:right;border: 5px solid #FCFCFC;color: #FCFCFC;padding:15px;background-color: #f44336;" type="submit" value="Close Inquiry">
                         </form>
                       HTML;
-
-                    }
-                   
+                        }
                     } else {
 
                         echo "You dont have permisssion to View this converstation";
                     }
-                }
-                else{
+                } else {
 
                     echo <<<HTML
                     <img style="display: block;margin-left: auto;margin-right: auto;width: 40%;" src="../../images/inquiry_not_found.svg">
                     HTML;
                     header("Refresh:5; url=dashboard.php");
-
                 }
 
                 closeCon($con);
-              
             }
         }
 

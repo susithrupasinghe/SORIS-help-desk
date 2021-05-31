@@ -21,11 +21,11 @@ FAQ will be displayed on the site so students can browse them to solve their pro
 
 ## 2.   Contributors
 
-1.  Chamadya W.A.I.
-2.  Perera M.R.A.
-3.  Rupasinghe S.P
-4.  Jayasinghe Y.A.O.D
-5.  Ekanayake E.M.S.D
+1.  Chamadya W.A.I. - IT20630270 
+2.  Perera M.R.A. - IT20609658
+3.  Rupasinghe S.P - IT20633790
+4.  Jayasinghe Y.A.O.D - IT20633554
+5.  Ekanayake E.M.S.D - IT20631192
 
 
 ## 3.   Technologies

@@ -28,8 +28,7 @@
                 <li><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>
                 HTML;
             }
-        }
-        else if($_SESSION["role"] == "staff"){
+        } else if ($_SESSION["role"] == "staff") {
 
             if ($page == "dashboard") {
 
@@ -52,10 +51,7 @@
                 <li><a href="/SORIS-help-desk/res/content/contentDashboard.php" >Content Management</a></li>
                 HTML;
             }
-
-
-        }
-        else{
+        } else {
 
             if ($page == "dashboard") {
 
@@ -67,7 +63,6 @@
                 <li><a href="/SORIS-help-desk/res/student/dashboard.php" >Dashboard</a></li>
                 HTML;
             }
-
         }
     }
 
