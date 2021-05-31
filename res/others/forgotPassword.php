@@ -31,7 +31,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     include("../../res/templates/navigation.php");
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('../../images/bg16.svg');background-repeat: no-repeat;background-size: 80%;background-position:center;">
 
         <!--Send e-mail verification-->
         <?php
@@ -86,7 +86,8 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         <!--Front end-->
         <form method="POST">
         <div style="text-align:center;">
-            <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;">
+        <br>
+            <div class="card" style="margin:auto;text-align:center;border:3px solid #08a73a;margin-bottom:60px;">
                 <h2 style="font-family:Sitara, sans-serif;margin:auto;margin-bottom:20px;">Forgot Password</h2>
 
                 <div>

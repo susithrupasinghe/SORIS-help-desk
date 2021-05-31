@@ -49,7 +49,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('../../images/bg14.svg');background-repeat: no-repeat;background-size: 120%;background-position:center;">
 
         <?php
         $con = openCon();

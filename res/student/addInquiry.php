@@ -31,7 +31,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     include("../../res/templates/navigation.php");
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg12.svg');background-repeat: no-repeat;background-size: 80%;background-position:center;">
 
         <?php
         include_once  '../../config/config.php';
@@ -93,12 +93,12 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
                         $sql = "INSERT INTO conversations(inquiryId,userId,createdDate,attachment,text) VALUES('$last_id','$uid','$Cdatetime','$attachment','$text')";
                         $result = $conn->query($sql);
+                        }
                     }
                 }
-
-                closeCon($conn);
-                }
             }
+            header("Location: dashboard.php");
+            closeCon($conn);
         }
 
         ?>

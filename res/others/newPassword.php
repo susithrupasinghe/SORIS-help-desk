@@ -58,7 +58,7 @@ closeCon($con);
     include("../../res/templates/navigation.php");
     ?>
 
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg15.svg');background-repeat: no-repeat;background-size: 120%;background-position:center;">
 
         <!--Ckeck change password and update data-->
         <?php
@@ -120,7 +120,7 @@ closeCon($con);
                 </div>
 
                 <label for="repassword" style="font-family:Sitara, sans-serif;font-weight:bold;margin:auto">Password re-type</label>
-                <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" required>
+                <input style="margin-left:25px;" class="txt-input" type="password" id="RePass" name="RePass" oninput="validpassword(this)" required>
 
                 <input type="submit" value="Cancel" class="btt type3" name="btnsubmit" style="margin-top:50px;">
                 <input type="submit" value="Change password" class="btt type1" name="btnsubmit" style="margin-left:10px;">
