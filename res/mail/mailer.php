@@ -13,26 +13,7 @@ $emailFrom = "soris.university@gmail.com";
 $emailFromName ="SORIS University Help Desk";
 
 
-// $mail = new PHPMailer;
-// $mail->isSMTP(); 
-// $mail->SMTPDebug = 0; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
-// $mail->Host = "smtp.gmail.com";
-// $mail->Port = 587; // TLS only
-// $mail->SMTPSecure = 'tls'; // ssl is depracated
-// $mail->SMTPAuth = true;
-// $mail->Username = $smtpUsername;
-// $mail->Password = $smtpPassword;
-// $mail->setFrom($emailFrom, $emailFromName);
-// $mail->addAddress($emailTo, $emailToName);
-// $mail->Subject = 'PHPMailer GMail SMTP test';
-// $mail->msgHTML("<h1>You are succussfully Registerd ! </h1>"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 
-
-// if(!$mail->send()){
-//     echo "Mailer Error: " . $mail->ErrorInfo;
-// }else{
-//     echo "Message sent!";
-// }
 
 
 function send_Verify_Email($to,$verificationLink){
