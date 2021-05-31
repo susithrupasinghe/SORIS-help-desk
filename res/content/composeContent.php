@@ -52,7 +52,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
     include("../templates/navigation.php");
     ?>
 
-    <div class="body-container">
+    <div class="body-container"  style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg20.svg');background-repeat: no-repeat;background-size: 150%;background-position:center;">
 
         <?php
         require '../../config/config.php';
@@ -117,7 +117,10 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 
                 <div style="padding: 100px;">
-                    <div id="wordwrap" name="wordwrap" value=""></div>
+                <div style="background-color: #FFF; border:1px solid black;">
+                <div id="wordwrap" name="wordwrap" value="" ></div>
+                </div>
+                    
                 </div>
                 <br>
 
