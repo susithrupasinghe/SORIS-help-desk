@@ -48,7 +48,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
         <h3 class="txt-green" style="margin-left:80px;font-size:25px;">Statictics </h3><br>
 
-        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto;">
+        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto; background-color:#FFF;">
             <tr>
                 <th>Section Name</th>
                 <th>Active Inquiries</th>
