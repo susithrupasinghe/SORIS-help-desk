@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     echo <<< HTML
 
-    <div class="body-container" style="padding-left: 150px;padding-right:150px;">
+    <div class="body-container" style="padding-left: 150px;padding-right:150px;background:linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url('../../images/bg21.svg');background-repeat: no-repeat;background-size: 150%;background-position:center;">
 
     <table>
     <tr>
