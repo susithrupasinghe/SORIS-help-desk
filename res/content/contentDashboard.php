@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     include("../templates/header.php");
     include("../templates/navigation.php");
     ?>
-    <div class="body-container">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg19.svg');background-repeat: no-repeat;background-size: 95%;background-position:center;">
 
         <div style="margin-top: 50px;">
         <a href="composeContent.php" target="_blank">
@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         </div>
        
 
-        <table class="table-style" style="max-width: 80%;margin:auto;margin-top:30px;">
+        <table class="table-style" style="max-width: 80%;margin:auto;margin-top:30px;background-color:#FFF;">
             <tr>
                 <th>Title</th>
                 <th>Thumbnail Subtitle</th>

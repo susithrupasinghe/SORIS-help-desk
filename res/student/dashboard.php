@@ -48,7 +48,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
     ?>
 
-    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url('../../images/bg18.svg');background-repeat: no-repeat;background-size: 60%;background-position:center;">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('../../images/bg14.svg');background-repeat: no-repeat;background-size: 120%;background-position:center;">
 
         <?php
         $con = openCon();
@@ -101,7 +101,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         echo <<< HTML
                 <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Active Inquiry</h2>
             
-                <table class="table-style" style="max-width: 80%;margin:auto;">
+                <table class="table-style" style="max-width: 80%;margin:auto;background-color:#FFF;">
                 <tr>
                     <th>Inquiry ID</th>
                     <th>Title</th>
@@ -154,7 +154,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         echo <<< HTML
             <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Archived Inquiry</h2>
         
-            <table class="table-style" style="max-width: 80%;margin:auto;">
+            <table class="table-style" style="max-width: 80%;margin:auto;background-color:#FFF;">
             <tr>
                 <th>Inquiry ID</th>
                 <th>Title</th>
