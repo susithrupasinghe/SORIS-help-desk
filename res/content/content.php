@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $time =  $contentData[5];
             $author = $contentData[3];
             $tag = $contentData[4];
-            $text = $contentData[6];
+            $text = base64_decode($contentData[6]);
+            
         } else {
             header("Location: faq.php");
         }

@@ -37,11 +37,13 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
             var htmlcontent = $('#wordwrap').summernote('code');
             htmlcontent = htmlcontent.replace("\"", "'");
+            htmlcontent = htmlcontent.replace("\"", "'");
+            console.log(htmlcontent);
             var hiddenele = document.getElementById("htmlContent");
 
             hiddenele.setAttribute("value", htmlcontent);
 
-            return true;
+            return false;
 
         }
     </script>
@@ -77,6 +79,8 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
             $tag = $_POST['tag'];
             $Createddatetime = date("Y-m-d h:i:s");
             $htmlcontent = $_POST['htmlContent'];
+
+            $htmlcontent = base64_encode($htmlcontent);
 
 
             $sql = "INSERT INTO content (title, thumbnailText, authorId, tag, createdDate, htmltext) VALUES ('$titlee','$subtitle','$userId','$tag','$Createddatetime','$htmlcontent')";
