@@ -28,7 +28,7 @@ session_start();
     <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('../../images/bg10.svg');background-repeat: no-repeat;background-size: 85%;background-position:center;">
 
 
-        <h3 style="margin:0px;margin-left:10vw;"> FAQ </h3><br>
+        <h3 style="margin:0px;margin-left:10vw;font-family:'Sitara',sans-serif;"> FAQ </h3><br>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
 
 
@@ -43,18 +43,15 @@ session_start();
             echo "<table style='margin:auto;'><tr>";
             $i = 0;
             while ($row = $result->fetch_assoc()) {
-                if ($i%5==0) {
-   
-                   if($i==0){
-   
-                   }
-                   else{
-                       echo "</tr><tr>";
-                   }
-                  
-               }
-               $url = "content.php?id=".$row['id'];
-               echo <<< HTML
+                if ($i % 5 == 0) {
+
+                    if ($i == 0) {
+                    } else {
+                        echo "</tr><tr>";
+                    }
+                }
+                $url = "content.php?id=" . $row['id'];
+                echo <<< HTML
                    <td>
                    
                    <div class="card" style="width: 150px; margin: 15px;height: 300px; position: relative;border:3px solid #08A73A;">
@@ -62,23 +59,23 @@ session_start();
                        <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
                        <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>
                        <div style="position: absolute;bottom: 15px;left: 37px;">
-                       <a class="btt type1" href="$url" target="_blank"> Read more</a>
+                       <a class="btt type1" href="$url" target="_blank" style="font-family:'Sitara',sans-serif;"> Read more</a>
                        </div>
                       
                    </div>
                    </td>
                    HTML;
-              
-               $i++;
-           }
-   
-           echo "</tr></table>";
+
+                $i++;
+            }
+
+            echo "</tr></table>";
         }
 
         closeCon($conn);
 
         ?>
-        
+
     </div>
     <?php
     include("../templates/footer.php");

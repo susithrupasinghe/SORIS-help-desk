@@ -97,11 +97,11 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
 
 
-        //active
+        //Active Inquiry
         echo <<< HTML
                 <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Active Inquiry</h2>
             
-                <table class="table-style" style="max-width: 80%;margin:auto;background-color:#FFF;">
+                <table class="table-style" style="max-width: 80%;margin:auto;background-color:#FFF;font-family:'Sitara',sans-serif;">
                 <tr>
                     <th>Inquiry ID</th>
                     <th>Title</th>
@@ -140,7 +140,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                         <td>$StaffID</td>
                         <td>$SubmitedDate</td>
                         <td>$LastModifiedDate</td>
-                        <td> <a href="$link" target = "_blank">See more</a></td>
+                        <td> <a href="$link" target = "_blank" style="text-decoration:none;color:#08A73A;font-weight:bold;">View More</a></td>
                         </tr>
                     HTML;
             }
@@ -150,11 +150,11 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                     HTML;
         }
 
-        //archived
+        //closed Inquiry
         echo <<< HTML
-            <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Archived Inquiry</h2>
+            <h2 style="font-family:Sitara;margin-left:10%;color:#08A73A;">Closed Inquiry</h2>
         
-            <table class="table-style" style="max-width: 80%;margin:auto;background-color:#FFF;">
+            <table class="table-style" style="max-width: 80%;margin:auto;background-color:#FFF;font-family:'Sitara',sans-serif;">
             <tr>
                 <th>Inquiry ID</th>
                 <th>Title</th>
@@ -193,7 +193,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                     <td>$StaffID</td>
                     <td>$SubmitedDate</td>
                     <td>$LastModifiedDate</td>
-                    <td> <a href="$link" target = "_blank">See more</a></td>
+                    <td> <a href="$link" target = "_blank" style="text-decoration:none;color:#08A73A;font-weight:bold;">View More</a></td>
                     </tr>
                 HTML;
             }

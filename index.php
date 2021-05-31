@@ -35,12 +35,12 @@ session_start();
         <!-- adding welcome message-->
         <div class="card" style="background-color:#fce384;margin:auto;width:60%;margin-top:auto;padding-left:50px;padding-right:50px;border-radius:20px;">
             <h3 style="text-align:center;font-family:'Sitara',sans-serif;"> Welcome to SORIS Help Desk </h3>
-            <p style="text-align:center;font-family:'Sitara',sans-serif;">  Submit a new inquiry to present your academic and non-academic concerns to our staff. You can also browse FAQ, NEWS, and Information pages to find relevant information related to the university. You can also contact university administration using details provided on the Contact us page.  </p>
+            <p style="text-align:center;font-family:'Sitara',sans-serif;"> Submit a new inquiry to present your academic and non-academic concerns to our staff. You can also browse FAQ, NEWS, and Information pages to find relevant information related to the university. You can also contact university administration using details provided on the Contact us page. </p>
         </div>
         <!--adding icons to news, information and make a inquiry-->
-        
 
-        <table style="margin: auto;"  >
+
+        <table style="margin: auto;">
             <tr>
                 <td>
                     <!--ADDING INFORMATION LINK BLOCK-->
@@ -82,7 +82,7 @@ session_start();
         </table>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
         <!-- adding latest NEWS to homepage-->
-        <h3 style="margin-left:10vw;"> NEWS </h3><br>
+        <h3 style="margin-left:10vw;font-family:'Sitara',sans-serif;"> NEWS </h3><br>
 
         <?php
 
@@ -112,7 +112,7 @@ session_start();
                        <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
                        <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>
                        <div style="position: absolute;bottom: 15px;left: 37px;">
-                       <a class="btt type1" href="$url" target="_blank"> Read more</a>
+                       <a class="btt type1" href="$url" target="_blank" style="font-family:'Sitara',sans-serif;"> Read more</a>
                        </div>
                       
                    </div>
@@ -130,7 +130,7 @@ session_start();
         ?>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
         <!-- adding latest information to homepage-->
-        <h3 style="margin-left:10vw;"> Information </h3><br>
+        <h3 style="margin-left:10vw;font-family:'Sitara',sans-serif;"> Information </h3><br>
 
         <?php
 
@@ -159,7 +159,7 @@ session_start();
                        <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
                        <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>
                        <div style="position: absolute;bottom: 15px;left: 37px;">
-                       <a class="btt type1" href="$url" target="_blank"> Read more</a>
+                       <a class="btt type1" href="$url" target="_blank" style="font-family:'Sitara',sans-serif;"> Read more</a>
                        </div>
                       
                    </div>
