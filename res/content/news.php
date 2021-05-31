@@ -28,7 +28,7 @@ session_start();
     <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('../../images/bg9.svg');background-repeat: no-repeat;background-size: 110%;background-position:center;">
 
 
-        <h3 style="margin:0px;margin-left:10vw;"> NEWS </h3><br>
+        <h3 style="margin:0px;margin-left:10vw;font-family:'Sitara',sans-serif;"> NEWS </h3><br>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">
 
 
@@ -65,7 +65,7 @@ session_start();
                         <h5 style="font-family: 'Sitara', sans-serif;">$row[firstName].$row[lastName]</h5>
                         <p style="font-family: 'Sitara', sans-serif;font-size:small;">$row[thumbnailText]</p>
                         <div style="position: absolute;bottom: 15px;left: 37px;">
-                        <a class="btt type1" href="$url" target="_blank"> Read more</a>
+                        <a class="btt type1" href="$url" target="_blank" style="font-family:'Sitara',sans-serif;"> Read more</a>
                         </div>
                        
                     </div>
