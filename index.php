@@ -34,8 +34,8 @@ session_start();
     <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url('images/bg2.svg');background-repeat: no-repeat;background-size: 200%;background-position:center;">
         <!-- adding welcome message-->
         <div class="card" style="background-color:#fce384;margin:auto;width:60%;margin-top:auto;padding-left:50px;padding-right:50px;border-radius:20px;">
-            <h4 style="text-align:center;font-family:'Sitara',sans-serif;"> Welcome to Soris Help Desk </h4>
-            <p style="text-align:center;font-family:'Sitara',sans-serif;">The help desk is the source of information at SORIS University.If you have problem accessing information in the FAQ.So you can get contact details of university from Contact Us.We are continually updating details to provide up - to -date for you</p>
+            <h3 style="text-align:center;font-family:'Sitara',sans-serif;"> Welcome to SORIS Help Desk </h3>
+            <p style="text-align:center;font-family:'Sitara',sans-serif;">  Submit a new inquiry to present your academic and non-academic concerns to our staff. You can also browse FAQ, NEWS, and Information pages to find relevant information related to the university. You can also contact university administration using details provided on the Contact us page.  </p>
         </div>
         <!--adding icons to news, information and make a inquiry-->
         
