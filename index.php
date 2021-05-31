@@ -19,11 +19,11 @@ session_start();
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
 
 </head>
-<!-- style="font-family: 'Sitara', sans-serif;"-->
+
 
 <body>
     <?php
-    // echo dirname(__FILE__);
+
     $page = "home";
     require 'config/config.php';
     include("res/templates/header.php");

@@ -274,6 +274,3 @@ function send_Forgot_password($to,$Link){
     
     
     }
-
-
-?>

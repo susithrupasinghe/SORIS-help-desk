@@ -17,11 +17,9 @@ session_start();
 
 
     <style>
-
-    .card {
-        border: 3px solid #1D4354;
-    }
-    
+        .card {
+            border: 3px solid #1D4354;
+        }
     </style>
 </head>
 
@@ -33,7 +31,7 @@ session_start();
     include("../templates/navigation.php");
     ?>
 
-    <div class="body-container"  style="background:linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('../../images/bg11.svg');background-repeat: no-repeat;background-size: 80%;background-position:center;">
+    <div class="body-container" style="background:linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('../../images/bg11.svg');background-repeat: no-repeat;background-size: 80%;background-position:center;">
 
         <h3 style="margin:0px;margin-left:10vw; font-family:'sitara',sans-serif;">Contact Us </h3><br>
         <hr style="border-top: 3px solid #1D4354; color:#1D4354">

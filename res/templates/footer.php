@@ -2,44 +2,44 @@
     <div class="footer">
         <table style="width: 100%;">
             <tr>
-                <td >
+                <td>
 
-                    <div >
+                    <div>
                         <h5 class="txt-white" style="text-align: left;margin-left:50px;font-family: 'Sitara', sans-serif;">Assocoated Links/ Portals</h5>
 
                         <div style="text-align: left;margin-left:20px;">
-                        <ul class="footer-list">
-                            <li><a href="http://" target="_blank"> SORIS LMS</a></li>
-                            <li> <a href="http://" target="_blank"> SORIS Student profile</a></li>
-                            <li><a href="http://" target="_blank">SORIS online lecture portal</a></li>
-                        </ul>
+                            <ul class="footer-list">
+                                <li><a href="http://" target="_blank"> SORIS LMS</a></li>
+                                <li> <a href="http://" target="_blank"> SORIS Student profile</a></li>
+                                <li><a href="http://" target="_blank">SORIS online lecture portal</a></li>
+                            </ul>
                         </div>
-                        
+
                     </div>
 
                 </td>
                 <td style="text-align:center;">
                     <div style="margin-left:auto;margin-right:auto;">
 
-                        <img src="/SORIS-help-desk/images/footericon.svg" height= 80 alt="" >
+                        <img src="/SORIS-help-desk/images/footericon.svg" height=80 alt="">
 
 
                     </div>
                 </td>
-                <td >
+                <td>
 
 
-                    <div >
+                    <div>
                         <h5 class="txt-white" style="text-align: right;margin-right:50px;font-family: 'Sitara', sans-serif; font-size:small;">Assocoated Links/ Portals</h5>
 
                         <div style="text-align: right;margin-right:50px;">
-                        <ul class="footer-list">
-                            <li><a href="http://" target="_blank"> SORIS LMS</a></li>
-                            <li> <a href="http://" target="_blank"> SORIS Student profile</a></li>
-                            <li><a href="http://" target="_blank">SORIS online lecture portal</a></li>
-                        </ul>
+                            <ul class="footer-list">
+                                <li><a href="http://" target="_blank"> SORIS LMS</a></li>
+                                <li> <a href="http://" target="_blank"> SORIS Student profile</a></li>
+                                <li><a href="http://" target="_blank">SORIS online lecture portal</a></li>
+                            </ul>
                         </div>
-                    
+
                     </div>
                 </td>
             </tr>

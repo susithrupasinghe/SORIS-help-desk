@@ -4,11 +4,9 @@ session_start();
 
 if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
-    if($_SESSION["role"] != "student"){
+    if ($_SESSION["role"] != "student") {
         header("Location: ../../index.php");
-
     }
-
 } else
     header("Location: ../../index.php");
 ?>
@@ -74,31 +72,31 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                    //insert file
-                    $attachment = "";
-                    $fname = $_FILES['attachment']['name'];
-                    if ($fname != "") {
+                        //insert file
+                        $attachment = "";
+                        $fname = $_FILES['attachment']['name'];
+                        if ($fname != "") {
 
-                        $destination = '../uploads/' . $fname;
+                            $destination = '../uploads/' . $fname;
 
-                        $file = $_FILES['attachment']['tmp_name'];
-                        
-                        if (move_uploaded_file($file, $destination)) {
+                            $file = $_FILES['attachment']['tmp_name'];
 
-                            $attachment = $fname;
+                            if (move_uploaded_file($file, $destination)) {
+
+                                $attachment = $fname;
+                            }
                         }
-                    }
-                    $row = $result->fetch_assoc();
-                    $uid = $row["id"];
+                        $row = $result->fetch_assoc();
+                        $uid = $row["id"];
 
-                    $sql = "INSERT INTO inquiry(title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId) VALUES ('$TitleName','$Cdatetime','$Mdatetime','$active','$uid',' $sec')";
-                    $result = $conn->query($sql);
-
-                    if ($result === true) {
-                        $last_id = $conn->insert_id;
-
-                        $sql = "INSERT INTO conversations(inquiryId,userId,createdDate,attachment,text) VALUES('$last_id','$uid','$Cdatetime','$attachment','$text')";
+                        $sql = "INSERT INTO inquiry(title,createdDate,lastModifiedDate,isActive,conversationStarter,currentStaffId) VALUES ('$TitleName','$Cdatetime','$Mdatetime','$active','$uid',' $sec')";
                         $result = $conn->query($sql);
+
+                        if ($result === true) {
+                            $last_id = $conn->insert_id;
+
+                            $sql = "INSERT INTO conversations(inquiryId,userId,createdDate,attachment,text) VALUES('$last_id','$uid','$Cdatetime','$attachment','$text')";
+                            $result = $conn->query($sql);
                         }
                     }
                 }

@@ -44,12 +44,10 @@ session_start();
         while ($row = $result->fetch_assoc()) {
             $postLink = "content.php?id=" . $row["id"];
 
-            if ($i%5==0) {
-    
-                if($i==0){
+            if ($i % 5 == 0) {
 
-                }
-                else{
+                if ($i == 0) {
+                } else {
                     echo "</tr><tr>";
                 }
             }

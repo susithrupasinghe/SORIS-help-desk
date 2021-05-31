@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $author = $contentData[3];
             $tag = $contentData[4];
             $text = base64_decode($contentData[6]);
-            
         } else {
             header("Location: faq.php");
         }
@@ -52,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             padding-left: 100px;
             padding-bottom: 0px;
         }
-
     </style>
 </head>
 
@@ -88,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     echo $text;
 
     ?>
-    </div>  
+    </div>
     </div>
 
     <?php include("../templates/footer.php");  ?>
