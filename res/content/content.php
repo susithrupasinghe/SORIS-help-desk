@@ -81,12 +81,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     </tr>
     </table>
     <div style="height:50px;">
-    </div>    
+    </div>  
+    <div style="background-color:#FFF;border: 3px solid #1D4354;border-radius:30px;padding:20px;">
     HTML;
 
     echo $text;
 
     ?>
+    </div>  
     </div>
 
     <?php include("../templates/footer.php");  ?>

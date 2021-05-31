@@ -5,7 +5,7 @@ function openCon(){
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "soris";
+$dbname = "soris2";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -14,6 +14,15 @@ session_start();
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" href="../../images/favicon.svg" sizes="any" type="image/svg+xml">
     <link href="http://fonts.cdnfonts.com/css/sitara" rel="stylesheet">
+
+
+    <style>
+
+    .card {
+        border: 3px solid #1D4354;
+    }
+    
+    </style>
 </head>
 
 <body>
