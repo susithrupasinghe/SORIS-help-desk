@@ -16,7 +16,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORIC Administrator Dashboard</title>
+    <title>Administrator Dashboard</title>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/signup.css">
@@ -48,7 +48,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['role'])) {
 
         <h3 class="txt-green" style="margin-left:80px;font-size:25px;">Statictics </h3><br>
 
-        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto;">
+        <table class="table-style" style="width:70%; margin-left:auto; margin-right:auto; background-color:#FFF;">
             <tr>
                 <th>Section Name</th>
                 <th>Active Inquiries</th>
