@@ -33,6 +33,12 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
         .table-style td {
             text-align: center;
         }
+
+        .table-style td a {
+            text-decoration: none;
+            color: #08A73A;
+            font-weight: bold;
+        }
     </style>
 
 </head>

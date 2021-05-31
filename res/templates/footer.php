@@ -21,7 +21,7 @@
                 <td style="text-align:center;">
                     <div style="margin-left:auto;margin-right:auto;">
 
-                        <img src="../../images/footericon.svg" height= 80 alt="" >
+                        <img src="/SORIS-help-desk/images/footericon.svg" height= 80 alt="" >
 
 
                     </div>
