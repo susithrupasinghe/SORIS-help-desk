@@ -276,7 +276,7 @@ function message($name, $date, $text, $attachment, $role)
                         echo <<<HTML
 
                 <h2 class="txt-green" style="margin-left:20vw;">Inquiry Details</h2>
-                <div class="card" style="margin-left:20vw;width:auto;margin-right:20vw;">
+                <div class="card" style="margin-left:20vw;width:auto;margin-right:20vw;border:3px solid #08A73A;">
 
                 <table id="details" style="margin:auto;">
                 <tr>
@@ -306,10 +306,15 @@ function message($name, $date, $text, $attachment, $role)
 
                         if ($result->num_rows > 0) {
 
+                            echo "<div style='border:3px solid #08A73A;padding-top:30px;padding-bottom:30px;border-radius:30px;'>";
+
                             while ($row = $result->fetch_assoc()) {
 
                                 message($row["firstName"] . " " . $row["lastName"], $row["createdDate"], $row["text"], $row["attachment"], $row["role"]);
                             }
+
+                            echo "</div>";
+
                         }
 
                         if($status=="Open"){
