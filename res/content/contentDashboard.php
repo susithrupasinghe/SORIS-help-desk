@@ -56,6 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         .table-style td {
             text-align: center;
         }
+        .table-style td a {
+            text-decoration: none;
+            color: #08A73A;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -82,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <th>Title</th>
                 <th>Thumbnail Subtitle</th>
                 <th>Tag</th>
+                <th>View</th>
                 <th>Action</th>
             </tr>
             <?php
@@ -101,13 +107,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $subtitle = $row['thumbnailText'];
                     $tag = $row['tag'];
                     $link = "contentDashboard.php?delete=$id";
+                    $linkcontent = "content.php?id=$id";
 
                     echo <<< HTML
                         <tr>
                         <td> $title</td>
                         <td> $subtitle</td>
                         <td>  $tag</td>
-                        <td> <a href="$link">Delete</a></td>
+                        <td> <a href="$linkcontent" target="_blank">View More</a></td>
+                        <td> <a style="color: red;" href="$link">Delete</a></td>
                         </tr>
                         HTML;
                 }

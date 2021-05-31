@@ -135,7 +135,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                         <td>$StudentIDA</td>
                         <td>$SubmitedDateA</td>
                         <td>$LastModifiedDateA</td>
-                        <td> <a href="$linkA" target = "_blank">See more</a></td>
+                        <td> <a href="$linkA" target = "_blank">View More</a></td>
                         </tr>
                     HTML;
             }
@@ -148,7 +148,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
 
         //Archived Inquery
         echo <<< HTML
-            <h2 style="font-family:Sitara, sans-serif;margin-left:10%;color:#08A73A;">Archived Inquiry</h2>
+            <h2 style="font-family:Sitara, sans-serif;margin-left:10%;color:#08A73A;">Closed Inquiry</h2>
 
             <table class="table-style" style="max-width: 80%;margin:auto;background-color:#FFF;">
             <tr>
@@ -191,7 +191,7 @@ if (isset($_SESSION["userid"]) && isset($_SESSION["role"])) {
                 <td>$StudentIDC</td>
                 <td>$SubmitedDateC</td>
                 <td>$LastModifiedDateC</td>
-                <td> <a href="$linkC" target = "_blank">See more</a></td>
+                <td> <a href="$linkC" target = "_blank">View more</a></td>
                 </tr>
                 HTML;
             }
